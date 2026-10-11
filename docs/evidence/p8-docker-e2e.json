@@ -1,0 +1,157 @@
+{
+  "check": "P8-docker-e2e",
+  "gateway": "http://127.0.0.1:18790",
+  "started_at": "2026-10-11 18:27:51",
+  "checks": [
+    {
+      "name": "容器网关健康且能力服务在线",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "capability_service_ready": true,
+        "auth_mode": "jwt"
+      }
+    },
+    {
+      "name": "jwt 模式拒绝演示令牌（容器按生产认证模式起）",
+      "pass": true,
+      "detail": {
+        "status": 401
+      }
+    },
+    {
+      "name": "首次部署自动创建管理员并可登录",
+      "pass": true,
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "管理员身份正确",
+      "pass": true,
+      "detail": {
+        "role": "admin"
+      }
+    },
+    {
+      "name": "低风险自动办结且无待办",
+      "pass": true,
+      "detail": {
+        "status": "completed",
+        "risk": "low"
+      }
+    },
+    {
+      "name": "中风险暂停在专员节点",
+      "pass": true,
+      "detail": {
+        "status": "paused",
+        "paused": {
+          "role": "specialist",
+          "question": "【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+          "todo_id": "todo_c2bec18d9e",
+          "todo_created": true
+        },
+        "run_id": "wf_run_137e2090c37e"
+      }
+    },
+    {
+      "name": "待办可被按角色取出",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "matched": 1
+      }
+    },
+    {
+      "name": "可创建专员账号并以专员身份登录",
+      "pass": true,
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "专员令牌角色正确",
+      "pass": true,
+      "detail": {
+        "role": "specialist"
+      }
+    },
+    {
+      "name": "专员确认后转主管复核（未直接办结）",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "run": "paused"
+      }
+    },
+    {
+      "name": "跨节点决策被拒（409，防伪造签核）",
+      "pass": true,
+      "detail": {
+        "status": 409,
+        "detail": "{'detail': ['决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 approve 属于角色 supervisor。请联系对应的审批人处理。']}"
+      }
+    },
+    {
+      "name": "主管签署后归档",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "run": "completed"
+      }
+    },
+    {
+      "name": "证据链完整",
+      "pass": true,
+      "detail": {
+        "events": [
+          "review_submitted",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "review_archived"
+        ]
+      }
+    },
+    {
+      "name": "诊断显示 PostgreSQL 后端与驱动",
+      "pass": true,
+      "detail": {
+        "db_mode": "pg",
+        "driver": "pg8000",
+        "capability": "running"
+      }
+    },
+    {
+      "name": "规则表可用",
+      "pass": true,
+      "detail": {
+        "active": 8,
+        "digest": "1d48a8faca9d"
+      }
+    },
+    {
+      "name": "指标接口可用",
+      "pass": true,
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "运行列表可读",
+      "pass": true,
+      "detail": {
+        "status": 200
+      }
+    }
+  ],
+  "passed": 17,
+  "total": 17,
+  "problems": [],
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 18:27:54"
+}

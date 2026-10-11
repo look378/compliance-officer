@@ -274,7 +274,14 @@ def _render_pdf(markdown: str, out_path: Path) -> tuple[bool, str]:
         return False, f"reportlab 不可用：{exc}"
 
     font = "Helvetica"
-    for cand in (r"C:\Windows\Fonts\msyh.ttc", r"C:\Windows\Fonts\simsun.ttc"):
+    # 中文字体候选：Windows（本机形态）与 Linux（容器形态，由 Dockerfile 安装 Noto CJK）。
+    # 【交付修正·实跑容器发现】原来只找 Windows 字体：容器里这些路径都不存在，
+    # 于是**中文 PDF 在容器里必然降级为 Markdown**，Dockerfile 里装字体那一步等于白装。
+    for cand in (r"C:\Windows\Fonts\msyh.ttc", r"C:\Windows\Fonts\simsun.ttc",
+                 "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+                 "/usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc",
+                 "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
+                 "/usr/share/fonts/truetype/arphic/uming.ttc"):
         try:
             pdfmetrics.registerFont(TTFont("CJK", cand))
             font = "CJK"

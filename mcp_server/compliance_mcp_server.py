@@ -53,8 +53,10 @@ _FRAMEWORK = Path(os.environ.get("LEMONCLAW_HOME",
 if _FRAMEWORK.exists() and str(_FRAMEWORK) not in sys.path:
     sys.path.insert(0, str(_FRAMEWORK))
 _WORKSPACE = _PROJECT_ROOT / ".runtime" / "workspace"
-if _WORKSPACE.exists():
-    os.chdir(_WORKSPACE)
+# 【实跑容器发现·P0】必须先建出工作区再 chdir（原因同 gateway/app.py：否则框架库
+#   与 runtime_store 的规范路径分裂成两份，审批相关调用全部失败）
+_WORKSPACE.mkdir(parents=True, exist_ok=True)
+os.chdir(_WORKSPACE)
 
 from mcp_server import contract_parser, regulations_store, rules_store  # noqa: E402
 from mcp_server.tools_registry import TOOLS, list_tools_payload  # noqa: E402

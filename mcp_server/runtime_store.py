@@ -59,8 +59,14 @@ def ensure_claim_columns() -> None:
         try:
             # 【审查修正 P2】框架尚未建表时（全新库、或能力服务先于框架启动）
             # ALTER TABLE 会抛 "no such table" —— 这里先探测，避免启动期自检直接崩。
+            #
+            # 【实跑容器发现·P0】但这个分支**不能**标记 `_migrated`：
+            #   框架是在**第一次跑图时**才建 `workflow_runs` 的。全新系统上启动钩子先调到这里，
+            #   表还不存在；若此刻永久标记"已迁移"，等框架后来把表建好，
+            #   claimed_by / claimed_at 两列就永远不会补上 —— 首次审批直接
+            #   `sqlite3.OperationalError: no such column: claimed_by`（已在容器里复现，
+            #   本机全新库同样会中招）。不标记即可：下一次调用会重新检查并补列（幂等）。
             if not _table_ready(conn):
-                _migrated.add(key)
                 return
             cols = {r["name"] for r in conn.execute("PRAGMA table_info(workflow_runs)")}
             if "claimed_by" not in cols:

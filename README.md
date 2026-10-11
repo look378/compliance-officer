@@ -228,6 +228,9 @@ docker compose up -d --build
 > compose 会把底座以只读方式挂进容器（`${LEMONCLAW_HOME:-../lemonclaw-main}:/lemonclaw:ro`，
 > 容器内 `LEMONCLAW_HOME=/lemonclaw`）。
 
+容器形态已实测：空数据卷首次 `docker compose up -d` 一次起来（四服务 healthy），容器内端到端 **17/17** ——
+验证脚本 `scripts/d0/p8_docker_e2e.py`，记录见 `docs/17`。
+
 ### 4.3 打开工作台
 
 浏览器访问 **http://127.0.0.1:8790** → 右上角「认证设置」→ 令牌填 `local-dev-token`，角色选 `specialist` → 保存。

@@ -13,16 +13,34 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /app
 
-# 文档解析需要的中文字体（用于生成/渲染中文 PDF）
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        fonts-noto-cjk \
-    && rm -rf /var/lib/apt/lists/*
+# 中文 PDF 报告需要中文字体。
+# 【交付修正·实跑容器发现】这一步原来是硬依赖：apt 源不可达时**整个镜像构建失败**
+#   （实测受限/内网环境连不上 deb.debian.org，构建直接报 exit 100）。
+#   改为「尽力安装 + 明确告警」：装上则容器内可直接产出中文 PDF；装不上则报告降级为 Markdown
+#   （应用侧本就有该降级路径），不至于因为一个字体卡住整条交付。
+#   如需强制不装：docker compose build --build-arg INSTALL_CJK_FONT=0
+ARG INSTALL_CJK_FONT=1
+RUN if [ "$INSTALL_CJK_FONT" = "1" ]; then \
+        (apt-get update && apt-get install -y --no-install-recommends fonts-noto-cjk \
+         && rm -rf /var/lib/apt/lists/*) \
+        || echo "WARN: 中文字体安装失败（apt 源不可达）—— 中文 PDF 将降级为 Markdown"; \
+    fi
 
 COPY requirements.txt /app/requirements.txt
 # 【审查修正 P0】依赖清单只有 requirements.txt 一个真相源：
 # 原来这里硬编码补装 fastapi/uvicorn/pdfplumber... 与 requirements.txt 各说各话，
 # 结果是 python-dotenv / python-multipart / PyJWT 谁都没装（容器起不来、上传与 jwt 登录 500）。
 RUN pip install --no-cache-dir -r /app/requirements.txt
+
+# 运行时底座的依赖。
+# 【实跑容器发现·P0】此前镜像里只有"本项目"的依赖，底座依赖是在宿主机上由 install-runtime.ps1
+#   装的 —— 容器里因此 import 不到底座（实测 container 内
+#   `ModuleNotFoundError: No module named 'pydantic_settings'`），工作流管理器无法初始化，
+#   /api/v1/contracts、/metrics、/runs 全部 500。
+#   这里通过 compose 的 additional_contexts（名为 framework）只取底座的 requirements.txt 安装，
+#   **不把底座源码打进镜像**（源码仍在运行期以只读卷挂载，见 docker-compose.yml）。
+COPY --from=framework requirements.txt /tmp/framework-requirements.txt
+RUN pip install --no-cache-dir -r /tmp/framework-requirements.txt
 
 COPY . /app
 

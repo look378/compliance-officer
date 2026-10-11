@@ -5,6 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.python
+      # 底座的 requirements.txt 作为构建期上下文（只取依赖清单，源码不进镜像）
+      additional_contexts:
+        framework: ${LEMONCLAW_HOME:-../lemonclaw-main}
     image: compliance-officer/capability:0.6.0
     container_name: compliance-capability
     command: ["python", "mcp_server/compliance_mcp_server.py", "--host", "0.0.0.0", "--port", "8770"]
@@ -43,6 +46,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.python
+      # 底座的 requirements.txt 作为构建期上下文（只取依赖清单，源码不进镜像）
+      additional_contexts:
+        framework: ${LEMONCLAW_HOME:-../lemonclaw-main}
     image: compliance-officer/capability:0.6.0
     container_name: compliance-mock
     command: ["python", "mock/mock_office.py", "--host", "0.0.0.0", "--port", "8780"]
@@ -70,6 +76,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.python
+      # 底座的 requirements.txt 作为构建期上下文（只取依赖清单，源码不进镜像）
+      additional_contexts:
+        framework: ${LEMONCLAW_HOME:-../lemonclaw-main}
     image: compliance-officer/capability:0.6.0
     container_name: compliance-gateway
     command: ["python", "gateway/app.py", "--host", "0.0.0.0", "--port", "8790"]
@@ -140,7 +149,12 @@ services:
       test: ["CMD-SHELL", "pg_isready -U compliance -d compliance"]
       interval: 10s
       timeout: 5s
-      retries: 10
+      retries: 12
+      # 【实跑容器发现】首次部署时数据卷是空的，entrypoint 要跑 initdb 与 deploy/initdb/*.sql
+      #（建扩展、建向量表）；这段期间 pg_isready 必然失败。原来没有 start_period，
+      # 启动期失败被直接计入重试次数 → postgres 被判 unhealthy → `docker compose up` 整体失败，
+      # 用户必须再跑一次 up 才能起来（实测踩过）。start_period 内的失败不计入重试。
+      start_period: 120s
     restart: unless-stopped
 
 volumes:

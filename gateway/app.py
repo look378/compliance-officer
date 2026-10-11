@@ -37,9 +37,18 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 # 运行时框架的工作区（数据库与配置在此）；容器内由 PYTHONPATH 与卷决定
+#
+# 【实跑容器发现·P0】这里必须先**建出**工作区再 chdir，不能"存在才 chdir"：
+#   框架 DAO 用 `Path.cwd()/.lemonclaw/lemonclaw.db` 定位库文件，而本项目自己的
+#   `_dbpath`/`runtime_store` 固定用 `.runtime/workspace/.lemonclaw/lemonclaw.db`。
+#   容器首次启动时 `.runtime/workspace` 还不存在（数据卷是空的）→ 原来就不 chdir →
+#   框架把库写到 `/app/.lemonclaw/`，而 `runtime_store`（run 级占用，决定审批能否进行）
+#   按规范路径去工作区找 `workflow_runs` → 找不到 → `claim_run` 恒失败 →
+#   **任何审批都返回 409「该审批已被他人处理中」**（已在容器里复现）。
+#   这正是 `_dbpath.py` 注释里警告过的"两份库并存"。
 _RUNTIME_WORKSPACE = PROJECT_ROOT / ".runtime" / "workspace"
-if _RUNTIME_WORKSPACE.exists():
-    os.chdir(_RUNTIME_WORKSPACE)
+_RUNTIME_WORKSPACE.mkdir(parents=True, exist_ok=True)
+os.chdir(_RUNTIME_WORKSPACE)
 _FRAMEWORK = Path(os.environ.get("LEMONCLAW_HOME")
                   or (PROJECT_ROOT.parent / "lemonclaw-main"))
 if _FRAMEWORK.exists() and str(_FRAMEWORK) not in sys.path:

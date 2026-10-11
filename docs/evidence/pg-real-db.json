@@ -1,6 +1,6 @@
 {
   "check": "PG-real-db",
-  "started_at": "2026-10-11 14:59:09",
+  "started_at": "2026-10-11 18:24:09",
   "pg_root": "C:\\co-pg",
   "port": 55432,
   "database_url": "postgresql://compliance@127.0.0.1:55432/compliance",
@@ -34,16 +34,16 @@
     "revocation_rows": 1
   },
   "seq_values": [
-    88,
-    89,
-    90,
-    91,
-    92,
-    93,
-    94
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102
   ],
   "reconnect": {
-    "terminated_pid": 26924,
+    "terminated_pid": 15024,
     "terminate_code": 0,
     "terminated": true,
     "other_backends_left": "0",
@@ -100,7 +100,7 @@
       "detail": {
         "first": true,
         "second": false,
-        "todo_id": "todo_eea24567ad"
+        "todo_id": "todo_e81be3d693"
       }
     },
     "todo_atomic_claim_on_pg": {
@@ -120,9 +120,9 @@
       "pass": true,
       "detail": {
         "ok": true,
-        "todo_id": "todo_eea24567ad",
+        "todo_id": "todo_e81be3d693",
         "decision": "confirm",
-        "run_id": "pg_run_fb4065c742",
+        "run_id": "pg_run_6030d8fdbf",
         "node_name": "review"
       }
     },
@@ -168,22 +168,22 @@
       "pass": true,
       "detail": {
         "ok": true,
-        "user_id": "u_e0528d8453a6",
-        "username": "pguser_8c29c1",
+        "user_id": "u_28342453f391",
+        "username": "pguser_ea0491",
         "role": "specialist"
       }
     },
     "password_verify_on_pg": {
       "pass": true,
       "detail": {
-        "username": "pguser_8c29c1",
+        "username": "pguser_ea0491",
         "role": "specialist"
       }
     },
     "token_revocation_watermark_on_pg": {
       "pass": true,
       "detail": {
-        "revoked_at": "2026-10-11 14:59:10"
+        "revoked_at": "2026-10-11 18:24:10"
       }
     },
     "this_run_rows_visible_in_postgres": {
@@ -199,20 +199,20 @@
       "pass": true,
       "detail": {
         "seq": [
-          88,
-          89,
-          90,
-          91,
-          92,
-          93,
-          94
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102
         ]
       }
     },
     "connection_recovers_after_server_side_kill": {
       "pass": true,
       "detail": {
-        "terminated_pid": 26924,
+        "terminated_pid": 15024,
         "terminate_code": 0,
         "terminated": true,
         "other_backends_left": "0",
@@ -232,5 +232,5 @@
   "passed": 18,
   "total": 18,
   "verdict": "PASS",
-  "finished_at": "2026-10-11 14:59:10"
+  "finished_at": "2026-10-11 18:24:10"
 }

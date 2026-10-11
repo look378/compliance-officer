@@ -512,24 +512,39 @@ _upgrade_columns = upgrade_columns
 
 
 def ensure_tables(tables: list[str] | None = None) -> None:
-    """幂等建表 + 补列 + 建索引（启动/首次使用调用）。"""
+    """幂等建表 + 补列 + 建索引（启动/首次使用调用）。
+
+    【实跑容器发现·P0】提交时机必须**逐条**。原来所有 DDL 共用一个事务、最后才 commit，
+    而 `_PgConn.execute` 出错时会回滚整个事务（PostgreSQL 下必须回滚，否则连接进入
+    aborted 状态、后续语句全部报 "current transaction is aborted"）。两者叠加出来的坑：
+      · `auth.ensure_schema()` 只请求 3 张用户表；
+      · 建完这几张表后轮到索引时，`CREATE INDEX ... ON compliance_todo`（这次**没有**建该表）报错；
+      · 该错误被 `except: pass` 吞掉 —— 但**回滚已经把刚建好的 3 张表一起撤掉了**；
+      · 最后的 commit 提交的是空事务。
+    结果是**全新 PostgreSQL 上首次启动一张表都建不起来**，紧接着的 SELECT 报
+    `relation "compliance_user" does not exist`（已在容器里 100% 复现，见 docs/17）。
+    本机演示走 SQLite 时不暴露：SQLite 的语句失败不会中断并回滚整个事务。
+
+    现在每条语句执行后立即提交：任何一条失败都不影响已完成的部分。
+    """
     defs = _table_defs()
     conn = connect()
     try:
         for name in (tables or list(defs)):
             conn.execute(ddl(name))
+            conn.commit()               # 逐条提交：后面的失败不撤销已建的表
             for stmt in upgrade_columns(name):
                 try:
                     conn.execute(stmt)
-                    conn.commit()
                 except Exception:
-                    pass          # 并发下可能已被别的进程补上
+                    pass                # 并发下可能已被别的进程补上
+                conn.commit()
         for idx in _INDEXES:
             try:
                 conn.execute(idx)
             except Exception:
-                pass          # 索引失败不影响主流程（表已建）
-        conn.commit()
+                pass                    # 索引失败不影响主流程（表已提交）
+            conn.commit()
     finally:
         conn.close()
 

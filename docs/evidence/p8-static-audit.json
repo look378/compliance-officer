@@ -1,10 +1,10 @@
 {
-  "files_scanned": 58,
-  "total_lines": 18552,
+  "files_scanned": 59,
+  "total_lines": 18792,
   "per_file": [
     {
       "file": "gateway\\app.py",
-      "lines": 1244,
+      "lines": 1253,
       "issues": [],
       "funcs": [
         "_startup",
@@ -143,7 +143,7 @@
     },
     {
       "file": "mcp_server\\compliance_mcp_server.py",
-      "lines": 248,
+      "lines": 250,
       "issues": [],
       "funcs": [
         "__init__",
@@ -212,7 +212,7 @@
     },
     {
       "file": "mcp_server\\db.py",
-      "lines": 558,
+      "lines": 573,
       "issues": [],
       "funcs": [
         "db_mode",
@@ -493,7 +493,7 @@
     },
     {
       "file": "mcp_server\\runtime_store.py",
-      "lines": 211,
+      "lines": 217,
       "issues": [],
       "funcs": [
         "_db_path",
@@ -515,7 +515,7 @@
     },
     {
       "file": "mcp_server\\tools_registry.py",
-      "lines": 593,
+      "lines": 600,
       "issues": [],
       "funcs": [
         "_schema",
@@ -1321,6 +1321,26 @@
       ],
       "status": "ok",
       "tool_names": []
+    },
+    {
+      "file": "scripts\\d0\\p8_docker_e2e.py",
+      "lines": 201,
+      "issues": [],
+      "funcs": [
+        "make_caller",
+        "call",
+        "main",
+        "check"
+      ],
+      "status": "ok",
+      "tool_names": [
+        "checks",
+        "finished_at",
+        "passed",
+        "problems",
+        "total",
+        "verdict"
+      ]
     },
     {
       "file": "scripts\\d0\\pg_real_db.py",
@@ -2318,6 +2338,11 @@
       "parents_index": 2
     },
     {
+      "file": "scripts\\d0\\p8_docker_e2e.py",
+      "line": 31,
+      "parents_index": 2
+    },
+    {
       "file": "scripts\\d0\\pg_real_db.py",
       "line": 67,
       "parents_index": 2
@@ -2590,6 +2615,7 @@
     "scripts\\d0\\p7_gateway.py": [],
     "scripts\\d0\\p7_production.py": [],
     "scripts\\d0\\p7_webui.py": [],
+    "scripts\\d0\\p8_docker_e2e.py": [],
     "scripts\\d0\\pg_real_db.py": [],
     "scripts\\d0\\sso_e2e.py": [],
     "scripts\\tools\\check_compose.py": [],
@@ -2614,6 +2640,6 @@
     "tests\\test_sso.py": [],
     "tests\\test_static_audit.py": []
   },
-  "scanned_at": "2026-10-11 16:41:11",
+  "scanned_at": "2026-10-11 18:27:50",
   "issue_counts": {}
 }

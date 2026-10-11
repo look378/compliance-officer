@@ -1,0 +1,36 @@
+# 构建上下文排除项
+#
+# 【交付修正·实跑容器发现】此前**没有这个文件**，于是 `docker build` 会把整个项目目录
+# 打包上传给 Docker 守护进程 —— 本机 `.runtime/` 里有 venv 与 PostgreSQL 二进制，
+# 实测上下文 3.07 GB、光传输就花了 5 分钟（而且每次都传）。下面排除后约 2 MB。
+
+# 运行时与本机产物（venv / 数据库 / 日志 / 下载的二进制）
+.runtime/
+.lemonclaw/
+reports/
+data/proposals/
+
+# 版本库与编辑器
+.git/
+.gitignore
+.gitattributes
+.vscode/
+.idea/
+
+# Python 缓存
+__pycache__/
+*.py[codz]
+.pytest_cache/
+*.egg-info/
+
+# 文档与测试（镜像运行不需要；需要时改这里）
+docs/
+tests/
+*.md
+!README.md
+
+# 本机脚本与密钥
+.env
+.env.*
+!.env.enterprise.example
+*.log

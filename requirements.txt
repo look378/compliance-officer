@@ -45,7 +45,11 @@ httpx==0.28.1
 # numpy>=2.0
 # onnxruntime==1.31.0
 
-# ---- 可选：PostgreSQL 交付形态（DB_MODE=pg 时启用）----
+# ---- PostgreSQL 交付形态（DB_MODE=pg 时需要）----
+# 【交付必需，不是可选项】docker-compose 的四服务形态把 capability 与 gateway 的 DB_MODE
+#   都设为 pg，镜像里必须带驱动，否则容器启动即报「DB_MODE=pg 需要 PostgreSQL 驱动」。
+#   选 pg8000：纯 Python，slim 镜像里免编译。
 # 【已实现】本项目自有表（待办/审计/账号/令牌撤销/登录退避）支持 PG；
-#          工作流运行态仍由框架 DAO 写 SQLite（不改框架源码），见 docs/16-PostgreSQL部署.md。
-# psycopg[binary]==3.2.3
+#          工作流运行态仍由框架 DAO 写 SQLite，见 docs/16-PostgreSQL部署.md。
+pg8000==1.31.5
+# 备选（需编译工具链；与 pg8000 二选一即可）：psycopg[binary]==3.2.3
