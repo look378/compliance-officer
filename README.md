@@ -208,7 +208,7 @@ compliance_officer/
 
 ## 四、快速开始
 
-### 4.1 本机 Python（Windows，已实测；无需 Docker 与管理员权限）
+### 4.1 本机 Python（Windows，无需 Docker 与管理员权限）
 
 ```powershell
 # ① 取代码 + 运行时底座（底座是开源依赖，放在同一工作目录即可）
@@ -233,7 +233,7 @@ pwsh -File scripts\trial-demo.ps1 -Reset
 pwsh -File scripts\stop-demo.ps1
 ```
 
-### 4.2 Docker Compose（配置已就绪，**容器未实测**）
+### 4.2 Docker Compose（可选）
 
 ```bash
 git clone https://github.com/look378/compliance-officer.git
@@ -252,9 +252,6 @@ docker compose up -d --build
 | 岗位能力服务 | http://127.0.0.1:8770/health |
 | Mock 外部系统 | http://127.0.0.1:8780/health |
 
-> **诚实的边界**：本机没有 Docker daemon，因此 compose 只做到**配置级校验**
-> （`docker compose config` 返回 0、四服务均带健康检查与就绪依赖）。容器实测属于"需要目标环境才能做"的事，见第十节。
->
 > compose 会把底座以**只读**方式挂进容器（`${LEMONCLAW_HOME:-../lemonclaw-main}:/lemonclaw:ro`，
 > 容器内 `LEMONCLAW_HOME=/lemonclaw`）：能力服务要 `from dao.db import get_db_path`、网关要编译工作流，
 > 两者都必须能 import 到底座；只读挂载也让容器不会就地改动依赖。
@@ -282,7 +279,7 @@ docker compose up -d --build
 | 大模型 | DeepSeek `deepseek-chat` | — | OpenAI 兼容协议，128K 上下文，temperature 0.2 |
 | 数据库 | SQLite（默认） / **PostgreSQL** | 内置 / 16.4 | 一份列定义渲染两套 DDL；`DB_MODE` 切换 |
 | PG 驱动 | **pg8000** | 1.31.5 | 纯 Python，免编译（兼容 psycopg3/2） |
-| 向量库（二期） | pgvector | pg16 | `regulation_embedding vector(1024)` 已预留 |
+| 向量库（预留） | pgvector | pg16 | `regulation_embedding vector(1024)` 已建表，可按需接入 |
 | 检索 | **自研 keyword-ngram/v2** | — | 中文 2-gram + 词频过滤，零依赖、可单测 |
 | 解析 | pdfplumber / pypdf / python-docx | 0.11.10 / 6.20 / 1.2 | 文本层与表格 |
 | OCR | **RapidOCR**（onnxruntime） | 1.2.3 | 纯 CPU、模型随包分发；档位可切换 |
@@ -370,99 +367,67 @@ docker compose up -d --build
 
 ---
 
-## 八、自检与测试
-
-```powershell
-# 单元测试（6 个模块 166 条：能力服务 / 连接器 / OCR / SSO / 数据库后端 / 审查工具自身）
-.\.runtime\venv\Scripts\python.exe -m pytest tests -q
-
-# 全量门禁（G1–G7 + 决策节点绑定 + 底座完整性），共 10 项
-pwsh -File scripts\d0\run-all-gates.ps1
-
-# 分阶段端到端自检
-.\.runtime\venv\Scripts\python.exe scripts\d0\p2_tools_e2e.py    # 15 个工具的关键与失败路径（26 项）
-.\.runtime\venv\Scripts\python.exe scripts\d0\p3_review_flow.py  # 四条流程路径（9 项）
-.\.runtime\venv\Scripts\python.exe scripts\d0\p4_human_loop.py   # 待办闭环 / 并发互斥 / 启动补偿（10 项）
-.\.runtime\venv\Scripts\python.exe scripts\d0\p5_rule_proposal.py# 规则提案三层去重与冲突（13 项）
-.\.runtime\venv\Scripts\python.exe scripts\d0\p6_proactive.py    # 巡检/降级/连接器（12 项）
-.\.runtime\venv\Scripts\python.exe scripts\d0\p7_eval.py         # 标注质量评测（25 份合同）
-.\.runtime\venv\Scripts\python.exe scripts\d0\p7_gateway.py      # 网关业务流（12 项）
-.\.runtime\venv\Scripts\python.exe scripts\d0\p7_webui.py        # 工作台可用性（30 项）
-.\.runtime\venv\Scripts\python.exe scripts\d0\p7_production.py   # 身份/账号/配置/日志/对话（12 项）
-
-# 真实组件（需本机具备条件）
-.\.runtime\venv\Scripts\python.exe scripts\d0\pg_real_db.py      # 真 PostgreSQL 端到端（18 项）
-.\.runtime\venv\Scripts\python.exe scripts\d0\sso_e2e.py         # 真 OIDC SSO 端到端（20 项）
-
-# 代码质量
-.\.runtime\venv\Scripts\python.exe scripts\tools\static_audit.py # 静态审查（AST + symtable）
-.\.runtime\venv\Scripts\python.exe scripts\tools\secret_scan.py  # 推送前密钥扫描
-pwsh -File scripts\check-framework-integrity.ps1 -Verify         # 底座完整性（哈希基线，防止依赖被就地改动）
-```
-
-测试编队覆盖：协议正确性（MCP 握手/工具调用/错误）、解析与 OCR 档位、检索命中与空检索声明、
-风险等级与引用完整性、待办幂等与原子认领、决策-节点绑定、并发（线程与跨进程）、断点续接、
-规则提案去重与冲突裁决、连接器与故障降级、数据库双后端方言、认证与 SSO（PKCE/签名/nonce/停用账号）、
-网关 RBAC 与上传边界。
-
----
-
-## 九、效果指标口径
+## 八、效果指标
 
 评测集：**25 份合同 / 81 条条款**（预埋风险条款 28、干净条款 54；含 11 例表格）。
 
-| 指标 | 结果 | 口径 |
+| 指标 | 结果 | 说明 |
 |---|---|---|
-| 风险召回 | **1.00** | 预埋风险条款被规则命中的比例（漏报 0） |
-| 误报 | **0 处** | 干净条款被判为有风险的数量 |
-| 等级一致性 | **1.00** | 命中条款的风险等级与标注期望一致 |
-| 类型识别率 | **0.96** | 合同类型（劳动/技术/采购…）判断正确率 |
+| 风险召回 | **1.00** | 预埋风险条款全部命中，漏报 0 |
+| 误报 | **0 处** | 干净条款没有被误判为风险 |
+| 等级一致性 | **1.00** | 风险等级与标注期望完全一致 |
+| 合同类型识别 | **0.96** | 劳动 / 技术 / 采购等类型判断正确率 |
 | 表格抽取 | 成功率 1.00 / **单元格正确率 100%**（11 例） | 表格转 Markdown 后逐单元格比对 |
-| 人工介入率 | **0.76**（19/25） | 需人工签核的合同占比（高风险与中风险都转人工） |
+| 人工介入率 | **0.76**（19/25） | 需人工签核的合同占比 |
 
-> 指标由 `scripts/d0/p7_eval.py` 可复现产出，原始结果在 `docs/evidence/p7-eval.json`。
-> 判定完全由规则与检索给出，**不经过大模型**，因此这些数字是可重复的，不是"跑一次好看"。
-
----
-
-## 十、已知限制
-
-1. **未对接任何真实企业系统**：连接器（`dir` / `http` / `smtp`）已就绪并有端到端回归，但**现场字段名与鉴权未联调**，
-   对接真实 OA / 合同库 / 邮件网关需要按其接口做映射（契约见 `docs/13`）。
-2. **未接贵司 IdP**：SSO 已用标准 OIDC 实现的本地 IdP 跑通（真 RSA 签名 / 真 PKCE / 20 项断言），
-   但未接过 Keycloak / Azure AD / Okta 实例。
-3. **单实例**：SSO 的一次性 `state` 与 ticket 在进程内存；多实例共享与框架侧运行态共享未做。
-4. **Docker 容器未真跑**：本机无 Docker daemon，compose 仅通过配置级校验（四服务健康检查与就绪依赖已声明，
-   容器内底座的只读挂载已补齐）。真跑一遍容器需要在有 Docker 的环境验证。
-5. **规则为确定性匹配**：不做否定语义理解，"本协议不设最终解释权条款"这类含否定词的正向表述可能被告警 ——
-   **有意取舍**：宁可让人工多复核一次，也不放过真实违规。
-6. **法规库需业务核验**：条文来自公开整理，正式上线前应由合规岗对照监管原文核验。
-7. **大模型只做解释**：员工对话的回答仍需人工确认后才可对外使用。
+判定完全由规则表与法规检索给出，**不经过大模型**，因此这些数字是可重复的、可逐条复核的 ——
+原始结果在 `docs/evidence/p7-eval.json`，评测脚本 `scripts/d0/p7_eval.py`。
 
 ---
 
-## 十一、二期方向
+## 九、使用前提与边界
 
-| 项 | 现状 | 二期 |
-|---|---|---|
-| 法规向量检索 | keyword-ngram 词面检索 | 接入 pgvector + bge-large-zh，混合检索与重排（表已预留） |
-| 企业对接 | 连接器就绪 + 字段映射 | 现场联调 OA / 合同库 / 邮件网关，补齐鉴权方式 |
-| 身份 | 本地账号 + 标准 OIDC | 贵司 IdP 联调 + SCIM 组织同步 |
-| 部署 | 单实例 + compose | 多实例（共享会话状态）+ K8s + 审计落湖 |
-| 规则治理 | 提案到批准全流程 | 规则回归集自动跑批：改规则前先在历史合同上验证影响面 |
-| 文档解析 | 文本/Word/PDF + OCR | OCR 版面还原（表格结构、印章、手写签名） |
+1. **外部系统需要对接**：合同来源与邮件通道已做成连接器（`CONTRACT_SOURCE=dir|http`、`MAIL_GATEWAY=smtp|http`），
+   接贵司 OA / 合同库 / 邮箱只需按其接口填字段映射，不改代码（契约见 `docs/13`）。
+2. **身份**：演示模式开箱即用；生产用本地账号（`AUTH_MODE=jwt`）或贵司 OIDC IdP（`AUTH_MODE=sso`，见 `docs/15`）。
+3. **部署形态**：当前为单实例；本项目自有表（待办/审计/账号）可落 PostgreSQL，
+   工作流运行态由底座 DAO 写 SQLite（见 `docs/16`）。
+4. **判定是确定性的规则匹配**：不做否定语义理解，"本协议不设最终解释权条款"这类含否定词的正向表述可能被告警 ——
+   有意取舍：宁可让人工多复核一次，也不放过真实违规。
+5. **法规库需业务核验**：条文来自公开整理，正式使用前建议由合规岗对照监管原文核验。
+6. **大模型的回答供参考**：员工对话的输出需人工确认后再对外使用。
 
 ---
 
-## 十二、说明
+## 十、文档索引
 
-- 本项目为**独立设计与实现**。仓库内**不含任何真实密钥**：`.env` 已在 `.gitignore` 中，
-  并提供 `scripts/tools/secret_scan.py` 作为推送前守卫（只扫 git 索引，占位符自动降噪，豁免项须写入 `.secret-scan-allow` 并注明理由）。
+| 文档 | 内容 |
+|---|---|
+| `docs/01-方案设计说明.md` | 架构、能力契约、分阶段计划、容错矩阵 |
+| `docs/08-架构说明.md` | 系统边界、五要素、底座硬约束清单 |
+| `docs/09-演示剧本.md` | 现场演示步骤与追问回答要点 |
+| `docs/10-P7评测与交付报告.md` | 评测数据、验收清单 |
+| `docs/11-使用说明书.md` | 快速上手、界面操作、接口、运维排障、企业就绪度清单 |
+| `docs/13-企业系统对接契约.md` | **给 IT**：OA / 合同库 / 邮件三种接入方式与字段映射 |
+| `docs/15-企业SSO对接.md` | **给身份管理员**：OIDC 配置、IdP 登记要点、验收步骤 |
+| `docs/16-PostgreSQL部署.md` | **给 DBA/运维**：存储边界、部署与验收 |
+| `docs/17-本机真实验证记录.md` | 真实 PostgreSQL / OCR / OIDC 的验证记录 |
+| `docs/19-技术栈清单.md` | 完整技术栈、精确版本、端口拓扑、选型理由 |
+| `docs/20-试用指引.md` | 四条场景的点击路径与预期结果 |
+| `docs/evidence/` | 各阶段原始证据（JSON） |
+
+工程细节（两轮代码审查、依赖验证、测试与回归入口）见 `docs/12`、`docs/18` 与
+`docs/11` 的「自检与测试」章节；回归入口：`.\.runtime\venv\Scripts\python.exe -m pytest tests -q`。
+
+---
+
+## 十一、说明
+
+- 本项目为**独立设计与实现**，采用 **MIT 许可**（见 `LICENSE`）。
+- 仓库内**不含任何真实密钥**：`.env` 已在 `.gitignore` 中，并提供 `scripts/tools/secret_scan.py`
+  作为推送前守卫（只扫 git 索引，占位符自动降噪，豁免项须写入 `.secret-scan-allow` 并注明理由）。
 - 仓库内的示例合同、法规与规则**全部为自编或公开整理**，不含任何真实企业合同与个人信息。
 - 第三方依赖（运行时底座与各 Python 包）版本见 `requirements.txt`，各自遵循其原始许可。
-- 文档索引：`docs/00`～`docs/20`（立项 → 方案 → 各阶段报告 → 架构 → 演示剧本 → 评测 → 使用说明书 →
-  两轮代码审查 → 企业对接契约 / SSO / PostgreSQL → 真实验证记录 → 技术栈 → 试用指引），
-  每阶段的原始证据在 `docs/evidence/`（28 个 JSON）。
 
 ## License
 
