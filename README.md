@@ -231,4 +231,4 @@ pwsh -File scripts/check-framework-integrity.ps1 -Verify
 | Python 第三方包 | 各自许可 | 见 `requirements.txt`（FastAPI / LangChain / LangGraph / pdfplumber / reportlab / PyJWT 等） |
 | PostgreSQL / pgvector / Docker 基础镜像 | PostgreSQL License / Apache-2.0 等 | 仅交付形态使用，见 `docker-compose.yml` |
 
-本项目自身代码的许可以仓库根目录的 `LICENSE` 为准（如无，则默认保留所有权利）。
+本项目自身代码采用 **MIT 许可**（见 `LICENSE`）。
