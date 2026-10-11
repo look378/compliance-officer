@@ -16,10 +16,17 @@ services:
       DATABASE_URL: postgresql://compliance:compliance@postgres:5432/compliance
       PYTHONIOENCODING: utf-8
       PYTHONPATH: /app
+      # 【交付修正】能力服务要 `from dao.db import get_db_path`（待办/审计的库路径），
+      # 因此**容器内必须能 import 到底座**；见下面 volumes 里的只读挂载。
+      LEMONCLAW_HOME: /lemonclaw
       TZ: Asia/Shanghai
     volumes:
       - ./:/app
       - compliance-runtime:/app/.runtime
+      # 底座以**只读**方式挂进容器：既让它可被 import/读取配置，又用 :ro 从系统层面
+      # 保证"零改动底座"（容器写不进去）。默认取同级的 lemonclaw-main，可用
+      # LEMONCLAW_HOME 环境变量覆盖宿主机路径。
+      - ${LEMONCLAW_HOME:-../lemonclaw-main}:/lemonclaw:ro
     ports:
       - "127.0.0.1:8770:8770"
     depends_on:
@@ -86,9 +93,14 @@ services:
       # 外部系统：容器内用服务名；对接真实 OA/邮件时改成贵司地址（docs/13）
       CONTRACT_SOURCE: mock
       MAIL_GATEWAY: mock
+      # 【交付修正】网关要编译工作流（框架 WorkflowManager），容器内必须能 import 到底座；
+      # 见下面 volumes 的只读挂载 + LEMONCLAW_HOME。
+      LEMONCLAW_HOME: /lemonclaw
     volumes:
       - ./:/app
       - compliance-runtime:/app/.runtime
+      # 底座只读挂载（同 capability：可 import、可读配置，但容器写不进去）
+      - ${LEMONCLAW_HOME:-../lemonclaw-main}:/lemonclaw:ro
     ports:
       - "127.0.0.1:8790:8790"
     # 【第二次审查修正·P2】依赖声明原来只有 `service_started` 语义的短列表：
