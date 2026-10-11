@@ -27,8 +27,8 @@
 3. **规则自己长出来**。人工驳回的理由不会直接写成规则，而是生成**规则提案** → 三层去重/冲突裁决 → 主管批准 → 版本化生效，
    下次同类条款自动命中。规则库是可治理、可回溯的，不是黑盒。
 
-> **本仓库不包含第三方运行时框架的源码。** 底座 [LemonClaw](https://github.com/nl8590687/lemonclaw)（Apache-2.0）以
-> **外部依赖**方式引用，需自行 clone（见第四节）；本仓库对它的源码**零改动**，并用 110 个文件的 SHA256 基线证明这一点。
+小合的判定口径、审批纪律、规则治理与全部业务能力都在本项目内实现；运行时底座（Agent / 工作流 / 技能 / 渠道）
+是一个开源依赖，与 FastAPI、LangGraph 一样按依赖安装（见第四节）。
 
 ---
 
@@ -124,7 +124,7 @@
    ↓            解析 / 表格 / 检索 / 标注 / 报告 / 规则提案 / 待办审计 / 指标
 编排层        工作流（显式状态机：节点 · 条件路由 · 断点续接）
    ↓
-底座          运行时框架 LemonClaw（Agent · 技能 · 渠道 · 记忆 · Cron）—— 源码零改动
+底座          运行时框架 LemonClaw（Agent · 技能 · 渠道 · 记忆 · Cron）
    ↓
 数据层        SQLite（默认，开箱即用） ／ PostgreSQL 16 + pgvector（交付形态）
 ```
@@ -148,20 +148,25 @@ entry_probe ──→ specialist_review ──→ etl_gate ──→ supervisor_
 | 决策校验 | 决策必须与**当前等待节点**匹配，否则 409（这条是防伪造签核的关键） |
 | 恢复 | 一律走同步路径（框架线程池恢复路径在跨进程场景下记录不可靠，已在门禁中实测排除） |
 
-### 3.3 零改动底座（可验证的边界）
+### 3.3 岗位能力如何挂载（MCP 一等公民）
 
-岗位能力完全落在本项目进程内，通过**框架一等公民的 MCP 通道**挂载（工具注册为 `mcp__compliance__*`），
-因此**不需要改任何框架源码**：
+岗位能力没有写进流程代码里，而是做成一个**独立的 MCP 服务**（`mcp_server/`，15 个工具），
+由框架原生识别为 `mcp__compliance__*` 工具 —— 主 Agent 与工作流的 tool 节点都能直接调用。
+
+这样做的好处是工程性的：
+
+| 好处 | 说明 |
+|---|---|
+| 能力可独立演进 | 加一个工具只改本服务，不动流程定义；工具可单独单测（协议层与业务层分开） |
+| Agent 与流程共用同一套能力 | 对话里能查规则/检索法条/解释判定，用的就是流程里那几个工具，不会两套逻辑漂移 |
+| 边界干净 | 业务逻辑、规则、数据全在本项目进程内；底座只负责编排、渠道与会话 |
 
 ```
 <workspace>/
-├── compliance_officer/        ← 本仓库（全部自有代码）
-│   ├── .lemonclaw/            ← 部署时写入框架约定的挂载点（mcp.json / skills / .env）
-│   └── ...
-└── lemonclaw-main/            ← 第三方框架（clone 得到，本仓库不含其源码）
+├── compliance_officer/        ← 本项目（业务能力 + 接口 + 工作台 + 规则与数据）
+│   └── .lemonclaw/            ← 部署时写入的挂载点（mcp.json / skills / .env）
+└── lemonclaw-main/            ← 运行时底座（开源依赖，按第四节安装）
 ```
-
-`scripts/check-framework-integrity.ps1 -Verify` 用 **110 个文件的 SHA256 基线**证明"未改动"，可随时复验。
 
 ### 3.4 目录结构
 
@@ -206,10 +211,10 @@ compliance_officer/
 ### 4.1 本机 Python（Windows，已实测；无需 Docker 与管理员权限）
 
 ```powershell
-# ① 底座与本项目并排放在同一工作目录
+# ① 取代码 + 运行时底座（底座是开源依赖，放在同一工作目录即可）
 git clone https://github.com/look378/compliance-officer.git
 git clone https://github.com/nl8590687/lemonclaw.git ..\lemonclaw-main
-#    也可放别处： $env:LEMONCLAW_HOME = 'D:\path\to\lemonclaw-main'
+#    底座放别处也行： $env:LEMONCLAW_HOME = 'D:\path\to\lemonclaw-main'
 
 cd compliance-officer
 
@@ -232,7 +237,7 @@ pwsh -File scripts\stop-demo.ps1
 
 ```bash
 git clone https://github.com/look378/compliance-officer.git
-git clone https://github.com/nl8590687/lemonclaw.git      # 底座放在同级目录
+git clone https://github.com/nl8590687/lemonclaw.git      # 运行时底座，放在同级目录
 cd compliance-officer
 
 cp .env.enterprise.example .env      # 至少填 JWT_SECRET；LLM 密钥见第六节
@@ -252,7 +257,7 @@ docker compose up -d --build
 >
 > compose 会把底座以**只读**方式挂进容器（`${LEMONCLAW_HOME:-../lemonclaw-main}:/lemonclaw:ro`，
 > 容器内 `LEMONCLAW_HOME=/lemonclaw`）：能力服务要 `from dao.db import get_db_path`、网关要编译工作流，
-> 两者都必须能 import 到底座；`:ro` 顺带从系统层面保证"容器写不进底座"。
+> 两者都必须能 import 到底座；只读挂载也让容器不会就地改动依赖。
 
 ### 4.3 打开工作台
 
@@ -273,7 +278,7 @@ docker compose up -d --build
 | 接口层 | FastAPI + Uvicorn + Starlette | 0.143 / 0.54 / 1.7 | REST + SSE 流式 |
 | 岗位能力通道 | **MCP Streamable HTTP** | 2025-03-26 | JSON-RPC 2.0；框架一等公民工具 |
 | 编排 | **LangGraph**（经底座） | 1.2 | 显式状态机、条件路由、断点续接 |
-| 底座 | **LemonClaw**（外部依赖） | Apache-2.0 | Agent / 技能 / 渠道 / 记忆 / Cron |
+| 运行时底座 | LemonClaw | Apache-2.0 | Agent 运行时 · 工作流 · 技能 · 渠道 · 记忆 · Cron |
 | 大模型 | DeepSeek `deepseek-chat` | — | OpenAI 兼容协议，128K 上下文，temperature 0.2 |
 | 数据库 | SQLite（默认） / **PostgreSQL** | 内置 / 16.4 | 一份列定义渲染两套 DDL；`DB_MODE` 切换 |
 | PG 驱动 | **pg8000** | 1.31.5 | 纯 Python，免编译（兼容 psycopg3/2） |
@@ -293,7 +298,7 @@ docker compose up -d --build
 | 取舍 | 结论与理由 |
 |---|---|
 | **风险判定不用大模型** | 判定走规则表 + 确定性检索，模型只做对话与解释。合规结论必须可复现、可评测、可引用 —— 这也是评测能拿到 1.00 召回 / 0 误报的原因 |
-| **能力走 MCP，不改底座** | 框架对 MCP 是一等公民；岗位能力留在本项目进程内，既拿到"跟随上游更新"的能力，又让"零改动"成为可验证事实（110 文件哈希） |
+| **能力走 MCP，不写进流程代码** | 框架对 MCP 是一等公民；岗位能力留在本项目进程内，单独演进、单独单测，Agent 与流程共用同一套工具，不会出现两套逻辑漂移 |
 | **零外部服务优先** | 默认 SQLite 单文件 + 自研检索 + 本地 OCR，`trial-demo.ps1` 一条命令就能给人看；生产再切 PostgreSQL / 企业 OCR 中台（都只改配置） |
 | **PBKDF2 而非 bcrypt/argon2** | 标准库实现，受限与内网环境免编译；20 万次迭代满足试点强度，少一层依赖 |
 | **原生单文件前端** | 无供应链风险、文本可直接 diff 审查、内网离线可部署；这个项目的可审查性比 UI 花哨更重要 |
@@ -371,7 +376,7 @@ docker compose up -d --build
 # 单元测试（6 个模块 166 条：能力服务 / 连接器 / OCR / SSO / 数据库后端 / 审查工具自身）
 .\.runtime\venv\Scripts\python.exe -m pytest tests -q
 
-# 全量门禁（G1–G7 + 决策节点绑定 + 框架零改动），共 10 项
+# 全量门禁（G1–G7 + 决策节点绑定 + 底座完整性），共 10 项
 pwsh -File scripts\d0\run-all-gates.ps1
 
 # 分阶段端到端自检
@@ -392,7 +397,7 @@ pwsh -File scripts\d0\run-all-gates.ps1
 # 代码质量
 .\.runtime\venv\Scripts\python.exe scripts\tools\static_audit.py # 静态审查（AST + symtable）
 .\.runtime\venv\Scripts\python.exe scripts\tools\secret_scan.py  # 推送前密钥扫描
-pwsh -File scripts\check-framework-integrity.ps1 -Verify         # 底座零改动（110 文件 SHA256）
+pwsh -File scripts\check-framework-integrity.ps1 -Verify         # 底座完整性（哈希基线，防止依赖被就地改动）
 ```
 
 测试编队覆盖：协议正确性（MCP 握手/工具调用/错误）、解析与 OCR 档位、检索命中与空检索声明、
@@ -454,8 +459,7 @@ pwsh -File scripts\check-framework-integrity.ps1 -Verify         # 底座零改�
 - 本项目为**独立设计与实现**。仓库内**不含任何真实密钥**：`.env` 已在 `.gitignore` 中，
   并提供 `scripts/tools/secret_scan.py` 作为推送前守卫（只扫 git 索引，占位符自动降噪，豁免项须写入 `.secret-scan-allow` 并注明理由）。
 - 仓库内的示例合同、法规与规则**全部为自编或公开整理**，不含任何真实企业合同与个人信息。
-- 底座 [LemonClaw](https://github.com/nl8590687/lemonclaw) 为 **Apache License 2.0**，
-  不随本仓库分发，其著作权与许可归原作者；本项目对其源码**零改动**并以 SHA256 基线留证。
+- 第三方依赖（运行时底座与各 Python 包）版本见 `requirements.txt`，各自遵循其原始许可。
 - 文档索引：`docs/00`～`docs/20`（立项 → 方案 → 各阶段报告 → 架构 → 演示剧本 → 评测 → 使用说明书 →
   两轮代码审查 → 企业对接契约 / SSO / PostgreSQL → 真实验证记录 → 技术栈 → 试用指引），
   每阶段的原始证据在 `docs/evidence/`（28 个 JSON）。
