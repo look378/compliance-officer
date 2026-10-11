@@ -1,5 +1,5 @@
 #!/usr/bin/env pwsh
-# 框架源码零改动证据脚本
+# 底座完整性证据脚本（哈希基线，用于检测依赖被就地改动）
 #
 # 做法：对框架**全部源码**（排除 .git 与运行时数据目录 .lemonclaw）做 SHA256 清单，
 #       生成基线快照；后续任何时刻重跑并比对，即可证明"未改动框架源码"。
@@ -80,7 +80,7 @@ $out = Join-Path $EvidenceDir 'framework-integrity-verify.json'
 $result | ConvertTo-Json -Depth 4 | Set-Content -Path $out -Encoding utf8
 
 if ($result.unchanged) {
-    "[integrity] 通过：框架源码与基线完全一致（$($entries.Count) 个文件）"
+    "[integrity] 通过：底座源码与基线完全一致（$($entries.Count) 个文件）"
     "[integrity] 证据：$out"
     exit 0
 } else {

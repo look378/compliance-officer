@@ -44,7 +44,7 @@ Run-Gate 'G7 标注质量基线' { & $Py (Join-Path $ProjectRoot 'scripts\d0\g7_
 # 【审查修正后新增】P4+ 决策-节点绑定回归：验证"跨节点审批被拒"与 update_state 语义
 # （对应审查发现的两项 P0：伪造主管签核、单人一步办结跳过复核）
 Run-Gate 'P4b 决策与节点绑定' { & $Py (Join-Path $ProjectRoot 'scripts\d0\p4b_decision_binding.py') }
-Run-Gate 'INTEGRITY 框架源码零改动' {
+Run-Gate 'INTEGRITY 底座完整性' {
     & pwsh -NoProfile -File (Join-Path $ProjectRoot 'scripts\check-framework-integrity.ps1') -Verify
 }
 

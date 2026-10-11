@@ -1,17 +1,20 @@
 {
   "gate": "G4",
-  "started_at": "2026-10-11 14:55:01",
-  "server_started_by_check": true,
+  "started_at": "2026-10-11 16:37:06",
+  "server_started_by_check": false,
   "health": {
     "status": "running",
     "server": "compliance-officer",
     "version": "0.2.0",
-    "sessions": 0,
+    "sessions": 6,
     "stats": {
-      "initialize": 0,
-      "tools_list": 0,
-      "tools_call": 0,
-      "call_names": {},
+      "initialize": 6,
+      "tools_list": 6,
+      "tools_call": 2,
+      "call_names": {
+        "search_regulations": 1,
+        "annotate_clause": 1
+      },
       "errors": 0
     }
   },
@@ -234,5 +237,5 @@
     "agent_exposes_mcp": true
   },
   "verdict": "PASS",
-  "finished_at": "2026-10-11 14:55:17"
+  "finished_at": "2026-10-11 16:37:16"
 }

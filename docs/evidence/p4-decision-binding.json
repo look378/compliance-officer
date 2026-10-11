@@ -1,8 +1,8 @@
 {
   "check": "P4+-decision-binding",
-  "started_at": "2026-10-11 14:56:02",
-  "capability_service": "started",
-  "run_id": "wf_run_240f066a31e5",
+  "started_at": "2026-10-11 16:37:54",
+  "capability_service": "already-running",
+  "run_id": "wf_run_2eb47f7f73bd",
   "submit": {
     "ok": true,
     "status": "paused",
@@ -34,7 +34,7 @@
     "paused": {
       "role": "supervisor",
       "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
-      "todo_id": "todo_05ed59a9b2",
+      "todo_id": "todo_395121c65d",
       "todo_created": true
     }
   },
@@ -118,7 +118,7 @@
         "paused": {
           "role": "supervisor",
           "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
-          "todo_id": "todo_05ed59a9b2",
+          "todo_id": "todo_395121c65d",
           "todo_created": true
         }
       }
@@ -129,7 +129,7 @@
         "paused": {
           "role": "supervisor",
           "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
-          "todo_id": "todo_05ed59a9b2",
+          "todo_id": "todo_395121c65d",
           "todo_created": true
         }
       }
@@ -191,5 +191,5 @@
   "passed": 12,
   "total": 12,
   "verdict": "PASS",
-  "finished_at": "2026-10-11 14:56:16"
+  "finished_at": "2026-10-11 16:38:05"
 }

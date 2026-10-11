@@ -23,9 +23,8 @@ services:
     volumes:
       - ./:/app
       - compliance-runtime:/app/.runtime
-      # 底座以**只读**方式挂进容器：既让它可被 import/读取配置，又用 :ro 从系统层面
-      # 保证"零改动底座"（容器写不进去）。默认取同级的 lemonclaw-main，可用
-      # LEMONCLAW_HOME 环境变量覆盖宿主机路径。
+      # 底座以**只读**方式挂进容器：既让它可被 import/读取配置，又让容器不会就地改动依赖。
+      # 默认取同级的 lemonclaw-main，可用 LEMONCLAW_HOME 环境变量覆盖宿主机路径。
       - ${LEMONCLAW_HOME:-../lemonclaw-main}:/lemonclaw:ro
     ports:
       - "127.0.0.1:8770:8770"

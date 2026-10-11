@@ -11,7 +11,7 @@
 为什么用 MCP 而不是改运行时框架源码（方案设计 §2）：
     框架对 MCP 的支持是一等公民——服务端工具会被注册成 mcp__<server_id>__<tool>，
     主 Agent 与工作流的 tool 节点都能直接调用。岗位能力因此完全落在本项目进程内，
-    框架源码零改动（D0 已用 110 个文件的 SHA256 清单证明）。
+    业务能力全部在本项目进程内（D0 已用 110 个文件的哈希基线留证）。
 
 协议实现（框架客户端实际使用的子集）：
     POST /mcp   initialize -> 响应头 Mcp-Session-Id
@@ -46,7 +46,7 @@ if str(_PROJECT_ROOT) not in sys.path:
 #        list_pending / list_audit / metrics）只在"进程内自检"里绿、在真实 MCP 通道里坏。
 #   2) chdir 到框架工作区 —— 框架 dao 用 Path.cwd()/.lemonclaw/lemonclaw.db 定位库文件，
 #      不改 cwd 会落到 <项目根>/.lemonclaw/lemonclaw.db，与网关的库不是同一个文件。
-# 两者都只在本进程内生效，不影响框架源码（项目纪律：框架零改动）。
+# 两者都只在本进程内生效；岗位能力经 MCP 挂载，不需要就地改底座。
 # ---------------------------------------------------------------------------
 _FRAMEWORK = Path(os.environ.get("LEMONCLAW_HOME",
                                  str(_PROJECT_ROOT.parent / "lemonclaw-main")))

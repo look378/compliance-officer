@@ -8,7 +8,7 @@ G4 门禁：岗位能力通道（自建 MCP 服务 -> 框架原生 mcp__* 工具
     2) 框架 MCP 客户端完成 initialize / notifications/initialized / tools/list 握手
     3) 远程工具被注册为 mcp__compliance__<tool>，并带完整参数 schema
     4) 工具真实可调用且返回结构化 JSON（不是自然语言）
-    5) 主 Agent 的工具集里确实出现这些工具（零改动接入的最终证明）
+    5) 主 Agent 的工具集里确实出现这些工具（能力经标准通道接入的最终证明）
 
 模式：
     --mode serve   仅启动 MCP 服务（供后台运行）
@@ -173,7 +173,7 @@ def run_check() -> int:
     ev["calls"]["annotate_clause"] = annotate_cases
     calls.pop("annotate_clause", None)
 
-    # 主 Agent 工具集里是否真的出现（零改动接入的最终证明）
+    # 主 Agent 工具集里是否真的出现（能力经标准通道接入的最终证明）
     from agent.tools import create_tool_list
     agent_tools = sorted(t.name for t in create_tool_list())
     ev["agent_tool_total"] = len(agent_tools)

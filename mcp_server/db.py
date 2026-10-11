@@ -9,7 +9,7 @@
     登录退避）做成双后端，`DB_MODE=pg` 时真正落到 PostgreSQL。
 
 **边界（必须如实说明）**：框架自有的 `workflow_runs` / `checkpoints` / `writes`
-由框架 `dao/db.py` 直接以 sqlite3 读写，本项目**不改框架源码**，因此那部分仍在本机
+由底座 `dao/db.py` 直接以 sqlite3 读写，因此那部分仍在本机
 SQLite 文件里。也就是说 `DB_MODE=pg` 迁移的是"业务数据"（人审闭环、审计链、账号体系），
 工作流运行态仍随进程所属机器 —— 多实例部署需要框架侧支持，已记入就绪度清单。
 

@@ -18,7 +18,7 @@
 | 令牌撤销 `compliance_token_revocation` | **PostgreSQL** | 登出/改密水位 |
 | 登录退避 `compliance_login_fail` | **PostgreSQL** | 按账号/IP 维度 |
 | 规则表 `rules/risk_rules.yaml` | 仍为 **YAML 文件**（唯一真相源） | 设计如此：规则要能被人审阅与评审 |
-| 工作流运行态 `workflow_runs` / `checkpoints` / `writes` | **仍为本机 SQLite** | 由框架 `dao/db.py` 直接读写；本项目**不改框架源码** |
+| 工作流运行态 `workflow_runs` / `checkpoints` / `writes` | **仍为本机 SQLite** | 由底座 `dao/db.py` 直接读写 |
 
 > 因此：**单实例部署**用 PG 完全没问题（审计与待办持久化、可备份、可多进程读数）；
 > **多实例部署**还需要框架侧支持共享运行态，属二期，已记入就绪度清单。
@@ -118,7 +118,7 @@ pwsh -File scripts/d0/run-all-gates.ps1
 
 | 项 | 现状 | 后续 |
 |---|---|---|
-| 工作流运行态仍在 SQLite | 由框架 DAO 决定，本项目不改框架源码 | 二期：由框架侧提供可插拔存储，或在服务层加"运行态镜像表" |
+| 工作流运行态仍在 SQLite | 由底座 DAO 决定 | 二期：由框架侧提供可插拔存储，或在服务层加"运行态镜像表" |
 | 缺少迁移工具（Alembic） | 表结构由 `db.ensure_tables()` 幂等创建；列变更需人工 `ALTER` | 建议引入 Alembic 管理版本化迁移 |
 | 连接池 | 按线程缓存单连接（依赖最小） | 高并发场景建议接入 `psycopg_pool` |
 | pgvector | compose 已提供镜像，本期未使用 | 二期用于法规向量检索与重排 |

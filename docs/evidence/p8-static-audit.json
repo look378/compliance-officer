@@ -1,6 +1,6 @@
 {
-  "files_scanned": 57,
-  "total_lines": 18366,
+  "files_scanned": 58,
+  "total_lines": 18552,
   "per_file": [
     {
       "file": "gateway\\app.py",
@@ -1416,6 +1416,22 @@
       "tool_names": []
     },
     {
+      "file": "scripts\\tools\\secret_scan.py",
+      "lines": 186,
+      "issues": [],
+      "funcs": [
+        "mask",
+        "tracked_files",
+        "env_secret_values",
+        "_raw_secret_values",
+        "allowed_patterns",
+        "main",
+        "record"
+      ],
+      "status": "ok",
+      "tool_names": []
+    },
+    {
       "file": "scripts\\tools\\static_audit.py",
       "lines": 522,
       "issues": [],
@@ -2322,6 +2338,11 @@
       "parents_index": 2
     },
     {
+      "file": "scripts\\tools\\secret_scan.py",
+      "line": 36,
+      "parents_index": 2
+    },
+    {
       "file": "scripts\\tools\\static_audit.py",
       "line": 33,
       "parents_index": 2
@@ -2573,6 +2594,7 @@
     "scripts\\d0\\sso_e2e.py": [],
     "scripts\\tools\\check_compose.py": [],
     "scripts\\tools\\cleanup_runs.py": [],
+    "scripts\\tools\\secret_scan.py": [],
     "scripts\\tools\\static_audit.py": [],
     "scripts\\tools\\status_overview.py": [],
     "service\\__init__.py": [],
@@ -2592,6 +2614,6 @@
     "tests\\test_sso.py": [],
     "tests\\test_static_audit.py": []
   },
-  "scanned_at": "2026-10-11 15:35:34",
+  "scanned_at": "2026-10-11 16:41:11",
   "issue_counts": {}
 }

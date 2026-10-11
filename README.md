@@ -308,7 +308,7 @@ docker compose up -d --build
 - **本机形态**：`.runtime/venv` + SQLite，无任何外部服务，适合试用与演示
 - **交付形态**：`docker compose`（capability / mock / gateway / postgres 四服务，均带健康检查）；
   `DB_MODE=pg` 时本项目自有表（待办/审计/账号/令牌撤销/登录退避）真正落 PostgreSQL
-- **边界**：框架自有的工作流运行态仍由框架 DAO 写 SQLite（"不改框架源码"的必然结果，见 `docs/16`）
+- **边界**：工作流运行态仍由底座 DAO 写 SQLite（这部分不在本次迁移范围，见 `docs/16`）
 - **外部系统**：合同来源 `mock|dir|http`、邮件 `mock|http|smtp|none`，对接真实系统只改 `.env` 与字段映射
 
 ---

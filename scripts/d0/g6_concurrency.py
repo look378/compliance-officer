@@ -12,7 +12,7 @@ G6 门禁：并发恢复互斥（两个入口同时 resume 同一 run）
     A 组：并发（多线程 + 进程级）直接调用 resume_run，观察是否出现多次执行
     B 组：加入原子抢占（UPDATE ... WHERE status='paused'），观察是否只有一次生效
 
-注意：B 组的原子抢占是**本项目在自身代码里**实现的（不改框架源码），
+注意：B 组的原子抢占是**本项目在自身代码里**实现的（不依赖底座能力），
       D0 只验证该机制在 SQLite 下可用；PG 版本在 P2 接入。
 
 产出：docs/evidence/d0-g6-concurrency.json

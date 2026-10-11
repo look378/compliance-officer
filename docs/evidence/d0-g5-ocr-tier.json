@@ -1,6 +1,6 @@
 {
   "gate": "G5",
-  "started_at": "2026-10-11 14:55:19",
+  "started_at": "2026-10-11 16:37:18",
   "env": {
     "platform": "Windows-11-10.0.26200-SP0",
     "python": "3.13.9",
@@ -154,5 +154,5 @@
     "native_pdf_skips_ocr": true
   },
   "verdict": "PASS",
-  "finished_at": "2026-10-11 14:55:21"
+  "finished_at": "2026-10-11 16:37:20"
 }

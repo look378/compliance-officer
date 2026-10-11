@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-11T14:56:18",
+  "run_at": "2026-10-11T16:38:07",
   "results": {
     "G1 主 Agent 对话（真实 LLM）": "PASS",
     "G2 工作流程图形态": "PASS",
@@ -10,7 +10,7 @@
     "G6 并发恢复互斥": "PASS",
     "G7 标注质量基线": "PASS",
     "P4b 决策与节点绑定": "PASS",
-    "INTEGRITY 框架源码零改动": "PASS"
+    "INTEGRITY 底座完整性": "PASS"
   },
   "failed": 0
 }

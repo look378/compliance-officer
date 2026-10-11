@@ -1,6 +1,6 @@
 {
   "gate": "G2",
-  "started_at": "2026-10-11 14:53:54",
+  "started_at": "2026-10-11 16:36:12",
   "spec": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\workflows\\d0_graph_shape.json",
   "mode": "synchronous-runner",
   "sub_cases": {
@@ -9,7 +9,7 @@
         "status": "paused",
         "kind": "need_human",
         "question": "【专员初审】请回复 confirm（确认标注）/ modify（要求重新标注）/ reject（驳回）。",
-        "run_id_in_payload": "g2_high_647561_1",
+        "run_id_in_payload": "g2_high_781691_1",
         "risk_at_pause": "high"
       },
       "pause2": {
@@ -41,8 +41,8 @@
     "F3_cycle_edge": {
       "risk_before": "high",
       "risk_after": "high",
-      "annotation_before": "当前时间: 2026-10-11 14:54:10\n公历: 2026年10月11日 星期日\n农历: 丙午年 九月 初二\n",
-      "annotation_after": "当前时间: 2026-10-11 14:54:11\n公历: 2026年10月11日 星期日\n农历: 丙午年 九月 初二\n",
+      "annotation_before": "当前时间: 2026-10-11 16:36:24\n公历: 2026年10月11日 星期日\n农历: 丙午年 九月 初二\n",
+      "annotation_after": "当前时间: 2026-10-11 16:36:25\n公历: 2026年10月11日 星期日\n农历: 丙午年 九月 初二\n",
       "status_after_modify": "paused",
       "status_second_pause": "paused",
       "final_status": "completed",
@@ -79,7 +79,7 @@
   },
   "define": {
     "workflow_id": "d0_graph_shape",
-    "version": 23,
+    "version": 24,
     "last_error": null
   },
   "verdicts": {
@@ -91,7 +91,7 @@
     "F6_llm_router_type": true
   },
   "verdict": "PASS",
-  "finished_at": "2026-10-11 14:54:15",
+  "finished_at": "2026-10-11 16:36:29",
   "paths": {
     "project_root": "D:\\Project_Experience2.0\\项目三\\compliance_officer",
     "runtime": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime",

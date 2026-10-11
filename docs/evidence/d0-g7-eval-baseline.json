@@ -1,6 +1,6 @@
 {
   "gate": "G7",
-  "started_at": "2026-10-11 14:56:02",
+  "started_at": "2026-10-11 16:37:54",
   "cases_file": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\data\\eval\\d0_eval_cases.json",
   "rule_table": {
     "active_rules": 8,
@@ -145,5 +145,5 @@
   },
   "verdict": "PASS",
   "note": "D0 基线只覆盖确定性规则通道；LLM 泛化通道与表格抽取在 P2/P7 另设评测，两类指标必须分开报告，不得混合成一个'准确率'。",
-  "finished_at": "2026-10-11 14:56:02"
+  "finished_at": "2026-10-11 16:37:54"
 }

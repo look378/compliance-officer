@@ -1,6 +1,6 @@
 # 部署岗位能力到本机运行时平台（框架侧只读挂载点：.lemonclaw/）
 #
-# 原则：不改外部运行时框架源码，只写框架约定的三个配置挂载点：
+# 原则：只写底座约定的三个配置挂载点，不为底座打补丁：
 #   .lemonclaw/skills/<name>-<version>/   岗位技能包
 #   .lemonclaw/mcp.json                  岗位能力服务地址
 #   .lemonclaw/.env                      LLM / 渠道 / 开关
@@ -32,7 +32,7 @@ if (-not (Test-Path (Join-Path $Framework 'config'))) {
 # 【实读结论】框架的配置查找只认两处：进程当前工作目录下的 .lemonclaw/，或框架安装根目录下的 .lemonclaw/
 #   （lemonclaw-main/config/config.py:23-46 find_config_file）
 # 因此挂载点必须是框架根目录下的 .lemonclaw/ —— 它属于框架的数据目录（已在 .gitignore 中），
-# 不是源码，写它不违反「源码零改动」边界。
+# 不是源码，写它不影响底座本身。
 $LemonDir  = Join-Path $Framework '.lemonclaw'
 $SkillsDst = Join-Path $LemonDir 'skills'
 # 进程工作目录另用 .runtime/workspace（由调用方设置），其下也会生成 .lemonclaw/lemonclaw.db

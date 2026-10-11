@@ -84,7 +84,7 @@ def _connect():
     """取连接。`DB_MODE=pg` 时落到 PostgreSQL（见 mcp_server/db.py）。
 
     边界说明：本项目自有表（账号/令牌/撤销/登录退避）随 `DB_MODE` 迁移；
-    框架自有的 workflow_runs/checkpoints 仍由框架 DAO 写 sqlite（不改框架源码）。
+    workflow_runs/checkpoints 仍由底座 DAO 写 sqlite（由底座决定，不在本项目迁移范围）。
     """
     from mcp_server import db as _db
     return _db.connect()

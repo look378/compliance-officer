@@ -1,6 +1,6 @@
 {
   "gate": "G4b",
-  "started_at": "2026-10-11 14:55:19",
+  "started_at": "2026-10-11 16:37:18",
   "skill_meta": {
     "name": "contract-parse",
     "dir": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\.lemonclaw\\skills\\contract-parse-1.0",
@@ -18,7 +18,7 @@
   "setup": {
     "ok": false,
     "msg": "pip install 失败: Command '['D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\venvs\\\\contract-parse\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '-r', 'D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\skills\\\\contract-parse-1.0\\\\requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']' returned non-zero exit status 1.",
-    "seconds": 0.11
+    "seconds": 0.05
   },
   "deps_status_after": "安装失败: Command '['D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\venvs\\\\contract-parse\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '-r', 'D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\skills\\\\contract-parse-1.0\\\\requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']' returned non-zero exit status 1.",
   "load_after_setup": "技能 contract-parse 依赖未就绪（安装失败: Command '['D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\venvs\\\\contract-parse\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '-r', 'D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\skills\\\\contract-parse-1.0\\\\requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']' returned non-zero exit status 1.），请先执行 /skills setup contract-parse",
@@ -49,5 +49,5 @@
     "sop_injected": true
   },
   "verdict": "PASS",
-  "finished_at": "2026-10-11 14:55:19"
+  "finished_at": "2026-10-11 16:37:18"
 }

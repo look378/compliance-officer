@@ -2,8 +2,8 @@
   "gate": "G3",
   "started_at": "2026-10-09 21:31:54",
   "phase_start": {
-    "pid": 9972,
-    "run_id": "wf_run_9bc8b1b10df2",
+    "pid": 57828,
+    "run_id": "wf_run_25e662ccffc9",
     "status": "paused",
     "loop_kind": "need_human",
     "interrupt_kind": "need_human",
@@ -11,14 +11,14 @@
     "bus_events": [
       {
         "type": "langgraph_loop",
-        "content": "{'run_id': 'wf_run_9bc8b1b10df2', 'workflow_id': 'd0_restart', 'loop_kind': 'need_human', 'payload': {'kind': 'need_human', 'run_id': 'wf_run_9bc8b1b10df2', 'question': '请确认是否继续（回复 continue 继续）。', 'handler': 'interactive'}, 'text': '[工作流 wf_run_9bc8b1b10df2 需人工] 请确认是否继续（回复 continue 继续）。\\n回复时请带上 wf_run_9bc8b1b10df2。'}"
+        "content": "{'run_id': 'wf_run_25e662ccffc9', 'workflow_id': 'd0_restart', 'loop_kind': 'need_human', 'payload': {'kind': 'need_human', 'run_id': 'wf_run_25e662ccffc9', 'question': '请确认是否继续（回复 continue 继续）。', 'handler': 'interactive'}, 'text': '[工作流 wf_run_25e662ccffc9 需人工] 请确认是否继续（回复 continue 继续）。\\n回复时请带上 wf_run_25e662ccffc9。'}"
       }
     ],
     "db_path": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\.lemonclaw\\lemonclaw.db"
   },
   "phase_resume": {
-    "pid": 54516,
-    "run_id_before": "wf_run_9bc8b1b10df2",
+    "pid": 45424,
+    "run_id_before": "wf_run_25e662ccffc9",
     "status_before": "paused",
     "workflow_id": "d0_restart",
     "claimed": true,
@@ -34,7 +34,7 @@
     "status_after": "completed",
     "output": {
       "clause_text": "示例条款",
-      "stage": "当前时间: 2026-10-11 14:54:31\n公历: 2026年10月11日 星期日\n农历: 丙午年 九月 初二\n节气: 无节气",
+      "stage": "当前时间: 2026-10-11 16:36:41\n公历: 2026年10月11日 星期日\n农历: 丙午年 九月 初二\n节气: 无节气",
       "decision": "continue",
       "note": "睡眠完成：计划等待 1 秒，实际等待 1.00 秒"
     },
@@ -46,11 +46,11 @@
     "bus_events": [
       {
         "type": "langgraph_loop",
-        "content": "{'run_id': 'wf_run_9bc8b1b10df2', 'workflow_id': 'd0_restart', 'loop_kind': 'completed', 'payload': {'result': {'clause_text': '示例条款', 'stage': '当前时间: 2026-10-11 14:54:31\\n公历: 2026年10月11日 星期日\\n农历: 丙午年 九月 初二\\n节气: 无节气', 'decision': 'continue', 'note': '睡眠完成：计划等待 1 秒，实际等待 1.00 秒'}}, 'text': \"[工作流 wf_run_9bc8b1b10df2 已完成] 结果: {'clause_text': '示例条款', 'stage': '当前时间: 2026-10-11 14:54:31\\\\n公历: 2026年10月11"
+        "content": "{'run_id': 'wf_run_25e662ccffc9', 'workflow_id': 'd0_restart', 'loop_kind': 'completed', 'payload': {'result': {'clause_text': '示例条款', 'stage': '当前时间: 2026-10-11 16:36:41\\n公历: 2026年10月11日 星期日\\n农历: 丙午年 九月 初二\\n节气: 无节气', 'decision': 'continue', 'note': '睡眠完成：计划等待 1 秒，实际等待 1.00 秒'}}, 'text': \"[工作流 wf_run_25e662ccffc9 已完成] 结果: {'clause_text': '示例条款', 'stage': '当前时间: 2026-10-11 16:36:41\\\\n公历: 2026年10月11"
       },
       {
         "type": "langgraph_loop",
-        "content": "{'run_id': 'wf_run_9bc8b1b10df2', 'workflow_id': 'd0_restart', 'loop_kind': 'completed', 'payload': {'result': {'clause_text': '示例条款', 'stage': '当前时间: 2026-10-11 14:54:31\\n公历: 2026年10月11日 星期日\\n农历: 丙午年 九月 初二\\n节气: 无节气', 'decision': 'continue', 'note': '睡眠完成：计划等待 1 秒，实际等待 1.00 秒'}}, 'text': \"[工作流 wf_run_9bc8b1b10df2 已完成] 结果: {'clause_text': '示例条款', 'stage': '当前时间: 2026-10-11 14:54:31\\\\n公历: 2026年10月11"
+        "content": "{'run_id': 'wf_run_25e662ccffc9', 'workflow_id': 'd0_restart', 'loop_kind': 'completed', 'payload': {'result': {'clause_text': '示例条款', 'stage': '当前时间: 2026-10-11 16:36:41\\n公历: 2026年10月11日 星期日\\n农历: 丙午年 九月 初二\\n节气: 无节气', 'decision': 'continue', 'note': '睡眠完成：计划等待 1 秒，实际等待 1.00 秒'}}, 'text': \"[工作流 wf_run_25e662ccffc9 已完成] 结果: {'clause_text': '示例条款', 'stage': '当前时间: 2026-10-11 16:36:41\\\\n公历: 2026年10月11"
       }
     ],
     "claim_after_release": {
@@ -68,12 +68,12 @@
     }
   },
   "phase_verify": {
-    "pid": 59460,
-    "run_id": "wf_run_9bc8b1b10df2",
+    "pid": 51184,
+    "run_id": "wf_run_25e662ccffc9",
     "status": "completed",
     "output": {
       "clause_text": "示例条款",
-      "stage": "当前时间: 2026-10-11 14:54:31\n公历: 2026年10月11日 星期日\n农历: 丙午年 九月 初二\n节气: 无节气",
+      "stage": "当前时间: 2026-10-11 16:36:41\n公历: 2026年10月11日 星期日\n农历: 丙午年 九月 初二\n节气: 无节气",
       "decision": "continue",
       "note": "睡眠完成：计划等待 1 秒，实际等待 1.00 秒"
     },
@@ -85,8 +85,8 @@
     ],
     "checkpoint_next": [],
     "checkpoint_config_present": true,
-    "completed_at": "2026-10-11 14:54:45.593544"
+    "completed_at": "2026-10-11 16:36:53.396804"
   },
   "verdict": "PASS",
-  "finished_at": "2026-10-11 14:54:45"
+  "finished_at": "2026-10-11 16:36:53"
 }

@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 D0 公共引导：把本机运行时平台（.runtime/workspace + .runtime/.lemonclaw）准备好，
-并让外部运行时框架以「只读源码 + PYTHONPATH」方式被引用。
+并让运行时底座以「只读源码 + PYTHONPATH」方式被引用。
 
-关键点（对应方案设计说明 §2 零改动边界）：
+关键点（对应方案设计说明 §2 依赖边界）：
     - 只向 .lemonclaw/ 写配置与技能包，绝不写入框架源码目录
     - 进程工作目录切到 .runtime/workspace，使框架的相对路径数据库与工作区一致
     - 框架源码目录只加入 sys.path

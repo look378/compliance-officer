@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-运行态数据访问辅助（本项目自有代码，不改框架源码）
+运行态数据访问辅助（本项目自有代码）
 
 D0 实测结论（见 docs/evidence/d0-g6-concurrency.json）：
     框架的 WorkflowManager.resume_run 是「读状态 -> 判断 paused -> 提交后台任务」，
