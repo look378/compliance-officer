@@ -156,9 +156,13 @@ pwsh -File scripts/d0/run-all-gates.ps1
 # 证明"未改动运行时框架源码"（SHA256 清单比对）
 pwsh -File scripts/check-framework-integrity.ps1 -Verify
 
+# 推送前密钥扫描（只扫"会被推上去的内容"：git 索引；0 命中才适合 push）
+.\.runtime\venv\Scripts\python.exe scripts\tools\secret_scan.py
+
 # 运行态观察与清理
 .\.runtime\venv\Scripts\python.exe scripts\tools\status_overview.py
 .\.runtime\venv\Scripts\python.exe scripts\tools\cleanup_runs.py --status paused --dry-run
+.\.runtime\venv\Scripts\python.exe scripts\tools\cleanup_runs.py --trial-reset   # 试用/演示前重置
 
 # P3/P4 端到端
 .\.runtime\venv\Scripts\python.exe scripts\d0\p3_review_flow.py
