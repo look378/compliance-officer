@@ -1,0 +1,2690 @@
+{
+  "flow": "P6-proactive",
+  "started_at": "2026-10-11 14:57:13",
+  "cases": {
+    "A_scan": {
+      "started_at": "2026-10-11 14:57:27",
+      "inbox_ok": true,
+      "degraded": false,
+      "scanned": 20,
+      "new": 19,
+      "skipped_duplicate": 0,
+      "failed": [
+        {
+          "contract_id": "CT-20261009-80ac81-DUP",
+          "reason": "OSError: HTTP 410：下载失败（CT-20261009-80ac81-DUP）"
+        }
+      ],
+      "submitted": [
+        {
+          "contract_id": "CT-20261009-80ac81",
+          "run_id": "wf_run_155580e7ec45",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "80ac810278dc3210",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261009-e1db1c",
+          "run_id": "wf_run_1904eee69efd",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "e1db1cf6897b82d6",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-0091ff",
+          "run_id": "wf_run_6e9ff1dc6c6e",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "0091ffeb09e25cef",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-0811e7",
+          "run_id": "wf_run_bf965a792b57",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "0811e7396267f5bf",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-0933e9",
+          "run_id": "wf_run_d25a28b59a9c",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "0933e977fd40645d",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-112cfa",
+          "run_id": "wf_run_b05fe71d833d",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "112cfac249f119de",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-161bf6",
+          "run_id": "wf_run_8d1080e37091",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "161bf61d24ffce6b",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-17ddc7",
+          "run_id": "wf_run_a3c2055fd224",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "17ddc73da8b8c11d",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-1a83c6",
+          "run_id": "wf_run_a25745e5c277",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "1a83c60de4b296a8",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-1c174a",
+          "run_id": "wf_run_598de2160fc7",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "1c174a207392b054",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-1cb495",
+          "run_id": "wf_run_824eb306ef13",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "1cb4956b7fc45103",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-1eed19",
+          "run_id": "wf_run_d2935687e039",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "1eed19a506c94c95",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-206565",
+          "run_id": "wf_run_6285da0fd28e",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "2065657bf689a928",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-208c09",
+          "run_id": "wf_run_b664fad4d5d1",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "208c09550dedfd7e",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-24179c",
+          "run_id": "wf_run_75ef5215d9bc",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "24179c753b04b61f",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-27dc33",
+          "run_id": "wf_run_2821c52df7a7",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "27dc33d168423bd4",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-2999d6",
+          "run_id": "wf_run_9b34ee155528",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "2999d636cb5c1ed0",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-2abaf4",
+          "run_id": "wf_run_82f9851ab938",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "2abaf4da0f46bea5",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-3137fb",
+          "run_id": "wf_run_c261d9cbbc5e",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "3137fbc8ab2bb8a0",
+          "paused_role": null
+        }
+      ],
+      "skipped": [],
+      "notifications": [
+        "CT-20261009-80ac81",
+        "CT-20261009-e1db1c",
+        "CT-20261010-0091ff",
+        "CT-20261010-0811e7",
+        "CT-20261010-0933e9",
+        "CT-20261010-112cfa",
+        "CT-20261010-161bf6",
+        "CT-20261010-17ddc7",
+        "CT-20261010-1a83c6",
+        "CT-20261010-1c174a",
+        "CT-20261010-1cb495",
+        "CT-20261010-1eed19",
+        "CT-20261010-206565",
+        "CT-20261010-208c09",
+        "CT-20261010-24179c",
+        "CT-20261010-27dc33",
+        "CT-20261010-2999d6",
+        "CT-20261010-2abaf4",
+        "CT-20261010-3137fb"
+      ],
+      "finished_at": "2026-10-11 14:57:30"
+    },
+    "B_idempotent": {
+      "started_at": "2026-10-11 14:57:30",
+      "inbox_ok": true,
+      "degraded": false,
+      "scanned": 20,
+      "new": 0,
+      "skipped_duplicate": 19,
+      "failed": [
+        {
+          "contract_id": "CT-20261009-80ac81-DUP",
+          "reason": "OSError: HTTP 410：下载失败（CT-20261009-80ac81-DUP）"
+        }
+      ],
+      "submitted": [],
+      "skipped": [
+        {
+          "contract_id": "CT-20261009-80ac81",
+          "content_hash": "80ac810278dc3210",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261009-e1db1c",
+          "content_hash": "e1db1cf6897b82d6",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-0091ff",
+          "content_hash": "0091ffeb09e25cef",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-0811e7",
+          "content_hash": "0811e7396267f5bf",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-0933e9",
+          "content_hash": "0933e977fd40645d",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-112cfa",
+          "content_hash": "112cfac249f119de",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-161bf6",
+          "content_hash": "161bf61d24ffce6b",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-17ddc7",
+          "content_hash": "17ddc73da8b8c11d",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-1a83c6",
+          "content_hash": "1a83c60de4b296a8",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-1c174a",
+          "content_hash": "1c174a207392b054",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-1cb495",
+          "content_hash": "1cb4956b7fc45103",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-1eed19",
+          "content_hash": "1eed19a506c94c95",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-206565",
+          "content_hash": "2065657bf689a928",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-208c09",
+          "content_hash": "208c09550dedfd7e",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-24179c",
+          "content_hash": "24179c753b04b61f",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-27dc33",
+          "content_hash": "27dc33d168423bd4",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-2999d6",
+          "content_hash": "2999d636cb5c1ed0",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-2abaf4",
+          "content_hash": "2abaf4da0f46bea5",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-3137fb",
+          "content_hash": "3137fbc8ab2bb8a0",
+          "by": "content_hash"
+        }
+      ],
+      "notifications": [],
+      "finished_at": "2026-10-11 14:57:30"
+    },
+    "C_faults": {
+      "timeout": {
+        "ok": false,
+        "degraded": true,
+        "new": 0,
+        "error": "HTTP 504：{\"error\":\"timeout(模拟)\",\"endpoint\":\"list_contracts\"}"
+      },
+      "bad_data": {
+        "ok": false,
+        "degraded": true,
+        "new": 0,
+        "error": "收件目录返回结构异常：['endpoint', 'unexpected']"
+      },
+      "empty": {
+        "ok": true,
+        "degraded": false,
+        "new": 0,
+        "error": null
+      }
+    },
+    "D_schedule": {
+      "schedule": {
+        "ok": true,
+        "raw": "✅ 任务创建成功！任务ID: cron_b40021fd4aa447bf, 执行计划: 0 9 * * *",
+        "cron": "0 9 * * *",
+        "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规负责人。"
+      },
+      "tasks": [
+        {
+          "task_id": "cron_b40021fd4aa447bf",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_a59af8e347de4017",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-1474 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_5a70b4452455419b",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_a1e78b86688b40d4",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-9282 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_2b37a255371548f7",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_1312e57f36eb4541",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8230 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_e37845bac2114718",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_44e35d4a74544cb3",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8042 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_ee3454f1fcec4153",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_82ac9362db5d4711",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-6854 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_9a40fa2b455e439d",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_01e668988cdd44db",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-6193 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_b69fe0a41f7e4234",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_d2692d68bb514b18",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-5733 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_ed1681b9d469498b",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_2c2d6a2ad68b4f6f",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-5254 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_74583e5011b84737",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_b09e1dac3f9b4c54",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4819 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_f68b77b463484d0c",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_bf86f31badee4dd4",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4456 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_cdcae07769bd4f93",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_0fd523f3ac9444ca",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4392 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_8f75a0288d294f2b",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_ee3284ab59c847a2",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4325 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_664fd7e17a914465",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_49ca619ca90c4a27",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4282 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_4a82ac7324cf4b9f",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_0fe9ee09078f4a59",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-3098 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_d5b58044ea7f47a3",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_89af260f96024901",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-3022 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_46ebb08df4614d56",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_10edcab3568a43b6",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-3005 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_78050e9c7ef34b3e",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_209de1b464704d3a",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2948 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_f5444c321e6548ba",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_223e00f418824aa3",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2879 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_e57395797aa444cd",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_62b559ce8a814509",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2842 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_6f68204e6ad340aa",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_3f38fabc33cf40d5",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2780 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_67933155505c4537",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_95965f7a57dc41e9",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2383 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_b8c8254075ee4ca1",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_b0324ee75b55479d",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-1669 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_1daf8f1217c5434d",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_b5f48c89506644c3",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8483 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_577e2b098cd243db",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_fc345bf6793e4114",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8450 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_60a5de30f32844aa",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_7f71d536a73040fa",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8427 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_654545a7dbe84dde",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_152c15e1ce6343e9",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8386 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_d2dd9699934d4bf4",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_24e70834f9064f1e",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-295 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提"
+        },
+        {
+          "task_id": "cron_5640403b3ff84e7d",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_c5f81b14dde24720",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-72 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提醒"
+        },
+        {
+          "task_id": "cron_b13f1a580cf747db",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        },
+        {
+          "task_id": "cron_fbd80009c8754012",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-9167 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_abb2a5a4ce3a4ae6",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+        }
+      ]
+    },
+    "E_followup": {
+      "followup": {
+        "ok": true,
+        "raw": "✅ 任务创建成功！任务ID: cron_b865e3db029a4472, 执行计划: 0 9 * * *",
+        "cron": "0 9 * * *",
+        "prompt": "跟进提醒：案件 CT-followup-1853 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提醒并登记待办。",
+        "case_ref": "CT-followup-1853",
+        "missing": "乙方资质证明与近三年审计报告",
+        "due": "2026-10-14",
+        "kind": "followup"
+      },
+      "matched": [
+        {
+          "task_id": "cron_b865e3db029a4472",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-1853 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_a59af8e347de4017",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-1474 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_a1e78b86688b40d4",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-9282 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_1312e57f36eb4541",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8230 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_44e35d4a74544cb3",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8042 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_82ac9362db5d4711",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-6854 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_01e668988cdd44db",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-6193 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_d2692d68bb514b18",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-5733 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_2c2d6a2ad68b4f6f",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-5254 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_b09e1dac3f9b4c54",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4819 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_bf86f31badee4dd4",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4456 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_0fd523f3ac9444ca",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4392 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_ee3284ab59c847a2",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4325 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_49ca619ca90c4a27",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-4282 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_0fe9ee09078f4a59",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-3098 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_89af260f96024901",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-3022 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_10edcab3568a43b6",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-3005 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_209de1b464704d3a",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2948 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_223e00f418824aa3",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2879 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_62b559ce8a814509",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2842 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_3f38fabc33cf40d5",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2780 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_95965f7a57dc41e9",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-2383 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_b0324ee75b55479d",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-1669 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_b5f48c89506644c3",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8483 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_fc345bf6793e4114",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8450 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_7f71d536a73040fa",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8427 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_152c15e1ce6343e9",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-8386 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        },
+        {
+          "task_id": "cron_24e70834f9064f1e",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-295 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提"
+        },
+        {
+          "task_id": "cron_c5f81b14dde24720",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-72 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提醒"
+        },
+        {
+          "task_id": "cron_fbd80009c8754012",
+          "cron": "0 9 * * *",
+          "enabled": true,
+          "prompt": "跟进提醒：案件 CT-followup-9167 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+        }
+      ]
+    },
+    "F_batch": {
+      "started_at": "2026-10-11 14:57:34",
+      "inbox_ok": true,
+      "degraded": false,
+      "scanned": 109,
+      "new": 87,
+      "skipped_duplicate": 19,
+      "failed": [
+        {
+          "contract_id": "CT-20261009-80ac81-DUP",
+          "reason": "OSError: HTTP 410：下载失败（CT-20261009-80ac81-DUP）"
+        },
+        {
+          "contract_id": "CT-20261010-b33c7b-DUP",
+          "reason": "OSError: HTTP 410：下载失败（CT-20261010-b33c7b-DUP）"
+        },
+        {
+          "contract_id": "CT-20261011-0a1ac5",
+          "reason": "OSError: 注入的下载故障（CT-20261011-0a1ac5）"
+        }
+      ],
+      "submitted": [
+        {
+          "contract_id": "CT-20261010-3391a7",
+          "run_id": "wf_run_65cb0f64bce1",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "3391a77ef93dd52e",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-34b547",
+          "run_id": "wf_run_ea2e1608f347",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "34b54724303e890c",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-3adf9f",
+          "run_id": "wf_run_a7130b1173ca",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "3adf9f596cfac59b",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-3dae93",
+          "run_id": "wf_run_49fec7360994",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "3dae939ddc14b1ce",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-3eff04",
+          "run_id": "wf_run_855a204aced6",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "3eff042ecf9f0953",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-412fa7",
+          "run_id": "wf_run_99ff166b1cda",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "412fa7b75c3cc1bd",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-443fcc",
+          "run_id": "wf_run_613a28a5fad3",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "443fcc4975f1c743",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-488971",
+          "run_id": "wf_run_c923fd08c523",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "4889719fecea648c",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-4c3353",
+          "run_id": "wf_run_de748bfc5969",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "4c3353faea0fa8c4",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-4f5677",
+          "run_id": "wf_run_7e7819a6e565",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "4f5677f5126a2a03",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-511443",
+          "run_id": "wf_run_039b033d51f6",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "511443a75e696373",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-516218",
+          "run_id": "wf_run_eb0454473e01",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "51621841df357f82",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-5195ba",
+          "run_id": "wf_run_9a141aea0f22",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "5195ba4145fc44e8",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-536f21",
+          "run_id": "wf_run_4ac5042d796a",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "536f212058a4c5f1",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-54180d",
+          "run_id": "wf_run_c37e369e09c4",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "54180d1acb2505af",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-5c42f1",
+          "run_id": "wf_run_19df477bf855",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "5c42f1d8c5651675",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-5ce43b",
+          "run_id": "wf_run_db7979b47c87",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "5ce43b73a14b4649",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-6af97a",
+          "run_id": "wf_run_2c595a81907e",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "6af97a0f3c8b74ff",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-6f0fd0",
+          "run_id": "wf_run_911c68f602fe",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "6f0fd0f8b846ef37",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-709a69",
+          "run_id": "wf_run_9d9154f6a55c",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "709a69dfd7a1ddd7",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-77b8a9",
+          "run_id": "wf_run_d3f4a40abdd9",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "77b8a9902c26dd9a",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-8228f6",
+          "run_id": "wf_run_cd546d38c0d5",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "8228f62f8458c4d3",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-82354a",
+          "run_id": "wf_run_cc9d077981d2",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "82354a3feb9b91b5",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-841263",
+          "run_id": "wf_run_7e5a3bb0e1c1",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "841263a48e4c84bb",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-89d18b",
+          "run_id": "wf_run_04daae267db1",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "89d18bfabb5526e6",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-8dba01",
+          "run_id": "wf_run_97265ed53e36",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "8dba0128c6870fb3",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-90f0f8",
+          "run_id": "wf_run_10b1638ba350",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "90f0f8683f2477b2",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-99cd3a",
+          "run_id": "wf_run_9b19c31ccc11",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "99cd3a3b559f9244",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-9b0dc6",
+          "run_id": "wf_run_6a27ab373f2b",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "9b0dc6339428d643",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-9b91ff",
+          "run_id": "wf_run_4aebd6925f22",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "9b91ffb327df839d",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-9c096a",
+          "run_id": "wf_run_cb9035261a3a",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "9c096af3adad0ad8",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-9d9b86",
+          "run_id": "wf_run_c07eb467efef",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "9d9b86dbf6b6755f",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-9dc2e5",
+          "run_id": "wf_run_52f835b38ea7",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "9dc2e543accebe64",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-9e5a9d",
+          "run_id": "wf_run_a58cdc2ffc14",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "9e5a9d74debd0f32",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-a01830",
+          "run_id": "wf_run_bb48292eef2d",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "a01830c32e001f67",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-a1d770",
+          "run_id": "wf_run_74e25b06f43e",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "a1d770766b0f1459",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-a5ac8c",
+          "run_id": "wf_run_11584fcfc7b2",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "a5ac8c2e3678dc37",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-ac94ea",
+          "run_id": "wf_run_2bfdc96eaf67",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "ac94eaa80f8fd2a4",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-ad32c7",
+          "run_id": "wf_run_05f90c77d126",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "ad32c7a3b0780301",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-b33c7b",
+          "run_id": "wf_run_ff898e796782",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "b33c7b2abc916d7a",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-b50c86",
+          "run_id": "wf_run_34d2a71ea692",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "b50c86e935b18148",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-b6eaa2",
+          "run_id": "wf_run_61a95f557ef2",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "b6eaa228bd54631d",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-ba2b91",
+          "run_id": "wf_run_0065f9f435e2",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "ba2b912c7c329029",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-bdc859",
+          "run_id": "wf_run_8e8e31fd6faa",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "bdc859045dd14eb4",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-c07265",
+          "run_id": "wf_run_cabfb093dddc",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "c072651a32086243",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-c0c91e",
+          "run_id": "wf_run_cf05c9b0d58d",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "c0c91e1943b11018",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-c15558",
+          "run_id": "wf_run_b43a8a03984b",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "c155588b266558c3",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-c2a5b9",
+          "run_id": "wf_run_0140d6bb3b3a",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "c2a5b9e9eb0660db",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-c534f8",
+          "run_id": "wf_run_19f2843d018a",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "c534f852aeae1fa7",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-c911d7",
+          "run_id": "wf_run_3cc3fff81846",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "c911d72bcc9ad168",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-cdbf78",
+          "run_id": "wf_run_dd39833253d9",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "cdbf785503887516",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-d2a4d3",
+          "run_id": "wf_run_20f458ddfac9",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "d2a4d3d9441c60e8",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-d3254f",
+          "run_id": "wf_run_216c9a14bcc2",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "d3254fcd7bbc4311",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-d4a4d6",
+          "run_id": "wf_run_3f861a53dd23",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "d4a4d637891d3ead",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-d77af9",
+          "run_id": "wf_run_c54ca91e71d3",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "d77af9a20e53d07c",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-dbdf0c",
+          "run_id": "wf_run_662502b28313",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "dbdf0c92920f843c",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-de1adf",
+          "run_id": "wf_run_6f3cbc3868b2",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "de1adf5d1d83d351",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-e7a442",
+          "run_id": "wf_run_73f528da2a5a",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "e7a4425ea3d555ff",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-e82b6d",
+          "run_id": "wf_run_e83d6665fb51",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "e82b6d582f81f55f",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-e9a499",
+          "run_id": "wf_run_dbf128a73f77",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "e9a49911aed0f1e1",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-ee9333",
+          "run_id": "wf_run_8105bed988fa",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "ee93332c0373b576",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-f08f69",
+          "run_id": "wf_run_b6b611a581ef",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "f08f6903a4022d72",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-f1ffdd",
+          "run_id": "wf_run_f37d77d98485",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "f1ffddf7492ee83d",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-f62310",
+          "run_id": "wf_run_63a7a9cc9500",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "f62310a768d8fe42",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261010-f65905",
+          "run_id": "wf_run_65a41d3a129c",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "f65905e5971381fd",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-f88fc0",
+          "run_id": "wf_run_d397165963e5",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "f88fc0544a2a27d7",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-fcf14f",
+          "run_id": "wf_run_ecf751433efd",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "fcf14f35623b38c6",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261010-fcf7e0",
+          "run_id": "wf_run_9121e5d8ea1f",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "fcf7e05e8806be1c",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-0fd5d5",
+          "run_id": "wf_run_ca64ecbe99bd",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "0fd5d55c61ab0cbd",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261011-27e5e8",
+          "run_id": "wf_run_6eb1d3ba17fb",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "27e5e868bb7840ae",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-2c7e44",
+          "run_id": "wf_run_d313fd1a3a7e",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "2c7e44821eb4581c",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261011-2cfa09",
+          "run_id": "wf_run_6199ea0c6c26",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "2cfa099b3353bacc",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-406dd0",
+          "run_id": "wf_run_aa3f82f264a8",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "406dd04bbd1452eb",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261011-55e5a5",
+          "run_id": "wf_run_30b8d64bb82e",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "55e5a5cd55bc722a",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-598cb5",
+          "run_id": "wf_run_a14fd8ec1e66",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "598cb50f7af92b83",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-62b961",
+          "run_id": "wf_run_0fb96e054db7",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "62b96126991e744d",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-70b7d8",
+          "run_id": "wf_run_7cc3398464e2",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "70b7d8f4dc954c6d",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-7383c5",
+          "run_id": "wf_run_8219dff73bba",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "7383c533934d83a2",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261011-96735d",
+          "run_id": "wf_run_4c2b4ed29029",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "96735db89f623356",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-9c0be5",
+          "run_id": "wf_run_3afbde8870f9",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "9c0be5e803249ec7",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261011-a54dea",
+          "run_id": "wf_run_77291e689f68",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "a54dea1880100d6f",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-c15576",
+          "run_id": "wf_run_418744b440f1",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "c15576bf2a81c15c",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261011-d69258",
+          "run_id": "wf_run_9d0295b5f037",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "d69258bfc9749f6d",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261011-e4b295",
+          "run_id": "wf_run_0fc179e714bc",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "e4b295bf24ae3f6c",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-e81f28",
+          "run_id": "wf_run_bcac2c034e13",
+          "status": "paused",
+          "risk_level": "high",
+          "content_hash": "e81f2809b61a75e6",
+          "paused_role": "specialist"
+        },
+        {
+          "contract_id": "CT-20261011-eb1903",
+          "run_id": "wf_run_0ed17dbc9358",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "eb19034f5636572f",
+          "paused_role": null
+        },
+        {
+          "contract_id": "CT-20261011-f9a7f0",
+          "run_id": "wf_run_480d142ad9a2",
+          "status": "completed",
+          "risk_level": "low",
+          "content_hash": "f9a7f0e9b32e481f",
+          "paused_role": null
+        }
+      ],
+      "skipped": [
+        {
+          "contract_id": "CT-20261009-80ac81",
+          "content_hash": "80ac810278dc3210",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261009-e1db1c",
+          "content_hash": "e1db1cf6897b82d6",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-0091ff",
+          "content_hash": "0091ffeb09e25cef",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-0811e7",
+          "content_hash": "0811e7396267f5bf",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-0933e9",
+          "content_hash": "0933e977fd40645d",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-112cfa",
+          "content_hash": "112cfac249f119de",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-161bf6",
+          "content_hash": "161bf61d24ffce6b",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-17ddc7",
+          "content_hash": "17ddc73da8b8c11d",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-1a83c6",
+          "content_hash": "1a83c60de4b296a8",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-1c174a",
+          "content_hash": "1c174a207392b054",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-1cb495",
+          "content_hash": "1cb4956b7fc45103",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-1eed19",
+          "content_hash": "1eed19a506c94c95",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-206565",
+          "content_hash": "2065657bf689a928",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-208c09",
+          "content_hash": "208c09550dedfd7e",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-24179c",
+          "content_hash": "24179c753b04b61f",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-27dc33",
+          "content_hash": "27dc33d168423bd4",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-2999d6",
+          "content_hash": "2999d636cb5c1ed0",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-2abaf4",
+          "content_hash": "2abaf4da0f46bea5",
+          "by": "content_hash"
+        },
+        {
+          "contract_id": "CT-20261010-3137fb",
+          "content_hash": "3137fbc8ab2bb8a0",
+          "by": "content_hash"
+        }
+      ],
+      "notifications": [],
+      "finished_at": "2026-10-11 14:57:46"
+    },
+    "G_connectors": {
+      "contract_dir": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\g-share-inbox",
+      "connector_config": {
+        "contract_source": "mock",
+        "contract_dir": null,
+        "oa_base_url": null,
+        "oa_auth_configured": false,
+        "mock_url": "http://127.0.0.1:8780",
+        "mail_gateway": "mock",
+        "mail_http_configured": false,
+        "smtp_host": null,
+        "smtp_auth_configured": false
+      },
+      "listing_count": 4,
+      "listing_ok": true,
+      "scan": {
+        "started_at": "2026-10-11 14:57:46",
+        "inbox_ok": true,
+        "degraded": false,
+        "scanned": 4,
+        "new": 3,
+        "skipped_duplicate": 0,
+        "failed": [
+          {
+            "contract_id": "OA-BROKEN-1791701866",
+            "reason": "OSError: 合同不存在：OA-BROKEN-1791701866"
+          }
+        ],
+        "submitted": [
+          {
+            "contract_id": "共享盘合同A-1791701866",
+            "run_id": "wf_run_30d707a124e6",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "e11b8ed0da853a68",
+            "paused_role": null
+          },
+          {
+            "contract_id": "共享盘合同B-1791701866",
+            "run_id": "wf_run_1482426c9cb4",
+            "status": "paused",
+            "risk_level": "high",
+            "content_hash": "731c8be537fd4ad5",
+            "paused_role": "specialist"
+          },
+          {
+            "contract_id": "OA-SHARE-1791701866",
+            "run_id": "wf_run_e85801d91b04",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "5de3440291519d95",
+            "paused_role": null
+          }
+        ],
+        "skipped": [],
+        "notifications": [
+          "共享盘合同A-1791701866",
+          "共享盘合同B-1791701866",
+          "OA-SHARE-1791701866"
+        ],
+        "finished_at": "2026-10-11 14:57:47"
+      },
+      "rescan_new": 0,
+      "rescan_skipped": 3,
+      "mails_sent": 3
+    },
+    "G_connector_degrade": {
+      "inbox_ok": false,
+      "degraded": true,
+      "error": "收件目录不存在：D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\no-such-inbox（请检查 CONTRACT_DIR / 共享盘挂载）"
+    }
+  },
+  "services": {
+    "mock_oa": "started",
+    "capability": "already-running"
+  },
+  "scan_state_path": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\logs\\p6-scan-state.json",
+  "uploaded": [
+    {
+      "contract_id": "CT-20261011-d69258",
+      "deduplicated": false,
+      "content_hash": "d69258bfc9749f6d",
+      "size": 205
+    },
+    {
+      "contract_id": "CT-20261011-27e5e8",
+      "deduplicated": false,
+      "content_hash": "27e5e868bb7840ae",
+      "size": 209
+    }
+  ],
+  "F_injected": {
+    "items": 109,
+    "victim": "CT-20261011-0a1ac5",
+    "tail": "CT-20261011-70b7d8"
+  },
+  "checks": {
+    "A_scan_submits_new_contracts": {
+      "pass": true,
+      "detail": {
+        "new": 19,
+        "submitted": [
+          {
+            "contract_id": "CT-20261009-80ac81",
+            "run_id": "wf_run_155580e7ec45",
+            "status": "paused",
+            "risk_level": "high",
+            "content_hash": "80ac810278dc3210",
+            "paused_role": "specialist"
+          },
+          {
+            "contract_id": "CT-20261009-e1db1c",
+            "run_id": "wf_run_1904eee69efd",
+            "status": "paused",
+            "risk_level": "high",
+            "content_hash": "e1db1cf6897b82d6",
+            "paused_role": "specialist"
+          },
+          {
+            "contract_id": "CT-20261010-0091ff",
+            "run_id": "wf_run_6e9ff1dc6c6e",
+            "status": "paused",
+            "risk_level": "high",
+            "content_hash": "0091ffeb09e25cef",
+            "paused_role": "specialist"
+          },
+          {
+            "contract_id": "CT-20261010-0811e7",
+            "run_id": "wf_run_bf965a792b57",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "0811e7396267f5bf",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-0933e9",
+            "run_id": "wf_run_d25a28b59a9c",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "0933e977fd40645d",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-112cfa",
+            "run_id": "wf_run_b05fe71d833d",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "112cfac249f119de",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-161bf6",
+            "run_id": "wf_run_8d1080e37091",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "161bf61d24ffce6b",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-17ddc7",
+            "run_id": "wf_run_a3c2055fd224",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "17ddc73da8b8c11d",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-1a83c6",
+            "run_id": "wf_run_a25745e5c277",
+            "status": "paused",
+            "risk_level": "high",
+            "content_hash": "1a83c60de4b296a8",
+            "paused_role": "specialist"
+          },
+          {
+            "contract_id": "CT-20261010-1c174a",
+            "run_id": "wf_run_598de2160fc7",
+            "status": "paused",
+            "risk_level": "high",
+            "content_hash": "1c174a207392b054",
+            "paused_role": "specialist"
+          },
+          {
+            "contract_id": "CT-20261010-1cb495",
+            "run_id": "wf_run_824eb306ef13",
+            "status": "paused",
+            "risk_level": "high",
+            "content_hash": "1cb4956b7fc45103",
+            "paused_role": "specialist"
+          },
+          {
+            "contract_id": "CT-20261010-1eed19",
+            "run_id": "wf_run_d2935687e039",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "1eed19a506c94c95",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-206565",
+            "run_id": "wf_run_6285da0fd28e",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "2065657bf689a928",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-208c09",
+            "run_id": "wf_run_b664fad4d5d1",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "208c09550dedfd7e",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-24179c",
+            "run_id": "wf_run_75ef5215d9bc",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "24179c753b04b61f",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-27dc33",
+            "run_id": "wf_run_2821c52df7a7",
+            "status": "paused",
+            "risk_level": "high",
+            "content_hash": "27dc33d168423bd4",
+            "paused_role": "specialist"
+          },
+          {
+            "contract_id": "CT-20261010-2999d6",
+            "run_id": "wf_run_9b34ee155528",
+            "status": "paused",
+            "risk_level": "high",
+            "content_hash": "2999d636cb5c1ed0",
+            "paused_role": "specialist"
+          },
+          {
+            "contract_id": "CT-20261010-2abaf4",
+            "run_id": "wf_run_82f9851ab938",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "2abaf4da0f46bea5",
+            "paused_role": null
+          },
+          {
+            "contract_id": "CT-20261010-3137fb",
+            "run_id": "wf_run_c261d9cbbc5e",
+            "status": "completed",
+            "risk_level": "low",
+            "content_hash": "3137fbc8ab2bb8a0",
+            "paused_role": null
+          }
+        ]
+      }
+    },
+    "A_risk_levels_assigned": {
+      "pass": true,
+      "detail": {
+        "risks": {
+          "CT-20261009-80ac81": "high",
+          "CT-20261009-e1db1c": "high",
+          "CT-20261010-0091ff": "high",
+          "CT-20261010-0811e7": "low",
+          "CT-20261010-0933e9": "low",
+          "CT-20261010-112cfa": "low",
+          "CT-20261010-161bf6": "low",
+          "CT-20261010-17ddc7": "low",
+          "CT-20261010-1a83c6": "high",
+          "CT-20261010-1c174a": "high",
+          "CT-20261010-1cb495": "high",
+          "CT-20261010-1eed19": "low",
+          "CT-20261010-206565": "low",
+          "CT-20261010-208c09": "low",
+          "CT-20261010-24179c": "low",
+          "CT-20261010-27dc33": "high",
+          "CT-20261010-2999d6": "high",
+          "CT-20261010-2abaf4": "low",
+          "CT-20261010-3137fb": "low"
+        }
+      }
+    },
+    "A_notifications_sent": {
+      "pass": true,
+      "detail": {
+        "notified": [
+          "CT-20261009-80ac81",
+          "CT-20261009-e1db1c",
+          "CT-20261010-0091ff",
+          "CT-20261010-0811e7",
+          "CT-20261010-0933e9",
+          "CT-20261010-112cfa",
+          "CT-20261010-161bf6",
+          "CT-20261010-17ddc7",
+          "CT-20261010-1a83c6",
+          "CT-20261010-1c174a",
+          "CT-20261010-1cb495",
+          "CT-20261010-1eed19",
+          "CT-20261010-206565",
+          "CT-20261010-208c09",
+          "CT-20261010-24179c",
+          "CT-20261010-27dc33",
+          "CT-20261010-2999d6",
+          "CT-20261010-2abaf4",
+          "CT-20261010-3137fb"
+        ]
+      }
+    },
+    "B_idempotent_rescan": {
+      "pass": true,
+      "detail": {
+        "new": 0,
+        "skipped": 19,
+        "scanned": 20
+      }
+    },
+    "C_faults_handled": {
+      "pass": true,
+      "detail": {
+        "timeout": {
+          "ok": false,
+          "degraded": true,
+          "new": 0,
+          "error": "HTTP 504：{\"error\":\"timeout(模拟)\",\"endpoint\":\"list_contracts\"}"
+        },
+        "bad_data": {
+          "ok": false,
+          "degraded": true,
+          "new": 0,
+          "error": "收件目录返回结构异常：['endpoint', 'unexpected']"
+        },
+        "empty": {
+          "ok": true,
+          "degraded": false,
+          "new": 0,
+          "error": null
+        }
+      }
+    },
+    "D_cron_registered": {
+      "pass": true,
+      "detail": {
+        "schedule": {
+          "ok": true,
+          "raw": "✅ 任务创建成功！任务ID: cron_b40021fd4aa447bf, 执行计划: 0 9 * * *",
+          "cron": "0 9 * * *",
+          "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规负责人。"
+        },
+        "tasks": [
+          {
+            "task_id": "cron_b40021fd4aa447bf",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_a59af8e347de4017",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-1474 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_5a70b4452455419b",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_a1e78b86688b40d4",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-9282 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_2b37a255371548f7",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_1312e57f36eb4541",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8230 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_e37845bac2114718",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_44e35d4a74544cb3",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8042 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_ee3454f1fcec4153",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_82ac9362db5d4711",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-6854 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_9a40fa2b455e439d",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_01e668988cdd44db",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-6193 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_b69fe0a41f7e4234",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_d2692d68bb514b18",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-5733 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_ed1681b9d469498b",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_2c2d6a2ad68b4f6f",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-5254 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_74583e5011b84737",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_b09e1dac3f9b4c54",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4819 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_f68b77b463484d0c",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_bf86f31badee4dd4",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4456 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_cdcae07769bd4f93",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_0fd523f3ac9444ca",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4392 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_8f75a0288d294f2b",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_ee3284ab59c847a2",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4325 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_664fd7e17a914465",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_49ca619ca90c4a27",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4282 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_4a82ac7324cf4b9f",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_0fe9ee09078f4a59",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-3098 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_d5b58044ea7f47a3",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_89af260f96024901",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-3022 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_46ebb08df4614d56",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_10edcab3568a43b6",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-3005 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_78050e9c7ef34b3e",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_209de1b464704d3a",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2948 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_f5444c321e6548ba",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_223e00f418824aa3",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2879 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_e57395797aa444cd",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_62b559ce8a814509",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2842 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_6f68204e6ad340aa",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_3f38fabc33cf40d5",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2780 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_67933155505c4537",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_95965f7a57dc41e9",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2383 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_b8c8254075ee4ca1",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_b0324ee75b55479d",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-1669 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_1daf8f1217c5434d",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_b5f48c89506644c3",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8483 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_577e2b098cd243db",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_fc345bf6793e4114",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8450 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_60a5de30f32844aa",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_7f71d536a73040fa",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8427 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_654545a7dbe84dde",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_152c15e1ce6343e9",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8386 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_d2dd9699934d4bf4",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_24e70834f9064f1e",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-295 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提"
+          },
+          {
+            "task_id": "cron_5640403b3ff84e7d",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_c5f81b14dde24720",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-72 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提醒"
+          },
+          {
+            "task_id": "cron_b13f1a580cf747db",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          },
+          {
+            "task_id": "cron_fbd80009c8754012",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-9167 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_abb2a5a4ce3a4ae6",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "执行一次合规收件目录例行巡检：调用 MCP 工具 proactive_scan（或等价服务）扫描共享盘收件目录，对发现的新合同主动发起合规审查，并把结果与待人工环节汇总后推送给合规"
+          }
+        ]
+      }
+    },
+    "E_followup_scheduled": {
+      "pass": true,
+      "detail": {
+        "followup": {
+          "ok": true,
+          "raw": "✅ 任务创建成功！任务ID: cron_b865e3db029a4472, 执行计划: 0 9 * * *",
+          "cron": "0 9 * * *",
+          "prompt": "跟进提醒：案件 CT-followup-1853 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提醒并登记待办。",
+          "case_ref": "CT-followup-1853",
+          "missing": "乙方资质证明与近三年审计报告",
+          "due": "2026-10-14",
+          "kind": "followup"
+        },
+        "matched": [
+          {
+            "task_id": "cron_b865e3db029a4472",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-1853 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_a59af8e347de4017",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-1474 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_a1e78b86688b40d4",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-9282 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_1312e57f36eb4541",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8230 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_44e35d4a74544cb3",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8042 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-14 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_82ac9362db5d4711",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-6854 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_01e668988cdd44db",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-6193 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_d2692d68bb514b18",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-5733 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_2c2d6a2ad68b4f6f",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-5254 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_b09e1dac3f9b4c54",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4819 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_bf86f31badee4dd4",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4456 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_0fd523f3ac9444ca",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4392 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_ee3284ab59c847a2",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4325 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_49ca619ca90c4a27",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-4282 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_0fe9ee09078f4a59",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-3098 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_89af260f96024901",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-3022 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_10edcab3568a43b6",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-3005 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_209de1b464704d3a",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2948 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_223e00f418824aa3",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2879 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_62b559ce8a814509",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2842 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_3f38fabc33cf40d5",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2780 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_95965f7a57dc41e9",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-2383 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_b0324ee75b55479d",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-1669 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_b5f48c89506644c3",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8483 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_fc345bf6793e4114",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8450 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_7f71d536a73040fa",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8427 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_152c15e1ce6343e9",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-8386 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          },
+          {
+            "task_id": "cron_24e70834f9064f1e",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-295 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提"
+          },
+          {
+            "task_id": "cron_c5f81b14dde24720",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-72 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送提醒"
+          },
+          {
+            "task_id": "cron_fbd80009c8754012",
+            "cron": "0 9 * * *",
+            "enabled": true,
+            "prompt": "跟进提醒：案件 CT-followup-9167 仍缺少材料「乙方资质证明与近三年审计报告」（应于 2026-10-13 前补齐）。请检查该案件当前状态；若仍未补齐，向合规专员发送"
+          }
+        ]
+      }
+    },
+    "F_batch_continues_on_partial_failure": {
+      "pass": true,
+      "detail": {
+        "injected_failure": "CT-20261011-0a1ac5",
+        "tail_contract": "CT-20261011-70b7d8",
+        "new": 87,
+        "skipped": 19,
+        "scanned": 109,
+        "tail_submitted": true,
+        "failed": [
+          {
+            "contract_id": "CT-20261009-80ac81-DUP",
+            "reason": "OSError: HTTP 410：下载失败（CT-20261009-80ac81-DUP）"
+          },
+          {
+            "contract_id": "CT-20261010-b33c7b-DUP",
+            "reason": "OSError: HTTP 410：下载失败（CT-20261010-b33c7b-DUP）"
+          },
+          {
+            "contract_id": "CT-20261011-0a1ac5",
+            "reason": "OSError: 注入的下载故障（CT-20261011-0a1ac5）"
+          }
+        ]
+      }
+    },
+    "G_connector_dir_source_works": {
+      "pass": true,
+      "detail": {
+        "listed": 4,
+        "new": 3,
+        "mails": 3,
+        "failed": [
+          {
+            "contract_id": "OA-BROKEN-1791701866",
+            "reason": "OSError: 合同不存在：OA-BROKEN-1791701866"
+          }
+        ]
+      }
+    },
+    "G_connector_content_hash_idempotent": {
+      "pass": true,
+      "detail": {
+        "new": 0,
+        "skipped": 4
+      }
+    },
+    "G_connector_dirty_entry_reported": {
+      "pass": true,
+      "detail": {
+        "failed": [
+          {
+            "contract_id": "OA-BROKEN-1791701866",
+            "reason": "OSError: 合同不存在：OA-BROKEN-1791701866"
+          }
+        ]
+      }
+    },
+    "G_connector_unavailable_degrades": {
+      "pass": true,
+      "detail": {
+        "inbox_ok": false,
+        "error": "收件目录不存在：D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\no-such-inbox（请检查 CONTRACT_DIR / 共享盘挂载）"
+      }
+    }
+  },
+  "problems": [],
+  "passed": 12,
+  "total": 12,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:57:47",
+  "paths": {
+    "project_root": "D:\\Project_Experience2.0\\项目三\\compliance_officer",
+    "runtime": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime",
+    "workspace": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace",
+    "lemonclaw_dir": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\.lemonclaw",
+    "framework": "D:\\Project_Experience2.0\\项目三\\lemonclaw-main",
+    "db": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\.lemonclaw\\lemonclaw.db"
+  },
+  "scan_state_cleaned": true
+}

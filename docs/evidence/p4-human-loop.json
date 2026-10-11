@@ -1,0 +1,1313 @@
+{
+  "flow": "P4-human-loop",
+  "started_at": "2026-10-11 14:56:41",
+  "cases": {
+    "A_low": {
+      "submit": {
+        "ok": true,
+        "run_id": "wf_run_b98803c3d74e",
+        "status": "completed",
+        "risk_level": "low",
+        "doc_id": "6e3a28466eed",
+        "paused": null,
+        "state": {
+          "overall_risk_level": "low",
+          "specialist_note": null,
+          "supervisor_note": null
+        }
+      },
+      "status": {
+        "ok": true,
+        "run_id": "wf_run_b98803c3d74e",
+        "status": "completed",
+        "error": null,
+        "risk_level": "low",
+        "doc_id": "6e3a28466eed",
+        "specialist_note": null,
+        "supervisor_note": null,
+        "decision_summary": "合同 6e3a28466eed｜解析档位 native｜置信度 0.9｜条款 4 条，风险条款 0 条，整体等级 low｜命中规则 无",
+        "hit_rule_ids": [],
+        "claim": {
+          "claimed_by": null,
+          "claimed_at": null
+        },
+        "todos": [],
+        "audit": [
+          {
+            "audit_id": "aud_d3b3428641",
+            "run_id": "wf_run_b98803c3d74e",
+            "todo_id": null,
+            "event": "review_submitted",
+            "actor": "oa-bot",
+            "role": "",
+            "detail_json": "{\"doc_id\": \"6e3a28466eed\", \"risk_level\": \"low\", \"rules\": [], \"rule_table_digest\": \"1d48a8faca9d\"}",
+            "trace_id": "trace-wf_run_b98803c3d74e",
+            "created_at": "2026-10-11 14:56:52",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_20c6f9146f",
+            "run_id": "wf_run_b98803c3d74e",
+            "todo_id": null,
+            "event": "review_archived",
+            "actor": "system",
+            "role": "",
+            "detail_json": "{\"status\": \"completed\", \"risk_level\": \"low\"}",
+            "trace_id": "trace-wf_run_b98803c3d74e",
+            "created_at": "2026-10-11 14:56:52",
+            "seq": null
+          }
+        ]
+      }
+    },
+    "B_mid": {
+      "submit": {
+        "ok": true,
+        "run_id": "wf_run_69c344156dac",
+        "status": "paused",
+        "risk_level": "mid",
+        "doc_id": "15d12ce4806e",
+        "paused": {
+          "role": "specialist",
+          "question": "【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+          "todo_id": "todo_b76cef01c6",
+          "todo_created": true
+        },
+        "state": {
+          "overall_risk_level": "mid",
+          "specialist_note": null,
+          "supervisor_note": null
+        }
+      },
+      "decisions": [
+        {
+          "ok": true,
+          "claimed": true,
+          "run_id": "wf_run_69c344156dac",
+          "decision": "confirm",
+          "status": "paused",
+          "paused": {
+            "role": "supervisor",
+            "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
+            "todo_id": "todo_a8f18a5dfe",
+            "todo_created": true
+          },
+          "final_state": {
+            "overall_risk_level": "mid",
+            "specialist_note": "confirm",
+            "supervisor_note": null
+          }
+        },
+        {
+          "ok": true,
+          "claimed": true,
+          "run_id": "wf_run_69c344156dac",
+          "decision": "approve",
+          "status": "completed",
+          "paused": null,
+          "final_state": {
+            "overall_risk_level": "mid",
+            "specialist_note": "confirm",
+            "supervisor_note": null
+          }
+        }
+      ],
+      "denied_cross_node": {
+        "ok": false,
+        "conflict": true,
+        "errors": [
+          "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 approve 属于角色 supervisor。请联系对应的审批人处理。"
+        ],
+        "pending_node": "supervisor_verify",
+        "pending_role": "supervisor"
+      },
+      "status": {
+        "ok": true,
+        "run_id": "wf_run_69c344156dac",
+        "status": "completed",
+        "error": null,
+        "risk_level": "mid",
+        "doc_id": "15d12ce4806e",
+        "specialist_note": "confirm",
+        "supervisor_note": null,
+        "decision_summary": "合同 15d12ce4806e｜解析档位 native｜置信度 0.9｜条款 4 条，风险条款 1 条，整体等级 mid｜命中规则 RR-006",
+        "hit_rule_ids": [
+          "RR-006"
+        ],
+        "claim": {
+          "claimed_by": null,
+          "claimed_at": null
+        },
+        "todos": [
+          {
+            "todo_id": "todo_b76cef01c6",
+            "run_id": "wf_run_69c344156dac",
+            "workflow_id": "compliance_review",
+            "node_name": "need_human",
+            "role_required": "specialist",
+            "title": "待审：【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（",
+            "summary": "【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。 | 处理意见: 中风险确认",
+            "payload_json": "{\"kind\": \"need_human\", \"run_id\": \"wf_run_69c344156dac\", \"question\": \"【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。\", \"handler\": \"interactive\"}",
+            "status": "done",
+            "claimed_by": null,
+            "claimed_at": null,
+            "decided_by": "specialist-li",
+            "decided_at": "2026-10-11 14:56:52",
+            "decision": "confirm",
+            "idempotency_key": "wf_run_69c344156dac:need_human:specialist",
+            "trace_id": "trace-wf_run_69c344156dac",
+            "created_at": "2026-10-11 14:56:52",
+            "due_at": null,
+            "updated_at": "2026-10-11 14:56:52",
+            "seq": null
+          },
+          {
+            "todo_id": "todo_a8f18a5dfe",
+            "run_id": "wf_run_69c344156dac",
+            "workflow_id": "compliance_review",
+            "node_name": "human",
+            "role_required": "supervisor",
+            "title": "待审：【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复",
+            "summary": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。 | 处理意见: 同意归档",
+            "payload_json": "{\"kind\": \"need_human\", \"run_id\": \"wf_run_69c344156dac\", \"question\": \"【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。\", \"handler\": \"interactive\"}",
+            "status": "done",
+            "claimed_by": null,
+            "claimed_at": null,
+            "decided_by": "supervisor-zhang",
+            "decided_at": "2026-10-11 14:56:52",
+            "decision": "approve",
+            "idempotency_key": "wf_run_69c344156dac:human:supervisor:1",
+            "trace_id": "trace-wf_run_69c344156dac",
+            "created_at": "2026-10-11 14:56:52",
+            "due_at": null,
+            "updated_at": "2026-10-11 14:56:52",
+            "seq": null
+          }
+        ],
+        "audit": [
+          {
+            "audit_id": "aud_ac645f207c",
+            "run_id": "wf_run_69c344156dac",
+            "todo_id": null,
+            "event": "review_submitted",
+            "actor": "oa-bot",
+            "role": "",
+            "detail_json": "{\"doc_id\": \"15d12ce4806e\", \"risk_level\": \"mid\", \"rules\": [\"RR-006\"], \"rule_table_digest\": \"1d48a8faca9d\"}",
+            "trace_id": "trace-wf_run_69c344156dac",
+            "created_at": "2026-10-11 14:56:52",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_e0836217a7",
+            "run_id": "wf_run_69c344156dac",
+            "todo_id": "todo_b76cef01c6",
+            "event": "todo_created",
+            "actor": "system",
+            "role": "",
+            "detail_json": "{\"todo_id\": \"todo_b76cef01c6\", \"node\": \"need_human\", \"role\": \"specialist\"}",
+            "trace_id": "trace-wf_run_69c344156dac",
+            "created_at": "2026-10-11 14:56:52",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_d1cf1e0848",
+            "run_id": "wf_run_69c344156dac",
+            "todo_id": null,
+            "event": "human_decision",
+            "actor": "specialist-li",
+            "role": "specialist",
+            "detail_json": "{\"run_id\": \"wf_run_69c344156dac\", \"decision\": \"confirm\", \"actor\": \"specialist-li\", \"role\": \"specialist\", \"note\": \"中风险确认\"}",
+            "trace_id": "trace-wf_run_69c344156dac",
+            "created_at": "2026-10-11 14:56:52",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_88b7214ab6",
+            "run_id": "wf_run_69c344156dac",
+            "todo_id": "todo_b76cef01c6",
+            "event": "todo_completed",
+            "actor": "specialist-li",
+            "role": "specialist",
+            "detail_json": "{\"todo_id\": \"todo_b76cef01c6\", \"decision\": \"confirm\", \"note\": \"中风险确认\"}",
+            "trace_id": "",
+            "created_at": "2026-10-11 14:56:52",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_dd66094bbc",
+            "run_id": "wf_run_69c344156dac",
+            "todo_id": "todo_a8f18a5dfe",
+            "event": "todo_created",
+            "actor": "system",
+            "role": "",
+            "detail_json": "{\"todo_id\": \"todo_a8f18a5dfe\", \"node\": \"human\", \"role\": \"supervisor\"}",
+            "trace_id": "trace-wf_run_69c344156dac",
+            "created_at": "2026-10-11 14:56:52",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_54143ceb5a",
+            "run_id": "wf_run_69c344156dac",
+            "todo_id": null,
+            "event": "human_decision",
+            "actor": "supervisor-zhang",
+            "role": "supervisor",
+            "detail_json": "{\"run_id\": \"wf_run_69c344156dac\", \"decision\": \"approve\", \"actor\": \"supervisor-zhang\", \"role\": \"supervisor\", \"note\": \"同意归档\"}",
+            "trace_id": "trace-wf_run_69c344156dac",
+            "created_at": "2026-10-11 14:56:52",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_0fb0c57c01",
+            "run_id": "wf_run_69c344156dac",
+            "todo_id": "todo_a8f18a5dfe",
+            "event": "todo_completed",
+            "actor": "supervisor-zhang",
+            "role": "supervisor",
+            "detail_json": "{\"todo_id\": \"todo_a8f18a5dfe\", \"decision\": \"approve\", \"note\": \"同意归档\"}",
+            "trace_id": "",
+            "created_at": "2026-10-11 14:56:52",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_c68f0976d2",
+            "run_id": "wf_run_69c344156dac",
+            "todo_id": null,
+            "event": "review_archived",
+            "actor": "supervisor-zhang",
+            "role": "",
+            "detail_json": "{\"status\": \"completed\"}",
+            "trace_id": "trace-wf_run_69c344156dac",
+            "created_at": "2026-10-11 14:56:53",
+            "seq": null
+          }
+        ]
+      },
+      "todo_specialist": [
+        {
+          "todo_id": "todo_b76cef01c6",
+          "run_id": "wf_run_69c344156dac",
+          "workflow_id": "compliance_review",
+          "node_name": "need_human",
+          "role_required": "specialist",
+          "title": "待审：【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（",
+          "summary": "【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+          "payload_json": "{\"kind\": \"need_human\", \"run_id\": \"wf_run_69c344156dac\", \"question\": \"【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。\", \"handler\": \"interactive\"}",
+          "status": "open",
+          "claimed_by": null,
+          "claimed_at": null,
+          "decided_by": null,
+          "decided_at": null,
+          "decision": null,
+          "idempotency_key": "wf_run_69c344156dac:need_human:specialist",
+          "trace_id": "trace-wf_run_69c344156dac",
+          "created_at": "2026-10-11 14:56:52",
+          "due_at": null,
+          "updated_at": "2026-10-11 14:56:52",
+          "seq": null
+        }
+      ],
+      "todo_supervisor": [
+        {
+          "todo_id": "todo_a8f18a5dfe",
+          "run_id": "wf_run_69c344156dac",
+          "workflow_id": "compliance_review",
+          "node_name": "human",
+          "role_required": "supervisor",
+          "title": "待审：【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复",
+          "summary": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
+          "payload_json": "{\"kind\": \"need_human\", \"run_id\": \"wf_run_69c344156dac\", \"question\": \"【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。\", \"handler\": \"interactive\"}",
+          "status": "open",
+          "claimed_by": null,
+          "claimed_at": null,
+          "decided_by": null,
+          "decided_at": null,
+          "decision": null,
+          "idempotency_key": "wf_run_69c344156dac:human:supervisor:1",
+          "trace_id": "trace-wf_run_69c344156dac",
+          "created_at": "2026-10-11 14:56:52",
+          "due_at": null,
+          "updated_at": "2026-10-11 14:56:52",
+          "seq": null
+        }
+      ]
+    },
+    "C_concurrency": {
+      "run_id": "wf_run_50c3dba77632",
+      "results": [
+        {
+          "i": 0,
+          "ok": false,
+          "claimed": false,
+          "errors": [
+            "该审批已被 specialist-3@2026-10-11 14:56:53 处理中，请勿重复提交"
+          ],
+          "status": null
+        },
+        {
+          "i": 2,
+          "ok": false,
+          "claimed": false,
+          "errors": [
+            "该审批已被 specialist-3@2026-10-11 14:56:53 处理中，请勿重复提交"
+          ],
+          "status": null
+        },
+        {
+          "i": 1,
+          "ok": false,
+          "claimed": false,
+          "errors": [
+            "该审批已被 specialist-3@2026-10-11 14:56:53 处理中，请勿重复提交"
+          ],
+          "status": null
+        },
+        {
+          "i": 3,
+          "ok": true,
+          "claimed": true,
+          "errors": null,
+          "status": "paused"
+        }
+      ],
+      "accepted": 1,
+      "rejected": 3
+    },
+    "D_modify": {
+      "submit": {
+        "ok": true,
+        "run_id": "wf_run_0ad1c18f91d0",
+        "status": "paused",
+        "risk_level": "high",
+        "doc_id": "9f15c6419d2b",
+        "paused": {
+          "role": "specialist",
+          "question": "【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+          "todo_id": "todo_4bc8313a3c",
+          "todo_created": true
+        },
+        "state": {
+          "overall_risk_level": "high",
+          "specialist_note": null,
+          "supervisor_note": null
+        }
+      },
+      "modify": {
+        "ok": true,
+        "claimed": true,
+        "run_id": "wf_run_0ad1c18f91d0",
+        "decision": "modify",
+        "status": "paused",
+        "paused": {
+          "role": "specialist",
+          "question": "【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+          "todo_id": "todo_b421398590",
+          "todo_created": true
+        },
+        "final_state": {
+          "overall_risk_level": "high",
+          "specialist_note": "modify",
+          "supervisor_note": null
+        }
+      },
+      "confirm": {
+        "ok": true,
+        "claimed": true,
+        "run_id": "wf_run_0ad1c18f91d0",
+        "decision": "confirm",
+        "status": "paused",
+        "paused": {
+          "role": "supervisor",
+          "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
+          "todo_id": "todo_6417762a9d",
+          "todo_created": true
+        },
+        "final_state": {
+          "overall_risk_level": "high",
+          "specialist_note": "confirm",
+          "supervisor_note": null
+        }
+      },
+      "supervisor": {
+        "ok": true,
+        "claimed": true,
+        "run_id": "wf_run_0ad1c18f91d0",
+        "decision": "approve",
+        "status": "completed",
+        "paused": null,
+        "final_state": {
+          "overall_risk_level": "high",
+          "specialist_note": "confirm",
+          "supervisor_note": null
+        }
+      },
+      "status": {
+        "ok": true,
+        "run_id": "wf_run_0ad1c18f91d0",
+        "status": "paused",
+        "error": null,
+        "risk_level": "high",
+        "doc_id": "9f15c6419d2b",
+        "specialist_note": "modify",
+        "supervisor_note": null,
+        "decision_summary": "合同 9f15c6419d2b｜解析档位 native｜置信度 0.9｜条款 5 条，风险条款 3 条，整体等级 high｜命中规则 RR-001,RR-003,RR-004,RR-005",
+        "hit_rule_ids": [
+          "RR-001",
+          "RR-003",
+          "RR-004",
+          "RR-005"
+        ],
+        "claim": {
+          "claimed_by": null,
+          "claimed_at": null
+        },
+        "todos": [
+          {
+            "todo_id": "todo_4bc8313a3c",
+            "run_id": "wf_run_0ad1c18f91d0",
+            "workflow_id": "compliance_review",
+            "node_name": "need_human",
+            "role_required": "specialist",
+            "title": "待审：【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify",
+            "summary": "【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。 | 处理意见: 要求重新标注收益条款",
+            "payload_json": "{\"kind\": \"need_human\", \"run_id\": \"wf_run_0ad1c18f91d0\", \"question\": \"【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。\", \"handler\": \"interactive\"}",
+            "status": "done",
+            "claimed_by": null,
+            "claimed_at": null,
+            "decided_by": "specialist-li",
+            "decided_at": "2026-10-11 14:56:53",
+            "decision": "modify",
+            "idempotency_key": "wf_run_0ad1c18f91d0:need_human:specialist",
+            "trace_id": "trace-wf_run_0ad1c18f91d0",
+            "created_at": "2026-10-11 14:56:53",
+            "due_at": null,
+            "updated_at": "2026-10-11 14:56:53",
+            "seq": null
+          },
+          {
+            "todo_id": "todo_b421398590",
+            "run_id": "wf_run_0ad1c18f91d0",
+            "workflow_id": "compliance_review",
+            "node_name": "human",
+            "role_required": "specialist",
+            "title": "待审：【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify",
+            "summary": "【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+            "payload_json": "{\"kind\": \"need_human\", \"run_id\": \"wf_run_0ad1c18f91d0\", \"question\": \"【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。\", \"handler\": \"interactive\"}",
+            "status": "open",
+            "claimed_by": null,
+            "claimed_at": null,
+            "decided_by": null,
+            "decided_at": null,
+            "decision": null,
+            "idempotency_key": "wf_run_0ad1c18f91d0:human:specialist:1",
+            "trace_id": "trace-wf_run_0ad1c18f91d0",
+            "created_at": "2026-10-11 14:56:53",
+            "due_at": null,
+            "updated_at": "2026-10-11 14:56:53",
+            "seq": null
+          }
+        ],
+        "audit": [
+          {
+            "audit_id": "aud_aa75762db4",
+            "run_id": "wf_run_0ad1c18f91d0",
+            "todo_id": null,
+            "event": "review_submitted",
+            "actor": "oa-bot",
+            "role": "",
+            "detail_json": "{\"doc_id\": \"9f15c6419d2b\", \"risk_level\": \"high\", \"rules\": [\"RR-001\", \"RR-003\", \"RR-004\", \"RR-005\"], \"rule_table_digest\": \"1d48a8faca9d\"}",
+            "trace_id": "trace-wf_run_0ad1c18f91d0",
+            "created_at": "2026-10-11 14:56:53",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_a34e93acb7",
+            "run_id": "wf_run_0ad1c18f91d0",
+            "todo_id": "todo_4bc8313a3c",
+            "event": "todo_created",
+            "actor": "system",
+            "role": "",
+            "detail_json": "{\"todo_id\": \"todo_4bc8313a3c\", \"node\": \"need_human\", \"role\": \"specialist\"}",
+            "trace_id": "trace-wf_run_0ad1c18f91d0",
+            "created_at": "2026-10-11 14:56:53",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_b471e67c54",
+            "run_id": "wf_run_0ad1c18f91d0",
+            "todo_id": null,
+            "event": "human_decision",
+            "actor": "specialist-li",
+            "role": "specialist",
+            "detail_json": "{\"run_id\": \"wf_run_0ad1c18f91d0\", \"decision\": \"modify\", \"actor\": \"specialist-li\", \"role\": \"specialist\", \"note\": \"要求重新标注收益条款\"}",
+            "trace_id": "trace-wf_run_0ad1c18f91d0",
+            "created_at": "2026-10-11 14:56:53",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_946c788751",
+            "run_id": "wf_run_0ad1c18f91d0",
+            "todo_id": "todo_4bc8313a3c",
+            "event": "todo_completed",
+            "actor": "specialist-li",
+            "role": "specialist",
+            "detail_json": "{\"todo_id\": \"todo_4bc8313a3c\", \"decision\": \"modify\", \"note\": \"要求重新标注收益条款\"}",
+            "trace_id": "",
+            "created_at": "2026-10-11 14:56:53",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_49596f524d",
+            "run_id": "wf_run_0ad1c18f91d0",
+            "todo_id": null,
+            "event": "reannotated",
+            "actor": "specialist-li",
+            "role": "",
+            "detail_json": "{\"risk_level\": \"high\", \"rules\": [\"RR-001\", \"RR-003\", \"RR-004\", \"RR-005\"]}",
+            "trace_id": "trace-wf_run_0ad1c18f91d0",
+            "created_at": "2026-10-11 14:56:53",
+            "seq": null
+          },
+          {
+            "audit_id": "aud_cc766dd196",
+            "run_id": "wf_run_0ad1c18f91d0",
+            "todo_id": "todo_b421398590",
+            "event": "todo_created",
+            "actor": "system",
+            "role": "",
+            "detail_json": "{\"todo_id\": \"todo_b421398590\", \"node\": \"human\", \"role\": \"specialist\"}",
+            "trace_id": "trace-wf_run_0ad1c18f91d0",
+            "created_at": "2026-10-11 14:56:53",
+            "seq": null
+          }
+        ]
+      }
+    },
+    "E_multiprocess": {
+      "run_id": "wf_run_74ac4a343daf",
+      "accepted": 1,
+      "all_healthy": true,
+      "outs": [
+        {
+          "rc": 0,
+          "timeout": false,
+          "parsed": {
+            "accepted": true,
+            "errors": null,
+            "status": "paused"
+          },
+          "out": "{\"accepted\": true, \"errors\": null, \"status\": \"paused\"}"
+        },
+        {
+          "rc": 0,
+          "timeout": false,
+          "parsed": {
+            "accepted": false,
+            "errors": [
+              "该审批已被 mp-0@2026-10-11 14:57:05 处理中，请勿重复提交"
+            ],
+            "status": null
+          },
+          "out": "{\"accepted\": false, \"errors\": [\"该审批已被 mp-0@2026-10-11 14:57:05 处理中，请勿重复提交\"], \"status\": null}"
+        }
+      ]
+    },
+    "F_startup": {
+      "recovery": {
+        "pending_runs": 100,
+        "notified": [
+          {
+            "run_id": "wf_run_2c30e394c72e",
+            "role": "specialist",
+            "todo_id": "todo_2734d345fc"
+          },
+          {
+            "run_id": "wf_run_d4d683f620ea",
+            "role": "specialist",
+            "todo_id": "todo_9b741ced45"
+          },
+          {
+            "run_id": "wf_run_663407dafbe1",
+            "role": "specialist",
+            "todo_id": "todo_7b2c7f882a"
+          }
+        ],
+        "skipped": [
+          {
+            "run_id": "wf_run_74ac4a343daf",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_50c3dba77632",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_0858f126cd70",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_f56c86ba5a1e",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_c12d7d40cf6c",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_326b7dbf999f",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_a0a63995771f",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_6b971f8034da",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_b8076a6e759c",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_a8eef06f7134",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_d7146a89d9d8",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_b418fe1db4ac",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_784bdb9616b1",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_bdcbfa2bd670",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_9a34437ff178",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_77bac95c3637",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_9f0cbe6b1371",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_749ab69fd8e7",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_be87b407e071",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_3efe9bd4aa42",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_1034d4803d7c",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_93890561cd24",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_6e36e5d93afc",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_c88d94be445e",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_b13503ffe7ba",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_673f62784df3",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_65258b83e130",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_5e43ac060e96",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_264b2994f14a",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_8ffcc22b447f",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_c80fbe601133",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_cc386ed2ad39",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_53a8e3d8a669",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_fac85bef4093",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_8359d57cd625",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_23dc9fc3c40e",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_2b314d911f4e",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_41a84e935403",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_c7a01515fc85",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_b3c487da5718",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_4d5c79672c14",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_02f6a3560182",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_f2c20d7e523d",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_eabc43885288",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_bd266a1cae10",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_e007e6389d3c",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_51784c2c16fe",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_a4710833926a",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_f064f23378a1",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_5d80906f8c22",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_ff594401d559",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_af10ac0082ce",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_63f90315cb7d",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_34ad4a1eb3fe",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_cc4ac7030743",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_93cbd94e53e5",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_9814c7a50209",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_1c6f9f3e6846",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_69dd0320ccc2",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_4bd8f22259d1",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_dd4ac4cd3891",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_9b1ddb53c8e1",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_1f9b345d7d10",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_86f30b98eb22",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_027f909f5603",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_d2a458f37a40",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_d3512521b027",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_550b4ecca99f",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_feaa568b9633",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_d9085a07dbb8",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_c864063e9469",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_bb567ed73e68",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_e3788e24efb6",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_5e14eaefa692",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_c6a4786d4f27",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_22e0f9e4dd76",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_709007df2438",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_5ff644a2eaca",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_37b1cce5b0ac",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_d716b31f8555",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_d109a516fc82",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_2d7809c99a0e",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_f4385239cd60",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_a2373eb65b24",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_88428da8e14b",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_19d89c4b8ad4",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_1468d3971342",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_bb855ca994a9",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_1fcb181888e1",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_ad4a85d911af",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_1bd2b2327483",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_1b684a772b5d",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_1b813e28db0a",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_1c77e07a0c3b",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_6e3ec0ac98c7",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_fb7612f2369c",
+            "reason": "已有待办"
+          },
+          {
+            "run_id": "wf_run_95464a6d8f9d",
+            "reason": "已有待办"
+          }
+        ],
+        "released_stale_claims": [],
+        "at": "2026-10-11 14:57:08"
+      },
+      "rebuilt": [
+        {
+          "run_id": "wf_run_2c30e394c72e",
+          "role": "specialist",
+          "todo_id": "todo_2734d345fc"
+        }
+      ],
+      "status": {
+        "status": "paused",
+        "risk_level": "mid"
+      }
+    }
+  },
+  "capability_service": {
+    "started_by_this_run": false,
+    "pid": 60980,
+    "health": {
+      "status": "running",
+      "server": "compliance-officer",
+      "version": "0.2.0",
+      "sessions": 1,
+      "stats": {
+        "initialize": 1,
+        "tools_list": 1,
+        "tools_call": 0,
+        "call_names": {},
+        "errors": 0
+      }
+    }
+  },
+  "compiled": {
+    "workflow_id": "compliance_review",
+    "version": 2118,
+    "capability_service": {
+      "status": "running",
+      "server": "compliance-officer",
+      "version": "0.2.0",
+      "sessions": 1,
+      "stats": {
+        "initialize": 1,
+        "tools_list": 1,
+        "tools_call": 0,
+        "call_names": {},
+        "errors": 0
+      }
+    }
+  },
+  "metrics": {
+    "todo_total": 1114,
+    "todo_done": 374,
+    "todo_open": 740,
+    "todo_claimed": 0,
+    "human_todo_completion_rate": 0.3357,
+    "human_todo_per_finished_run": 2.9786,
+    "by_decision": {
+      "approve": 132,
+      "cancelled": 14,
+      "confirm": 146,
+      "modify": 34,
+      "reject": 30,
+      "reject_supervisor": 18
+    },
+    "by_role": {
+      "specialist": 882,
+      "supervisor": 232
+    },
+    "reject_reason_samples": [
+      "该条款未约定续约通知义务，属重大遗漏",
+      "合同约定自动续约但未约定通知义务，存在续约争议与费用风险",
+      "先观察误报率，暂不入库",
+      "合同约定自动续约但未约定通知义务，存在续约争议与费用风险",
+      "等级判断分歧：认为最终解释权应为高风险",
+      "同一问题再次出现",
+      "并发审批测试用的独立规则",
+      "主管认为该模式误报率高",
+      "合同约定自动续约但未约定通知义务，存在续约争议与费用风险",
+      "该条款未约定续约通知义务，属重大遗漏"
+    ],
+    "generated_at": "2026-10-11 14:57:08",
+    "ok": true,
+    "rule_table_digest": "1d48a8faca9d",
+    "regulation_count": 54,
+    "pending_runs": 100
+  },
+  "cleanup": {
+    "requested_runs": 6,
+    "deleted": {
+      "compliance_audit": 36,
+      "compliance_todo": 10,
+      "writes": 111,
+      "checkpoints": 39,
+      "workflow_runs": 6
+    },
+    "notes": []
+  },
+  "checks": {
+    "P4_compiled_with_capability_service": {
+      "pass": true,
+      "detail": {
+        "workflow_id": "compliance_review",
+        "version": 2118,
+        "capability_service": {
+          "status": "running",
+          "server": "compliance-officer",
+          "version": "0.2.0",
+          "sessions": 1,
+          "stats": {
+            "initialize": 1,
+            "tools_list": 1,
+            "tools_call": 0,
+            "call_names": {},
+            "errors": 0
+          }
+        }
+      }
+    },
+    "A_low_auto_archive": {
+      "pass": true,
+      "detail": {
+        "status": "completed",
+        "risk": "low",
+        "paused": null,
+        "audit_events": [
+          "review_submitted",
+          "review_archived"
+        ]
+      }
+    },
+    "B_todo_closed_loop": {
+      "pass": true,
+      "detail": {
+        "paused_role": "specialist",
+        "sp_todo": 1,
+        "dec1": {
+          "ok": true,
+          "status": "paused"
+        },
+        "sv_todo": 1,
+        "dec2": {
+          "ok": true,
+          "status": "completed"
+        }
+      }
+    },
+    "B_audit_chain": {
+      "pass": true,
+      "detail": {
+        "events": [
+          "review_submitted",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "review_archived"
+        ]
+      }
+    },
+    "B_role_permission_enforced": {
+      "pass": true,
+      "detail": {
+        "denied_when_supervisor_node_waiting": true,
+        "ok": false,
+        "errors": [
+          "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 approve 属于角色 supervisor。请联系对应的审批人处理。"
+        ],
+        "run_status_after_deny": null
+      }
+    },
+    "C_concurrent_single_accept": {
+      "pass": true,
+      "detail": {
+        "accepted": 1,
+        "rejected": 3,
+        "reject_msgs": [
+          [
+            "该审批已被 specialist-3@2026-10-11 14:56:53 处理中，请勿重复提交"
+          ],
+          [
+            "该审批已被 specialist-3@2026-10-11 14:56:53 处理中，请勿重复提交"
+          ],
+          [
+            "该审批已被 specialist-3@2026-10-11 14:56:53 处理中，请勿重复提交"
+          ]
+        ]
+      }
+    },
+    "D_modify_reannotates": {
+      "pass": true,
+      "detail": {
+        "modify_status": "paused",
+        "events": [
+          "review_submitted",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "reannotated",
+          "todo_created"
+        ],
+        "final": "completed"
+      }
+    },
+    "E_multiprocess_single_accept": {
+      "pass": true,
+      "detail": {
+        "processes": 2,
+        "accepted": 1,
+        "all_healthy": true,
+        "rejects_explained": true,
+        "outs": [
+          {
+            "rc": 0,
+            "timeout": false,
+            "parsed": {
+              "accepted": true,
+              "errors": null,
+              "status": "paused"
+            }
+          },
+          {
+            "rc": 0,
+            "timeout": false,
+            "parsed": {
+              "accepted": false,
+              "errors": [
+                "该审批已被 mp-0@2026-10-11 14:57:05 处理中，请勿重复提交"
+              ],
+              "status": null
+            }
+          }
+        ]
+      }
+    },
+    "F_startup_recovery_notifies": {
+      "pass": true,
+      "detail": {
+        "rebuilt": [
+          {
+            "run_id": "wf_run_2c30e394c72e",
+            "role": "specialist",
+            "todo_id": "todo_2734d345fc"
+          }
+        ],
+        "events": [
+          "review_submitted",
+          "todo_created",
+          "todo_created",
+          "notified_on_startup"
+        ],
+        "pending_total": 100
+      }
+    },
+    "G_metrics_available": {
+      "pass": true,
+      "detail": {
+        "todo_total": 1114,
+        "pending_runs": 100,
+        "by_decision": {
+          "approve": 132,
+          "cancelled": 14,
+          "confirm": 146,
+          "modify": 34,
+          "reject": 30,
+          "reject_supervisor": 18
+        },
+        "this_run_pending_todo": [
+          "wf_run_2c30e394c72e"
+        ]
+      }
+    }
+  },
+  "problems": [],
+  "passed": 10,
+  "total": 10,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:57:08",
+  "paths": {
+    "project_root": "D:\\Project_Experience2.0\\项目三\\compliance_officer",
+    "runtime": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime",
+    "workspace": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace",
+    "lemonclaw_dir": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\.lemonclaw",
+    "framework": "D:\\Project_Experience2.0\\项目三\\lemonclaw-main",
+    "db": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\.lemonclaw\\lemonclaw.db"
+  }
+}

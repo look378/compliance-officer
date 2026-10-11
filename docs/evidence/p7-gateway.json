@@ -1,0 +1,248 @@
+{
+  "flow": "P7-gateway",
+  "started_at": "2026-10-11 15:18:41",
+  "cases": {},
+  "services": {
+    "capability": "already-running",
+    "mock": "already-running",
+    "gateway": "already-running"
+  },
+  "checks": {
+    "A_health_ok": {
+      "pass": true,
+      "detail": {
+        "code": 200,
+        "status": "running",
+        "capability_service_ready": true,
+        "orchestrator_ready": false,
+        "auth_mode": "demo"
+      }
+    },
+    "B_submit_returns_run_and_risk": {
+      "pass": true,
+      "detail": {
+        "low": {
+          "run_id": "wf_run_a52991e5f906",
+          "status": "completed",
+          "risk_level": "low"
+        },
+        "mid": {
+          "run_id": "wf_run_0fa0467c608f",
+          "status": "paused",
+          "risk_level": "mid",
+          "paused": {
+            "role": "specialist",
+            "question": "【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+            "todo_id": "todo_0a072a0d10",
+            "todo_created": true
+          }
+        }
+      }
+    },
+    "C_pending_visible_for_role": {
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "matched": 1
+      }
+    },
+    "D1_first_decision_accepted": {
+      "pass": true,
+      "detail": {
+        "code": 200
+      }
+    },
+    "D2_concurrent_only_one_effective": {
+      "pass": true,
+      "detail": {
+        "accepted": 0,
+        "conflict_409": 4,
+        "codes": [
+          409,
+          409,
+          409,
+          409
+        ],
+        "details": [
+          [
+            "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 confirm 属于角色 specialist。请联系对应的审批人处理。"
+          ],
+          [
+            "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 confirm 属于角色 specialist。请联系对应的审批人处理。"
+          ]
+        ]
+      }
+    },
+    "D3_supervisor_completes_run": {
+      "pass": true,
+      "detail": {
+        "code": 200,
+        "status": "completed",
+        "detail": null,
+        "state_before": {
+          "status": "paused",
+          "specialist_note": "confirm",
+          "supervisor_note": null
+        }
+      }
+    },
+    "E1_missing_token_401": {
+      "pass": true,
+      "detail": {
+        "code": 401
+      }
+    },
+    "E2_role_violation_403": {
+      "pass": true,
+      "detail": {
+        "code": 403,
+        "detail": {
+          "error": "角色 specialist 无权限：system:recover",
+          "allowed_roles": [
+            "admin"
+          ]
+        }
+      }
+    },
+    "E3_admin_allowed": {
+      "pass": true,
+      "detail": {
+        "code": 200
+      }
+    },
+    "F1_metrics": {
+      "pass": true,
+      "detail": {
+        "todo_total": 2,
+        "pending_runs": 0
+      }
+    },
+    "F2_proposals": {
+      "pass": true,
+      "detail": {
+        "count": 121
+      }
+    },
+    "G_sse_stream_works": {
+      "pass": true,
+      "detail": {
+        "events": [
+          "audit",
+          "audit",
+          "status",
+          "done"
+        ]
+      }
+    }
+  },
+  "problems": [],
+  "passed": 12,
+  "total": 12,
+  "verdict": "PASS",
+  "responses": {
+    "low": {
+      "ok": true,
+      "run_id": "wf_run_a52991e5f906",
+      "status": "completed",
+      "risk_level": "low",
+      "doc_id": "4158cd428e26",
+      "paused": null,
+      "state": {
+        "overall_risk_level": "low",
+        "specialist_note": null,
+        "supervisor_note": null
+      }
+    },
+    "mid": {
+      "ok": true,
+      "run_id": "wf_run_0fa0467c608f",
+      "status": "paused",
+      "risk_level": "mid",
+      "doc_id": "a4e58f2613a2",
+      "paused": {
+        "role": "specialist",
+        "question": "【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+        "todo_id": "todo_0a072a0d10",
+        "todo_created": true
+      },
+      "state": {
+        "overall_risk_level": "mid",
+        "specialist_note": null,
+        "supervisor_note": null
+      }
+    },
+    "decide": {
+      "ok": true,
+      "claimed": true,
+      "run_id": "wf_run_0fa0467c608f",
+      "decision": "confirm",
+      "status": "paused",
+      "paused": {
+        "role": "supervisor",
+        "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
+        "todo_id": "todo_6f9b55d4f5",
+        "todo_created": true
+      },
+      "final_state": {
+        "overall_risk_level": "mid",
+        "specialist_note": "confirm",
+        "supervisor_note": null
+      }
+    },
+    "supervisor": {
+      "ok": true,
+      "claimed": true,
+      "run_id": "wf_run_0fa0467c608f",
+      "decision": "approve",
+      "status": "completed",
+      "paused": null,
+      "final_state": {
+        "overall_risk_level": "mid",
+        "specialist_note": "confirm",
+        "supervisor_note": null
+      }
+    },
+    "concurrent": [
+      {
+        "i": 0,
+        "code": 409,
+        "ok": false,
+        "detail": [
+          "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 confirm 属于角色 specialist。请联系对应的审批人处理。"
+        ]
+      },
+      {
+        "i": 2,
+        "code": 409,
+        "ok": false,
+        "detail": [
+          "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 confirm 属于角色 specialist。请联系对应的审批人处理。"
+        ]
+      },
+      {
+        "i": 3,
+        "code": 409,
+        "ok": false,
+        "detail": [
+          "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 confirm 属于角色 specialist。请联系对应的审批人处理。"
+        ]
+      },
+      {
+        "i": 1,
+        "code": 409,
+        "ok": false,
+        "detail": [
+          "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 confirm 属于角色 specialist。请联系对应的审批人处理。"
+        ]
+      }
+    ],
+    "recover_admin": {
+      "pending_runs": 0,
+      "notified": [],
+      "skipped": [],
+      "released_stale_claims": [],
+      "at": "2026-10-11 15:18:53"
+    }
+  },
+  "finished_at": "2026-10-11 15:18:53"
+}

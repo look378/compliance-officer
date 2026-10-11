@@ -1,0 +1,89 @@
+{
+  "gate": "G6",
+  "started_at": "2026-10-11 14:55:21",
+  "group_A_no_claim": {
+    "run_id": "wf_run_57e9f47a1827",
+    "attempts": 4,
+    "accepted": 4,
+    "rejected": 0,
+    "raw": [
+      {
+        "thread": 0,
+        "result": {
+          "status": "resuming"
+        }
+      },
+      {
+        "thread": 1,
+        "result": {
+          "status": "resuming"
+        }
+      },
+      {
+        "thread": 2,
+        "result": {
+          "status": "resuming"
+        }
+      },
+      {
+        "thread": 3,
+        "result": {
+          "status": "resuming"
+        }
+      }
+    ],
+    "run_status_after": "completed",
+    "note": "accepted > 1 即证明存在竞态窗口（多个请求都通过了 paused 检查）"
+  },
+  "group_B_atomic_claim": {
+    "run_id": "wf_run_663407dafbe1",
+    "attempts": 4,
+    "accepted": 1,
+    "rejected": 3,
+    "raw": [
+      {
+        "thread": 2,
+        "outcome": "rejected(已被其他审批人占用)"
+      },
+      {
+        "thread": 3,
+        "outcome": "rejected(已被其他审批人占用)"
+      },
+      {
+        "thread": 0,
+        "outcome": "rejected(已被其他审批人占用)"
+      },
+      {
+        "thread": 1,
+        "outcome": "accepted",
+        "runner_status": "completed"
+      }
+    ],
+    "run_status_after": "paused",
+    "note": "accepted == 1 即证明原子抢占有效"
+  },
+  "group_C_multiprocess": {
+    "run_id": "wf_run_d4d683f620ea",
+    "processes": 2,
+    "accepted": 1,
+    "raw": [
+      {
+        "rc": 0,
+        "out": "{\"accepted\": false, \"reason\": \"已被其他进程占用\"}"
+      },
+      {
+        "rc": 0,
+        "out": "MCP 服务 compliance 连接失败: HTTP 502: \n{\"accepted\": true, \"runner_status\": \"completed\"}"
+      }
+    ],
+    "run_status_after": "paused"
+  },
+  "verdicts": {
+    "A_race_observed": true,
+    "B_claim_enforces_single": true,
+    "C_multiprocess_single": true
+  },
+  "verdict": "PASS",
+  "conclusion": "框架原生的 resume_run 在并发下会被多个请求同时接受（竞态真实存在）；本项目在自身代码里用「状态原子抢占」把并发恢复收敛为一次生效。该机制须在 P4 正式接入统一待办队列的服务端恢复路径。",
+  "finished_at": "2026-10-11 14:56:00"
+}

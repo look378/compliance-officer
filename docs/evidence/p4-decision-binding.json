@@ -1,0 +1,195 @@
+{
+  "check": "P4+-decision-binding",
+  "started_at": "2026-10-11 14:56:02",
+  "capability_service": "started",
+  "run_id": "wf_run_240f066a31e5",
+  "submit": {
+    "ok": true,
+    "status": "paused",
+    "risk_level": "high"
+  },
+  "cross_node_decision": {
+    "ok": false,
+    "conflict": true,
+    "errors": [
+      "决策与当前等待节点不匹配：run 正等待 specialist_review（角色 specialist），而 approve 属于角色 supervisor。请联系对应的审批人处理。"
+    ],
+    "pending_node": "specialist_review",
+    "pending_role": "specialist"
+  },
+  "update_state_semantics": {
+    "next_before": [
+      "specialist_review"
+    ],
+    "next_after": [
+      "specialist_review"
+    ],
+    "decision_visible": "pending",
+    "note": "仅写 detail_decision（非人工节点输出字段）"
+  },
+  "specialist_confirm": {
+    "ok": true,
+    "status": "paused",
+    "decision": "confirm",
+    "paused": {
+      "role": "supervisor",
+      "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
+      "todo_id": "todo_05ed59a9b2",
+      "todo_created": true
+    }
+  },
+  "state_after_confirm": {
+    "specialist_note": "confirm",
+    "supervisor_note": null,
+    "status": "paused"
+  },
+  "reverse_cross_node": {
+    "ok": false,
+    "conflict": true,
+    "errors": [
+      "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 confirm 属于角色 specialist。请联系对应的审批人处理。"
+    ],
+    "pending_node": "supervisor_verify",
+    "pending_role": "supervisor"
+  },
+  "supervisor_reject": {
+    "ok": true,
+    "status": "completed",
+    "decision": "reject_supervisor",
+    "errors": null
+  },
+  "audit_cursor": {
+    "events_seen": [
+      "review_submitted",
+      "todo_created",
+      "human_decision",
+      "todo_completed",
+      "todo_created",
+      "human_decision",
+      "todo_completed",
+      "review_archived"
+    ],
+    "after_cursor": [],
+    "total_in_db": 8
+  },
+  "checks": {
+    "submit_paused_at_specialist": {
+      "pass": true,
+      "detail": {
+        "status": "paused",
+        "risk": "high"
+      }
+    },
+    "cross_node_decision_rejected": {
+      "pass": true,
+      "detail": {
+        "errors": [
+          "决策与当前等待节点不匹配：run 正等待 specialist_review（角色 specialist），而 approve 属于角色 supervisor。请联系对应的审批人处理。"
+        ],
+        "pending_node": "specialist_review"
+      }
+    },
+    "cross_node_decision_did_not_advance": {
+      "pass": true,
+      "detail": {
+        "status": "paused",
+        "supervisor_note": null
+      }
+    },
+    "update_state_keeps_waiting_node": {
+      "pass": true,
+      "detail": {
+        "next_before": [
+          "specialist_review"
+        ],
+        "next_after": [
+          "specialist_review"
+        ],
+        "decision_visible": "pending",
+        "note": "仅写 detail_decision（非人工节点输出字段）"
+      }
+    },
+    "specialist_confirm_ok": {
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "paused",
+        "decision": "confirm",
+        "paused": {
+          "role": "supervisor",
+          "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
+          "todo_id": "todo_05ed59a9b2",
+          "todo_created": true
+        }
+      }
+    },
+    "specialist_confirm_moves_to_supervisor": {
+      "pass": true,
+      "detail": {
+        "paused": {
+          "role": "supervisor",
+          "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
+          "todo_id": "todo_05ed59a9b2",
+          "todo_created": true
+        }
+      }
+    },
+    "specialist_note_records_confirm": {
+      "pass": true,
+      "detail": {
+        "specialist_note": "confirm",
+        "supervisor_note": null,
+        "status": "paused"
+      }
+    },
+    "supervisor_note_not_forged": {
+      "pass": true,
+      "detail": {
+        "supervisor_note": null
+      }
+    },
+    "reverse_cross_node_rejected": {
+      "pass": true,
+      "detail": {
+        "errors": [
+          "决策与当前等待节点不匹配：run 正等待 supervisor_verify（角色 supervisor），而 confirm 属于角色 specialist。请联系对应的审批人处理。"
+        ],
+        "pending_node": "supervisor_verify"
+      }
+    },
+    "supervisor_reject_now_works": {
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "status": "completed",
+        "decision": "reject_supervisor",
+        "errors": null
+      }
+    },
+    "audit_cursor_no_loss": {
+      "pass": true,
+      "detail": {
+        "events": [
+          "human_decision",
+          "review_archived",
+          "review_submitted",
+          "todo_completed",
+          "todo_created"
+        ]
+      }
+    },
+    "audit_cursor_no_duplicate": {
+      "pass": true,
+      "detail": {
+        "pushed": 8,
+        "unique": 8,
+        "total_in_db": 8
+      }
+    }
+  },
+  "problems": [],
+  "passed": 12,
+  "total": 12,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:56:16"
+}

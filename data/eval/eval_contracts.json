@@ -1,0 +1,206 @@
+{
+  "description": "合规审查评测集（P7）。每份合同给出：doc_type（标准答案）、带表格标记、预埋风险（含期望规则ID与最低等级）、干净条款数。评测脚本按用例逐条比对，并对表格抽取单独统计。",
+  "labeling_rules": [
+    "预埋风险：人工植入、期望被规则命中的条款；expect_rule_ids 为期望命中的规则编号",
+    "purity：该合同是否只包含预埋风险（true）或还混有干净条款（false，用于观察误报）",
+    "doc_type_evidence：判断合同类型的可核验线索（关键词），评测脚本据此判定 doc_type 是否可自动识别"
+  ],
+  "contracts": [
+    {
+      "contract_id": "EV-001", "doc_type": "金融销售", "has_table": true, "purity": true,
+      "doc_type_evidence": ["保险", "投保人", "人身保险"],
+      "clauses": [
+        "本产品保本，年化收益不低于 5%，投资无风险。",
+        "投保人签署本确认书即视为已充分理解产品收益的不确定性。"
+      ],
+      "expect_rule_ids": ["RR-001"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-002", "doc_type": "金融销售", "has_table": false, "purity": true,
+      "doc_type_evidence": ["保险", "投保人"],
+      "clauses": ["本公司保证固定收益，到期按年化 6% 兑付，收益写进合同附件。"],
+      "expect_rule_ids": ["RR-002"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-003", "doc_type": "合同通则", "has_table": false, "purity": true,
+      "doc_type_evidence": ["甲方", "乙方", "合同"],
+      "clauses": ["本协议最终解释权归甲方所有。"],
+      "expect_rule_ids": ["RR-003"], "expect_min_level": "mid"
+    },
+    {
+      "contract_id": "EV-004", "doc_type": "劳动用工", "has_table": false, "purity": true,
+      "doc_type_evidence": ["劳动合同", "乙方", "甲方"],
+      "clauses": ["乙方月工作时长不超过 280 小时，甲方可安排加班。"],
+      "expect_rule_ids": ["RR-005"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-005", "doc_type": "数据合规", "has_table": false, "purity": true,
+      "doc_type_evidence": ["个人信息", "数据处理", "用户"],
+      "clauses": ["甲方收集乙方个人信息无需取得同意，亦无需另行授权。"],
+      "expect_rule_ids": ["RR-008"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-006", "doc_type": "合同通则", "has_table": false, "purity": true,
+      "doc_type_evidence": ["甲方", "乙方", "解除"],
+      "clauses": ["甲方有权无条件解除本合同，乙方不得提出异议。"],
+      "expect_rule_ids": ["RR-004"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-007", "doc_type": "采购", "has_table": true, "purity": true,
+      "doc_type_evidence": ["采购", "供应商", "验收"],
+      "clauses": ["乙方违反交付义务的，违约金为合同总额的 50%。"],
+      "expect_rule_ids": ["RR-006"], "expect_min_level": "mid"
+    },
+    {
+      "contract_id": "EV-008", "doc_type": "租赁", "has_table": false, "purity": true,
+      "doc_type_evidence": ["租赁", "出租", "承租"],
+      "clauses": ["本合同到期后自动续约，无需另行通知乙方。"],
+      "expect_rule_ids": ["RR-007"], "expect_min_level": "low"
+    },
+    {
+      "contract_id": "EV-009", "doc_type": "金融销售", "has_table": true, "purity": false,
+      "doc_type_evidence": ["保险", "投保人", "费率"],
+      "clauses": [
+        "本产品保本，年化收益不低于 4%。",
+        "投保人应在收到保单之日起十五日内完成保费缴纳。",
+        "本产品最终解释权归本公司所有。"
+      ],
+      "expect_rule_ids": ["RR-001", "RR-003"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-010", "doc_type": "劳动用工", "has_table": true, "purity": false,
+      "doc_type_evidence": ["劳动合同", "乙方", "工资"],
+      "clauses": [
+        "乙方月工作时长不超过 300 小时，超出部分按 1.5 倍计薪。",
+        "甲方按月支付乙方工资，支付日为次月十五日。",
+        "甲方有权无条件终止本合同，无需支付经济补偿。"
+      ],
+      "expect_rule_ids": ["RR-005", "RR-004"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-011", "doc_type": "数据合规", "has_table": true, "purity": false,
+      "doc_type_evidence": ["个人信息", "数据处理", "委托"],
+      "clauses": [
+        "甲方收集用户数据不需取得授权，可直接用于商业分析。",
+        "受托方应按甲方要求完成数据处理并定期反馈。",
+        "本协议最终解释权归甲方所有。"
+      ],
+      "expect_rule_ids": ["RR-008", "RR-003"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-012", "doc_type": "采购", "has_table": true, "purity": false,
+      "doc_type_evidence": ["采购", "供应商", "验收"],
+      "clauses": [
+        "供应商逾期交付的，违约金为合同总额的 40%。",
+        "采购人应在验收合格后 30 日内支付合同价款。",
+        "本合同到期后自动顺延一年。"
+      ],
+      "expect_rule_ids": ["RR-006", "RR-007"], "expect_min_level": "mid"
+    },
+    {
+      "contract_id": "EV-013", "doc_type": "租赁", "has_table": false, "purity": true,
+      "doc_type_evidence": ["租赁", "出租", "承租"],
+      "clauses": ["甲方有权无条件解除本租赁合同，承租人应无条件搬离。"],
+      "expect_rule_ids": ["RR-004"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-014", "doc_type": "金融销售", "has_table": false, "purity": true,
+      "doc_type_evidence": ["保险", "投保人"],
+      "clauses": ["销售人员向投保人承诺保本，并保证收益不低于同期理财产品。"],
+      "expect_rule_ids": ["RR-001", "RR-002"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-015", "doc_type": "劳动用工", "has_table": true, "purity": false,
+      "doc_type_evidence": ["劳动合同", "乙方", "保密"],
+      "clauses": [
+        "乙方违反保密义务的，违约金为合同总额的 30%。",
+        "乙方应遵守甲方依法制定的规章制度。",
+        "本合同的最终解释权归甲方人力资源部所有。"
+      ],
+      "expect_rule_ids": ["RR-006", "RR-003"], "expect_min_level": "mid"
+    },
+    {
+      "contract_id": "EV-016", "doc_type": "合同通则", "has_table": false, "purity": true,
+      "doc_type_evidence": ["甲方", "乙方", "争议"],
+      "clauses": ["甲方可在任何时候无条件终止本协议，且无需说明理由。"],
+      "expect_rule_ids": ["RR-004"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-017", "doc_type": "数据合规", "has_table": false, "purity": true,
+      "doc_type_evidence": ["个人信息", "用户", "授权"],
+      "clauses": ["甲方处理用户个人信息不必取得用户同意。"],
+      "expect_rule_ids": ["RR-008"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-018", "doc_type": "采购", "has_table": true, "purity": false,
+      "doc_type_evidence": ["采购", "供应商", "付款"],
+      "clauses": [
+        "供应商应在合同签订后 60 日内完成全部交付。",
+        "采购人逾期付款的，违约金为应付金额的 35%。",
+        "本合同自双方签字之日起生效，有效期三年。"
+      ],
+      "expect_rule_ids": ["RR-006"], "expect_min_level": "mid"
+    },
+    {
+      "contract_id": "EV-019", "doc_type": "劳动用工", "has_table": false, "purity": true,
+      "doc_type_evidence": ["劳动合同", "乙方", "工时"],
+      "clauses": ["乙方月工作时长不得超过 320 小时。"],
+      "expect_rule_ids": ["RR-005"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-020", "doc_type": "金融销售", "has_table": true, "purity": false,
+      "doc_type_evidence": ["保险", "投保人", "收益"],
+      "clauses": [
+        "本产品保证年化收益 6%。",
+        "投保人可在犹豫期内无条件解除本合同。",
+        "本产品最终解释权归本公司所有。"
+      ],
+      "expect_rule_ids": ["RR-002", "RR-003", "RR-004"], "expect_min_level": "high"
+    },
+    {
+      "contract_id": "EV-C01", "doc_type": "合同通则", "has_table": false, "purity": true,
+      "doc_type_evidence": ["甲方", "乙方", "交付"],
+      "clauses": [
+        "双方应按约定时间完成交付，验收标准以附件一为准。",
+        "争议提交甲方所在地人民法院管辖。"
+      ],
+      "expect_rule_ids": [], "expect_min_level": "low"
+    },
+    {
+      "contract_id": "EV-C02", "doc_type": "采购", "has_table": true, "purity": true,
+      "doc_type_evidence": ["采购", "供应商", "发票"],
+      "clauses": [
+        "甲方应在验收合格后 30 日内支付合同价款。",
+        "乙方按约定开具增值税专用发票。"
+      ],
+      "expect_rule_ids": [], "expect_min_level": "low"
+    },
+    {
+      "contract_id": "EV-C03", "doc_type": "租赁", "has_table": false, "purity": true,
+      "doc_type_evidence": ["租赁", "出租", "租金"],
+      "clauses": [
+        "租金按月支付，承租人应于每月五日前支付当月租金。",
+        "出租人应保证租赁物符合约定用途。"
+      ],
+      "expect_rule_ids": [], "expect_min_level": "low"
+    },
+    {
+      "contract_id": "EV-C04", "doc_type": "劳动用工", "has_table": false, "purity": true,
+      "doc_type_evidence": ["劳动合同", "乙方", "试用期"],
+      "clauses": [
+        "劳动合同期限三年，试用期三个月。",
+        "甲方依法为乙方缴纳社会保险。"
+      ],
+      "expect_rule_ids": [], "expect_min_level": "low"
+    },
+    {
+      "contract_id": "EV-C05", "doc_type": "数据合规", "has_table": true, "purity": true,
+      "doc_type_evidence": ["个人信息", "同意", "告知"],
+      "clauses": [
+        "处理个人信息应取得个人同意，并告知处理目的与方式。",
+        "个人信息保存期限届满后应及时删除。"
+      ],
+      "expect_rule_ids": [], "expect_min_level": "low"
+    }
+  ]
+}

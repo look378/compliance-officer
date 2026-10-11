@@ -1,0 +1,285 @@
+{
+  "check": "P2-tools-e2e",
+  "started_at": "2026-10-11 14:58:21",
+  "fixtures": {
+    "docx": {
+      "ok": true,
+      "path": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\p2_fixtures\\contract_with_table.docx",
+      "bytes": 37265
+    },
+    "txt": {
+      "ok": true,
+      "path": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\p2_fixtures\\contract.txt",
+      "bytes": 635
+    },
+    "pdf_text": {
+      "ok": true,
+      "path": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\p2_fixtures\\contract_text.pdf",
+      "bytes": 58955
+    },
+    "pdf_scanned": {
+      "ok": true,
+      "path": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\p2_fixtures\\scanned.pdf",
+      "bytes": 35521
+    }
+  },
+  "rules_restored": {
+    "count_before": 9,
+    "count_after": 9,
+    "digest_before": "2a6da9e5fe13",
+    "digest_after": "2a6da9e5fe13",
+    "selftest_cleanup": {
+      "todos_deleted": 1,
+      "audit_deleted": 4,
+      "backend": "sqlite"
+    },
+    "identical": true
+  },
+  "rules_restored_meta": {
+    "done": true,
+    "digest": "1d48a8faca9d",
+    "count": 9
+  },
+  "checks": {
+    "service_info_ok": {
+      "pass": true,
+      "detail": {
+        "tools": 15,
+        "regulations": 54,
+        "rules_active": 8
+      }
+    },
+    "parse_docx_ok": {
+      "pass": true,
+      "detail": {
+        "clauses": 7,
+        "tables": 1,
+        "confidence": 0.95,
+        "engine": "python-docx/native"
+      }
+    },
+    "docx_table_markdown": {
+      "pass": true,
+      "detail": {
+        "tables": 1
+      }
+    },
+    "parse_pdf_native_ok": {
+      "pass": true,
+      "detail": {
+        "clauses": 7,
+        "confidence": 0.9,
+        "tier": "native"
+      }
+    },
+    "scanned_pdf_flagged": {
+      "pass": true,
+      "detail": {
+        "tier": "ocr_lite",
+        "confidence": 0.7,
+        "engine": "rapidocr",
+        "warnings": "文本层缺失，已用 OCR（rapidocr）识别 1 页"
+      }
+    },
+    "parse_text_ok": {
+      "pass": true,
+      "detail": {
+        "clauses": 7
+      }
+    },
+    "search_hit": {
+      "pass": true,
+      "detail": {
+        "top": [
+          "《劳动法》第 36 条",
+          "《劳动法》第 41 条",
+          "《劳动法》第 44 条"
+        ]
+      }
+    },
+    "search_domain_filter": {
+      "pass": true,
+      "detail": {
+        "domains": [
+          "金融销售",
+          "金融销售"
+        ]
+      }
+    },
+    "search_empty_declared": {
+      "pass": true,
+      "detail": {
+        "empty": true
+      }
+    },
+    "annotate_levels": {
+      "pass": true,
+      "detail": {
+        "high": "RR-001",
+        "mid": "RR-003"
+      }
+    },
+    "annotate_citation": {
+      "pass": true,
+      "detail": {
+        "hits": [
+          "RR-003"
+        ]
+      }
+    },
+    "annotate_document": {
+      "pass": true,
+      "detail": {
+        "overall": "high",
+        "risky": 4,
+        "clauses": 7
+      }
+    },
+    "generate_report": {
+      "pass": true,
+      "detail": {
+        "paths": [
+          "D:\\Project_Experience2.0\\项目三\\compliance_officer\\reports\\RPT-20261011145824-55f1.md",
+          "D:\\Project_Experience2.0\\项目三\\compliance_officer\\reports\\RPT-20261011145824-55f1.pdf"
+        ],
+        "warnings": []
+      }
+    },
+    "propose_new": {
+      "pass": true,
+      "detail": {
+        "kind": "new",
+        "id": "RP-20261011145825-251e",
+        "dedup": "未发现同模式、包含关系或高相似规则，作为新规则提案"
+      }
+    },
+    "proposal_not_effective_before_approval": {
+      "pass": true,
+      "detail": {
+        "hits": [
+          "RR-007"
+        ]
+      }
+    },
+    "new_rule_takes_effect": {
+      "pass": true,
+      "detail": {
+        "rule_id": "RR-010",
+        "version": 1,
+        "level": "mid",
+        "hits": [
+          "RR-007",
+          "RR-010"
+        ]
+      }
+    },
+    "propose_exact_dedup": {
+      "pass": true,
+      "detail": {
+        "kind": "revise",
+        "target": "RR-010",
+        "layer": "exact"
+      }
+    },
+    "propose_containment_dedup": {
+      "pass": true,
+      "detail": {
+        "kind": "revise",
+        "layer": "containment",
+        "containment": "RR-003",
+        "similarity": 0.6667
+      }
+    },
+    "propose_conflict_detected": {
+      "pass": true,
+      "detail": {
+        "kind": "conflict",
+        "conflicts": [
+          {
+            "rule_id": "RR-003",
+            "severity": "mid",
+            "version": 2,
+            "status": "active"
+          }
+        ]
+      }
+    },
+    "conflict_proposal_not_writable": {
+      "pass": true,
+      "detail": {
+        "errors": [
+          "提案缺少 regulation_ref：按『无引用不判风险』原则，禁止写入无法条依据的 active 规则"
+        ]
+      }
+    },
+    "approve_writes_versioned": {
+      "pass": true,
+      "detail": {
+        "rule_id": "RR-010",
+        "version": 2,
+        "diff": {
+          "added": [
+            "RR-010"
+          ],
+          "changed": []
+        }
+      }
+    },
+    "approve_idempotent_guard": {
+      "pass": true,
+      "detail": {
+        "errors": [
+          "提案已批准过（RP-20261011145825-da6c），拒绝重复写入"
+        ]
+      }
+    },
+    "todo_idempotent": {
+      "pass": true,
+      "detail": {
+        "first": true,
+        "second": false
+      }
+    },
+    "todo_atomic_claim": {
+      "pass": true,
+      "detail": {
+        "first": true,
+        "second_holder": "specialist-li"
+      }
+    },
+    "decision_and_audit": {
+      "pass": true,
+      "detail": {
+        "todo_done": 1,
+        "audit_events": 4,
+        "todo_result": {
+          "ok": true,
+          "todo_id": "todo_f4e69b3d00",
+          "decision": "modify",
+          "run_id": "wf_run_selftest_1791701905",
+          "node_name": "review_risk"
+        }
+      }
+    },
+    "metrics_ok": {
+      "pass": true,
+      "detail": {
+        "todo_total": 1166,
+        "by_decision": {
+          "approve": 134,
+          "cancelled": 15,
+          "confirm": 143,
+          "modify": 34,
+          "reject": 31,
+          "reject_supervisor": 18
+        },
+        "regulations": 54
+      }
+    }
+  },
+  "problems": [],
+  "passed": 26,
+  "total": 26,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:58:25"
+}

@@ -1,0 +1,63 @@
+{
+  "check": "P7-delivery",
+  "file": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\docker-compose.yml",
+  "yaml_parsed": true,
+  "services": [
+    "capability",
+    "mock",
+    "gateway",
+    "postgres"
+  ],
+  "service_detail": {
+    "capability": {
+      "image": "compliance-officer/capability:0.6.0",
+      "ports": [
+        "127.0.0.1:8770:8770"
+      ],
+      "has_healthcheck": true,
+      "has_depends_on": true,
+      "restart": "unless-stopped"
+    },
+    "gateway": {
+      "image": "compliance-officer/capability:0.6.0",
+      "ports": [
+        "127.0.0.1:8790:8790"
+      ],
+      "has_healthcheck": true,
+      "has_depends_on": true,
+      "restart": "unless-stopped"
+    },
+    "mock": {
+      "image": "compliance-officer/capability:0.6.0",
+      "ports": [
+        "127.0.0.1:8780:8780"
+      ],
+      "has_healthcheck": true,
+      "has_depends_on": false,
+      "restart": "unless-stopped"
+    },
+    "postgres": {
+      "image": "pgvector/pgvector:pg16",
+      "ports": [
+        "127.0.0.1:5432:5432"
+      ],
+      "has_healthcheck": true,
+      "has_depends_on": false,
+      "restart": "unless-stopped"
+    }
+  },
+  "volumes": [
+    "compliance-runtime",
+    "compliance-pgdata"
+  ],
+  "dockerfiles": [
+    "Dockerfile.python"
+  ],
+  "docker_compose_config": {
+    "returncode": 0,
+    "stderr": "",
+    "note": "校验时注入了占位 JWT_SECRET（护栏要求）"
+  },
+  "problems": [],
+  "verdict": "PASS"
+}

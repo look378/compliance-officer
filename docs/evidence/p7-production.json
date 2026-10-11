@@ -1,0 +1,147 @@
+{
+  "check": "P7-production",
+  "started_at": "2026-10-11 15:18:55",
+  "services": {
+    "capability": "already-running",
+    "mock": "already-running",
+    "gateway": "already-running"
+  },
+  "auth": {
+    "mode": "demo",
+    "roles_with_bearer": []
+  },
+  "jwt_flow": "skipped（当前 AUTH_MODE=demo；jwt 流程在下方 C 用独立进程验证）",
+  "agent_session": "wb-demo-specialist",
+  "checks": {
+    "A_identity_and_permissions": {
+      "pass": true,
+      "detail": {
+        "role": "specialist",
+        "via": "demo",
+        "granted": [
+          "agent:task",
+          "contract:read",
+          "contract:submit",
+          "metrics:read",
+          "review:decide_specialist",
+          "rules:read"
+        ],
+        "denied_sample": [
+          "audit:read",
+          "proposal:review",
+          "review:decide_supervisor",
+          "system:recover"
+        ]
+      }
+    },
+    "B1_admin_creates_user": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "ok": true,
+        "user_id": "u_d52a944baeb2",
+        "username": "tester3135",
+        "role": "specialist"
+      }
+    },
+    "B2_specialist_cannot_create_user": {
+      "pass": true,
+      "detail": {
+        "status": 403
+      }
+    },
+    "B3_login_reports_demo_mode": {
+      "pass": true,
+      "detail": {
+        "status": 401,
+        "detail": [
+          "当前 AUTH_MODE=demo，未启用账号登录（演示模式请使用令牌头）"
+        ]
+      }
+    },
+    "B7_admin_resets_password": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "ok": true,
+        "username": "tester3135"
+      }
+    },
+    "B8_disable_user_effective": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "user_status": "disabled"
+      }
+    },
+    "C_missing_jwt_secret_blocks_startup": {
+      "pass": true,
+      "detail": {
+        "problems": [
+          "AUTH_MODE=jwt 时必须设置 JWT_SECRET（长度 ≥16）。生成方式：python -c \"import secrets;print(secrets.token_urlsafe(48))\""
+        ],
+        "gateway_exit_code": 3,
+        "log_tail": "untime\\venv\\Lib\\site-packages\\fastapi\\routing.py\", line 272, in __aenter__\n    await self._router._startup()\n  File \"D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\venv\\Lib\\site-packages\\fastapi\\routing.py\", line 6457, in _startup\n    handler()\n    ~~~~~~~^^\n  File \"D:\\Project_Experience2.0\\项目三\\compliance_officer\\gateway\\app.py\", line 100, in _startup\n    raise RuntimeError(\"网关配置不可用于启动：\" + \"；\".join(problems))\nRuntimeError: 网关配置不可用于启动：AUTH_MODE=jwt 时必须设置 JWT_SECRET（长度 ≥16）。生成方式：python -c \"import secrets;print(secrets.token_urlsafe(48))\"\n\nERROR:    Application startup failed. Exiting.\n"
+      }
+    },
+    "D_audit_console_filters": {
+      "pass": true,
+      "detail": {
+        "total": 100,
+        "sample": [
+          "auth.user_created",
+          "auth.password_changed",
+          "auth.user_status_changed",
+          "review_submitted",
+          "todo_created"
+        ],
+        "auth_events": 9
+      }
+    },
+    "E_structured_logs_with_trace": {
+      "pass": true,
+      "detail": {
+        "lines": 100,
+        "traced": 94,
+        "sample": {
+          "ts": "2026-10-11 14:58:11.010",
+          "level": "info",
+          "event": "http.request",
+          "trace_id": "tr_1a129c137a8_194861"
+        }
+      }
+    },
+    "F1_agent_ready": {
+      "pass": true,
+      "detail": {
+        "tools": 51,
+        "mcp": 15
+      }
+    },
+    "F2_agent_answers_with_citation": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "elapsed_ms": 3901,
+        "tool_calls": [
+          "mcp__compliance__search_regulations",
+          "mcp__compliance__annotate_clause"
+        ],
+        "reply_head": "**一句话结论**：因为\"最终解释权归甲方\"属于格式条款中排除对方主要权利、单方垄断解释权的表述，依《民法典》第 498 条（争议时格式条款应作不利于提供方的解释）该约定不产生效力，命中规则 **RR-003（v2，中风险）**，建议删除并改为明确的争议解决与解释规则条款。\n\n补充说明：\n- 该判定为**中风险**，按纪律需**人工签核**，我不代做最终结论。\n- 相关可援引条文还有《民法典》第 "
+      }
+    },
+    "G_deployment_checklist_available": {
+      "pass": true,
+      "detail": {
+        "items": 7,
+        "auth_mode": "demo",
+        "problems": []
+      }
+    }
+  },
+  "problems": [],
+  "passed": 12,
+  "total": 12,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 15:19:01"
+}

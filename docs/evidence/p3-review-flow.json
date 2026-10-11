@@ -1,0 +1,568 @@
+{
+  "flow": "P3-compliance-review",
+  "started_at": "2026-10-11 14:56:24",
+  "spec": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\workflows\\compliance_review.json",
+  "cases": {
+    "A_low_risk": {
+      "submit": {
+        "ok": true,
+        "run_id": "wf_run_50a69fc81398",
+        "status": "completed",
+        "risk_level": "low",
+        "doc_id": "2ef5a423836b",
+        "paused": null,
+        "state": {
+          "overall_risk_level": "low",
+          "specialist_note": null,
+          "supervisor_note": null
+        }
+      },
+      "state": {
+        "next": [],
+        "tasks": [],
+        "risk": "low",
+        "detail_decision": null,
+        "specialist_note": null,
+        "supervisor_note": null,
+        "hit_rule_ids": [],
+        "risky_clause_count": 0,
+        "clause_count": 5,
+        "decision_summary": "合同 2ef5a423836b｜解析档位 native｜置信度 0.9｜条款 5 条，风险条款 0 条，整体等级 low｜命中规则 无"
+      },
+      "audit": [
+        "review_submitted",
+        "review_archived"
+      ]
+    },
+    "B_mid_risk": {
+      "submit": {
+        "ok": true,
+        "run_id": "wf_run_f69583a21a66",
+        "status": "paused",
+        "risk_level": "mid",
+        "doc_id": "34657302bba8",
+        "paused": {
+          "role": "specialist",
+          "question": "【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+          "todo_id": "todo_bcb3703529",
+          "todo_created": true
+        },
+        "state": {
+          "overall_risk_level": "mid",
+          "specialist_note": null,
+          "supervisor_note": null
+        }
+      },
+      "pause1": {
+        "next": [
+          "specialist_review"
+        ],
+        "tasks": [
+          "specialist_review"
+        ],
+        "risk": "mid",
+        "detail_decision": null,
+        "specialist_note": null,
+        "supervisor_note": null,
+        "hit_rule_ids": [
+          "RR-006"
+        ],
+        "risky_clause_count": 1,
+        "clause_count": 4,
+        "decision_summary": "合同 34657302bba8｜解析档位 native｜置信度 0.9｜条款 4 条，风险条款 1 条，整体等级 mid｜命中规则 RR-006"
+      },
+      "decide1": {
+        "ok": true,
+        "claimed": true,
+        "run_id": "wf_run_f69583a21a66",
+        "decision": "confirm",
+        "status": "paused",
+        "paused": {
+          "role": "supervisor",
+          "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
+          "todo_id": "todo_16bc85007c",
+          "todo_created": true
+        },
+        "final_state": {
+          "overall_risk_level": "mid",
+          "specialist_note": "confirm",
+          "supervisor_note": null
+        }
+      },
+      "pause2": {
+        "next": [
+          "supervisor_verify"
+        ],
+        "tasks": [
+          "supervisor_verify"
+        ],
+        "risk": "mid",
+        "detail_decision": "pending",
+        "specialist_note": "confirm",
+        "supervisor_note": null,
+        "hit_rule_ids": [
+          "RR-006"
+        ],
+        "risky_clause_count": 1,
+        "clause_count": 4,
+        "decision_summary": "合同 34657302bba8｜解析档位 native｜置信度 0.9｜条款 4 条，风险条款 1 条，整体等级 mid｜命中规则 RR-006"
+      },
+      "decide2": {
+        "ok": true,
+        "claimed": true,
+        "run_id": "wf_run_f69583a21a66",
+        "decision": "approve",
+        "status": "completed",
+        "paused": null,
+        "final_state": {
+          "overall_risk_level": "mid",
+          "specialist_note": "confirm",
+          "supervisor_note": null
+        }
+      },
+      "audit": [
+        "review_submitted",
+        "todo_created",
+        "human_decision",
+        "todo_completed",
+        "todo_created",
+        "human_decision",
+        "todo_completed",
+        "review_archived"
+      ]
+    },
+    "C_high_risk_cycle": {
+      "submit": {
+        "ok": true,
+        "run_id": "wf_run_d113be7bd6e2",
+        "status": "paused",
+        "risk_level": "high",
+        "doc_id": "e2c975f0a984",
+        "paused": {
+          "role": "specialist",
+          "question": "【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+          "todo_id": "todo_b60567b9f0",
+          "todo_created": true
+        },
+        "state": {
+          "overall_risk_level": "high",
+          "specialist_note": null,
+          "supervisor_note": null
+        }
+      },
+      "pause1": {
+        "next": [
+          "specialist_review"
+        ],
+        "tasks": [
+          "specialist_review"
+        ],
+        "risk": "high",
+        "detail_decision": null,
+        "specialist_note": null,
+        "supervisor_note": null,
+        "hit_rule_ids": [
+          "RR-001",
+          "RR-003",
+          "RR-004",
+          "RR-005",
+          "RR-008"
+        ],
+        "risky_clause_count": 4,
+        "clause_count": 6,
+        "decision_summary": "合同 e2c975f0a984｜解析档位 native｜置信度 0.9｜条款 6 条，风险条款 4 条，整体等级 high｜命中规则 RR-001,RR-003,RR-004,RR-005,RR-008"
+      },
+      "modify": {
+        "ok": true,
+        "claimed": true,
+        "run_id": "wf_run_d113be7bd6e2",
+        "decision": "modify",
+        "status": "paused",
+        "paused": {
+          "role": "specialist",
+          "question": "【合规专员初审】整体风险等级 high。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+          "todo_id": "todo_e887be2088",
+          "todo_created": true
+        },
+        "final_state": {
+          "overall_risk_level": "high",
+          "specialist_note": "modify",
+          "supervisor_note": null
+        }
+      },
+      "after_modify": {
+        "next": [
+          "specialist_review"
+        ],
+        "tasks": [
+          "specialist_review"
+        ],
+        "risk": "high",
+        "detail_decision": "modify",
+        "specialist_note": "modify",
+        "supervisor_note": null,
+        "hit_rule_ids": [
+          "RR-001",
+          "RR-003",
+          "RR-004",
+          "RR-005",
+          "RR-008"
+        ],
+        "risky_clause_count": 4,
+        "clause_count": 6,
+        "decision_summary": "合同 e2c975f0a984｜解析档位 native｜置信度 0.9｜条款 6 条，风险条款 4 条，整体等级 high｜命中规则 RR-001,RR-003,RR-004,RR-005,RR-008"
+      },
+      "confirm": {
+        "ok": true,
+        "claimed": true,
+        "run_id": "wf_run_d113be7bd6e2",
+        "decision": "confirm",
+        "status": "paused",
+        "paused": {
+          "role": "supervisor",
+          "question": "【合规主管复核】高风险需主管签署。请回复 approve（通过归档）/ 或输入其他内容退回专员复核。",
+          "todo_id": "todo_088c5782ad",
+          "todo_created": true
+        },
+        "final_state": {
+          "overall_risk_level": "high",
+          "specialist_note": "confirm",
+          "supervisor_note": null
+        }
+      },
+      "after_confirm": {
+        "next": [
+          "supervisor_verify"
+        ],
+        "tasks": [
+          "supervisor_verify"
+        ],
+        "risk": "high",
+        "detail_decision": "pending",
+        "specialist_note": "confirm",
+        "supervisor_note": null,
+        "hit_rule_ids": [
+          "RR-001",
+          "RR-003",
+          "RR-004",
+          "RR-005",
+          "RR-008"
+        ],
+        "risky_clause_count": 4,
+        "clause_count": 6,
+        "decision_summary": "合同 e2c975f0a984｜解析档位 native｜置信度 0.9｜条款 6 条，风险条款 4 条，整体等级 high｜命中规则 RR-001,RR-003,RR-004,RR-005,RR-008"
+      },
+      "approve": {
+        "ok": true,
+        "claimed": true,
+        "run_id": "wf_run_d113be7bd6e2",
+        "decision": "approve",
+        "status": "completed",
+        "paused": null,
+        "final_state": {
+          "overall_risk_level": "high",
+          "specialist_note": "confirm",
+          "supervisor_note": null
+        }
+      },
+      "audit": [
+        "review_submitted",
+        "todo_created",
+        "human_decision",
+        "todo_completed",
+        "reannotated",
+        "todo_created",
+        "human_decision",
+        "todo_completed",
+        "todo_created",
+        "human_decision",
+        "todo_completed",
+        "review_archived"
+      ]
+    },
+    "D_reject_path": {
+      "submit": {
+        "ok": true,
+        "run_id": "wf_run_cba5cf397a82",
+        "status": "paused",
+        "risk_level": "mid",
+        "doc_id": "34657302bba8",
+        "paused": {
+          "role": "specialist",
+          "question": "【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（要求重新标注）/ reject（驳回并生成规则提案）。",
+          "todo_id": "todo_a4b35ca5c2",
+          "todo_created": true
+        },
+        "state": {
+          "overall_risk_level": "mid",
+          "specialist_note": null,
+          "supervisor_note": null
+        }
+      },
+      "reject": {
+        "ok": true,
+        "claimed": true,
+        "run_id": "wf_run_cba5cf397a82",
+        "decision": "reject",
+        "status": "completed",
+        "paused": null,
+        "final_state": {
+          "overall_risk_level": "mid",
+          "specialist_note": "reject",
+          "supervisor_note": null
+        }
+      },
+      "proposal": {
+        "ok": true,
+        "proposal_id": "RP-20261011145640-aaac",
+        "kind": "new",
+        "target_rule_id": null,
+        "proposed_rule_id": "RR-010",
+        "version": 1,
+        "pattern": "自动续约.{0,6}(无需|不需).{0,4}(通知|告知)",
+        "severity": "mid",
+        "regulation_ref": "《民法典》第 470 条",
+        "suggestion": "明确续约通知期限与拒绝续约方式",
+        "reason": "合同约定自动续约但未约定通知义务，存在续约争议与费用风险",
+        "contract_id": "CT-P3-D",
+        "evidence": "",
+        "proposed_by": "specialist-li",
+        "status": "pending_supervisor",
+        "dedup": {
+          "exact_rule": null,
+          "containment_rule": null,
+          "similar_rule": null,
+          "layer": "none",
+          "similarity": 0.48,
+          "threshold": 0.85,
+          "note": "未发现同模式、包含关系或高相似规则，作为新规则提案"
+        },
+        "conflict_with": [],
+        "conflict_requires_manual": false,
+        "created_at": "2026-10-11 14:56:40"
+      },
+      "rules_unchanged": true,
+      "audit": [
+        "review_submitted",
+        "todo_created",
+        "human_decision",
+        "todo_completed",
+        "review_archived",
+        "rule_proposal_created",
+        "todo_created"
+      ]
+    }
+  },
+  "capability_service": {
+    "started_by_this_run": true,
+    "health": {
+      "status": "running",
+      "server": "compliance-officer",
+      "version": "0.2.0",
+      "sessions": 0,
+      "stats": {
+        "initialize": 0,
+        "tools_list": 0,
+        "tools_call": 0,
+        "call_names": {},
+        "errors": 0
+      }
+    }
+  },
+  "compiled": {
+    "workflow_id": "compliance_review",
+    "version": 2117,
+    "capability_service": {
+      "status": "running",
+      "server": "compliance-officer",
+      "version": "0.2.0",
+      "sessions": 0,
+      "stats": {
+        "initialize": 0,
+        "tools_list": 0,
+        "tools_call": 0,
+        "call_names": {},
+        "errors": 0
+      }
+    }
+  },
+  "spec_nodes": [
+    "entry_probe",
+    "specialist_review",
+    "etl_gate",
+    "supervisor_verify",
+    "finalize"
+  ],
+  "spec_conditionals": [
+    {
+      "src": "entry_probe",
+      "field": "overall_risk_level",
+      "mapping": [
+        "low",
+        "mid",
+        "high"
+      ]
+    },
+    {
+      "src": "specialist_review",
+      "field": "detail_decision",
+      "mapping": [
+        "confirm",
+        "modify",
+        "reject"
+      ]
+    },
+    {
+      "src": "etl_gate",
+      "field": "detail_decision",
+      "mapping": [
+        "pending",
+        "confirm",
+        "reject"
+      ]
+    },
+    {
+      "src": "supervisor_verify",
+      "field": "detail_decision",
+      "mapping": [
+        "pending",
+        "confirm",
+        "reject"
+      ]
+    }
+  ],
+  "checks": {
+    "A_low_risk_auto_completes": {
+      "pass": true,
+      "detail": {
+        "status": "completed",
+        "risk": "low",
+        "paused": null,
+        "audit": [
+          "review_submitted",
+          "review_archived"
+        ]
+      }
+    },
+    "B_mid_two_human_nodes": {
+      "pass": true,
+      "detail": {
+        "pause1_tasks": [
+          "specialist_review"
+        ],
+        "pause2_tasks": [
+          "supervisor_verify"
+        ],
+        "d1": {
+          "ok": true,
+          "status": "paused"
+        },
+        "d2": {
+          "ok": true,
+          "status": "completed"
+        },
+        "risk": "mid"
+      }
+    },
+    "B_audit_chain": {
+      "pass": true,
+      "detail": {
+        "events": [
+          "review_submitted",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "review_archived"
+        ]
+      }
+    },
+    "C_high_cycle_converges": {
+      "pass": true,
+      "detail": {
+        "pause1": [
+          "specialist_review"
+        ],
+        "after_modify": [
+          "specialist_review"
+        ],
+        "after_confirm": [
+          "supervisor_verify"
+        ],
+        "final": "completed"
+      }
+    },
+    "C_reannotation_produced_summary": {
+      "pass": true,
+      "detail": {
+        "events": [
+          "review_submitted",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "reannotated",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "todo_created",
+          "human_decision",
+          "todo_completed",
+          "review_archived"
+        ],
+        "rules": [
+          "RR-001",
+          "RR-003",
+          "RR-004",
+          "RR-005",
+          "RR-008"
+        ],
+        "summary": "合同 e2c975f0a984｜解析档位 native｜置信度 0.9｜条款 6 条，风险条款 4 条，整体等级 high｜命中规则 RR-001,RR-003,RR-004,RR-005,RR-008"
+      }
+    },
+    "D_reject_generates_proposal_no_rule_write": {
+      "pass": true,
+      "detail": {
+        "status": "completed",
+        "proposal": "RP-20261011145640-aaac",
+        "kind": "new",
+        "rules_unchanged": true
+      }
+    },
+    "D_proposal_queued_to_supervisor": {
+      "pass": true,
+      "detail": {
+        "todos": [
+          "待审：【合规专员初审】整体风险等级 mid。请回复 confirm（确认并提交复核）/ modify（",
+          "规则提案待审：RP-20261011145640-aaac（new）"
+        ]
+      }
+    },
+    "E_evidence_chain_complete": {
+      "pass": true,
+      "detail": {
+        "audit_events_total": 29
+      }
+    },
+    "E_rule_table_intact": {
+      "pass": true,
+      "detail": {
+        "digest": "2a6da9e5fe13"
+      }
+    }
+  },
+  "problems": [],
+  "passed": 9,
+  "total": 9,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:56:40",
+  "paths": {
+    "project_root": "D:\\Project_Experience2.0\\项目三\\compliance_officer",
+    "runtime": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime",
+    "workspace": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace",
+    "lemonclaw_dir": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\.lemonclaw",
+    "framework": "D:\\Project_Experience2.0\\项目三\\lemonclaw-main",
+    "db": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\.lemonclaw\\lemonclaw.db"
+  }
+}

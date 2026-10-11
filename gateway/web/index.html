@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>合规官「小合」· 工作台</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#fff; --line:#e5e7eb; --text:#1f2937; --muted:#6b7280;
+    --blue:#2563eb; --blue-d:#1d4ed8; --green:#059669; --amber:#d97706; --red:#dc2626;
+    --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font:14px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",system-ui,sans-serif}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:10px 20px;
+         display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+  .brand{font-size:17px;font-weight:600}
+  .brand small{color:var(--muted);font-weight:400;font-size:12px;margin-left:8px}
+  .auth{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .auth label{color:var(--muted);font-size:12px}
+  input,select,textarea,button{font:inherit;border-radius:8px;border:1px solid var(--line);
+       padding:7px 10px;background:#fff;color:var(--text)}
+  input:focus,select:focus,textarea:focus{outline:2px solid #bfdbfe;border-color:var(--blue)}
+  button{cursor:pointer;background:var(--blue);color:#fff;border-color:var(--blue);font-weight:500}
+  button:hover{background:var(--blue-d)}
+  button.ghost{background:#fff;color:var(--text);border-color:var(--line)}
+  button.ghost:hover{background:#f3f4f6}
+  button.danger{background:var(--red);border-color:var(--red)}
+  button.small{padding:4px 9px;font-size:12px;border-radius:6px}
+  main{max-width:1180px;margin:0 auto;padding:18px 20px 60px}
+  .tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+  .tab{padding:8px 14px;border-radius:8px;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:13px}
+  .tab.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;box-shadow:var(--shadow)}
+  .card .k{color:var(--muted);font-size:12px}
+  .card .v{font-size:22px;font-weight:600;margin-top:4px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:10px;
+         padding:16px;margin-bottom:16px;box-shadow:var(--shadow)}
+  .panel h2{margin:0 0 12px;font-size:15px}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  textarea{width:100%;min-height:130px;resize:vertical;line-height:1.7}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:500;background:#fafbfc}
+  tr:last-child td{border-bottom:none}
+  .tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;white-space:nowrap}
+  .t-low{background:#ecfdf5;color:var(--green)} .t-mid{background:#fffbeb;color:var(--amber)}
+  .t-high{background:#fef2f2;color:var(--red)}  .t-gray{background:#f3f4f6;color:var(--muted)}
+  .t-blue{background:#eff6ff;color:var(--blue)}
+  .muted{color:var(--muted)} .mono{font-family:"Cascadia Mono",Consolas,monospace;font-size:12px}
+  .empty{color:var(--muted);padding:14px;text-align:center}
+  .hint{background:#f8fafc;border:1px dashed var(--line);border-radius:8px;padding:10px 12px;
+        color:var(--muted);font-size:12px;margin-top:10px}
+  details{margin-top:8px} summary{cursor:pointer;color:var(--blue)}
+  pre{background:#0f172a;color:#e2e8f0;padding:12px;border-radius:8px;overflow:auto;
+      font-size:12px;line-height:1.5;max-height:420px}
+  .risk-item{border-left:3px solid var(--line);padding:8px 12px;margin:8px 0;background:#fcfcfd;border-radius:0 8px 8px 0}
+  .risk-item.high{border-left-color:var(--red)} .risk-item.mid{border-left-color:var(--amber)}
+  .toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:10px 16px;
+         border-radius:8px;opacity:0;transition:opacity .25s;pointer-events:none;max-width:60vw;z-index:99}
+  .toast.on{opacity:1}
+  .spinner{display:inline-block;width:12px;height:12px;border:2px solid #fff;border-top-color:transparent;
+           border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  /* 对话 */
+  .chat{display:flex;flex-direction:column;height:520px}
+  .chat-body{flex:1;overflow:auto;background:#fbfcfd;border:1px solid var(--line);border-radius:8px;padding:12px}
+  .msg{margin-bottom:12px;display:flex;gap:10px}
+  .msg .who{flex:0 0 64px;color:var(--muted);font-size:12px;text-align:right;padding-top:2px}
+  .msg .bubble{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;white-space:pre-wrap}
+  .msg.me .bubble{background:#eff6ff;border-color:#bfdbfe}
+  .msg .bubble .tools{margin-top:8px;font-size:12px;color:var(--muted)}
+  .chat-input{display:flex;gap:8px;margin-top:10px}
+  .chat-input textarea{min-height:64px}
+  .livelog{height:360px;overflow:auto;background:#0f172a;color:#cbd5e1;border-radius:8px;padding:10px;
+           font-family:"Cascadia Mono",Consolas,monospace;font-size:12px;line-height:1.55}
+  .livelog .lv-error{color:#fca5a5} .livelog .lv-warn{color:#fcd34d}
+  .livelog .lv-info{color:#93c5fd} .livelog .lv-debug{color:#94a3b8}
+  .login-box{max-width:360px;margin:60px auto}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">合规官「小合」<small>岗位化智能合规数字员工 · 工作台</small></div>
+  <div class="auth" id="authBar">
+    <span id="whoami" class="muted">未登录</span>
+    <button class="ghost small" onclick="toggleAuthPanel()">认证设置</button>
+    <button class="ghost small" onclick="refreshAll()">刷新</button>
+  </div>
+</header>
+
+<div id="authPanel" class="panel" style="display:none;max-width:1180px;margin:14px auto 0">
+  <h2>认证设置</h2>
+  <div class="row">
+    <label class="muted">模式</label>
+    <select id="authMode" onchange="renderAuthFields()">
+      <option value="demo">演示令牌（本机体验）</option>
+      <option value="jwt">账号登录（JWT，生产形态）</option>
+      <option value="sso">企业单点登录（SSO/OIDC）</option>
+    </select>
+    <span class="muted" id="authHint"></span>
+  </div>
+  <div id="demoFields" class="row" style="margin-top:10px">
+    <label class="muted">令牌</label><input id="token" style="width:170px" value="local-dev-token">
+    <label class="muted">角色</label>
+    <select id="role">
+      <option value="specialist">合规专员</option>
+      <option value="supervisor">合规主管</option>
+      <option value="admin">管理员</option>
+    </select>
+    <label class="muted">操作人</label><input id="actor" style="width:120px" value="specialist-li">
+  </div>
+  <div id="jwtFields" class="row" style="margin-top:10px;display:none">
+    <label class="muted">用户名</label><input id="username" style="width:130px" value="admin">
+    <label class="muted">密码</label><input id="password" type="password" style="width:150px">
+    <button onclick="doLogin()">登录</button>
+    <button class="ghost" onclick="doLogout()">登出</button>
+  </div>
+  <div id="ssoFields" class="row" style="margin-top:10px;display:none">
+    <button onclick="doSsoLogin()">使用公司账号登录</button>
+    <span class="muted" id="ssoHint">将跳转到贵司身份提供方（IdP）完成认证</span>
+  </div>
+  <div class="hint" id="modeHint"></div>
+</div>
+
+<main>
+  <div class="tabs">
+    <div class="tab on" data-tab="agent">数字员工</div>
+    <div class="tab" data-tab="review">合同审查台</div>
+    <div class="tab" data-tab="todos">待办审批 <span id="todoBadge" class="tag t-gray">0</span></div>
+    <div class="tab" data-tab="runs">运行概览</div>
+    <div class="tab" data-tab="rules">规则库</div>
+    <div class="tab" data-tab="proposals">规则提案</div>
+    <div class="tab" data-tab="audit">审计台</div>
+    <div class="tab" data-tab="logs">实时日志</div>
+    <div class="tab" data-tab="users">账号管理</div>
+  </div>
+
+  <!-- ==================== 数字员工 ==================== -->
+  <section id="tab-agent">
+    <div class="panel">
+      <h2>给数字员工下达任务</h2>
+      <div class="hint" style="margin-top:0">
+        它可以查规则、检索法条、解释某次审查的判定依据、起草条款修改建议。
+        回答遵循两条纪律：<b>无引用不判风险</b>、<b>不替人下最终结论</b>。
+      </div>
+      <div class="row" style="margin:10px 0">
+        <span class="muted">试试：</span>
+        <button class="ghost small" onclick="fillTask('规则库里现在有哪些高风险规则？各自依据哪条法条？')">查高风险规则</button>
+        <button class="ghost small" onclick="fillTask('“保本收益”这种表述为什么有风险？依据是什么？该怎么改？')">解释一条风险</button>
+        <button class="ghost small" onclick="fillTask('帮我检索关于“个人信息处理同意”的法规条款，给出条文编号。')">检索法条</button>
+        <button class="ghost small" onclick="fillTask('把这句话改成合规表述：本产品保本，年化收益不低于5%。')">改写条款</button>
+        <button class="ghost small" onclick="fillTask('总结一下当前有多少待办、分别属于谁。')">查待办概况</button>
+      </div>
+      <div class="chat">
+        <div class="chat-body" id="chatBody"><div class="empty">还没有对话。输入任务后回车或点发送。</div></div>
+        <div class="chat-input">
+          <textarea id="taskInput" placeholder="例如：解释一下 RB-003 这类“最终解释权”条款为什么有风险，依据哪条法条，应该怎么改？"></textarea>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <button id="btnTask" onclick="sendTask()">发送</button>
+            <button class="ghost small" onclick="resetChat()">清空会话</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 合同审查台 ==================== -->
+  <section id="tab-review" style="display:none">
+    <div class="cards" id="metricCards"></div>
+    <div class="panel">
+      <h2>提交合同审查</h2>
+      <div class="row" style="margin-bottom:10px">
+        <span class="muted">示例：</span>
+        <button class="ghost small" onclick="loadSample('low')">低风险</button>
+        <button class="ghost small" onclick="loadSample('mid')">中风险</button>
+        <button class="ghost small" onclick="loadSample('high')">高风险</button>
+        <span class="muted" style="margin-left:auto">或上传文件：</span>
+        <input type="file" id="file" accept=".pdf,.docx,.doc,.txt,.md">
+        <button class="ghost small" onclick="uploadFile()">上传并审查</button>
+      </div>
+      <textarea id="contract" placeholder="把合同文本粘贴到这里…"></textarea>
+      <div class="row" style="margin-top:10px">
+        <button id="btnSubmit" onclick="submitContract()">发起审查</button>
+        <span class="muted">低风险自动办结；中/高风险进入人工审批</span>
+      </div>
+    </div>
+    <div id="resultBox"></div>
+  </section>
+
+  <!-- ==================== 待办审批 ==================== -->
+  <section id="tab-todos" style="display:none">
+    <div class="panel">
+      <h2>待办审批</h2>
+      <div class="row" style="margin-bottom:10px">
+        <label class="muted">状态</label>
+        <select id="todoStatus" onchange="loadTodos()">
+          <option value="open">待处理</option><option value="all">全部</option><option value="done">已办结</option>
+        </select>
+        <span class="muted">专员：确认 / 要求重标注 / 驳回；主管：通过归档 / 驳回</span>
+      </div>
+      <div id="todoList"></div>
+    </div>
+  </section>
+
+  <!-- ==================== 运行概览 ==================== -->
+  <section id="tab-runs" style="display:none">
+    <div class="panel">
+      <h2>审查运行记录</h2>
+      <div class="row" style="margin-bottom:10px">
+        <label class="muted">状态</label>
+        <select id="runStatus" onchange="loadRuns()">
+          <option value="">全部</option><option value="paused">等待人工</option>
+          <option value="completed">已办结</option><option value="error">异常</option>
+        </select>
+        <input id="runIdLookup" placeholder="按 run_id 精确查询" style="width:280px">
+        <button class="ghost small" onclick="lookupRun()">查询</button>
+      </div>
+      <div id="runList"></div><div id="runDetail"></div>
+    </div>
+    <div class="panel">
+      <h2>系统自愈与诊断 <span class="muted">（管理员）</span></h2>
+      <div class="row" style="margin-bottom:10px">
+        <button class="ghost small" onclick="runMaintenance()">释放过期审批占用 + 清理过期令牌</button>
+        <button class="ghost small" onclick="loadDiagnostics()">查看诊断详情</button>
+      </div>
+      <div id="diagBox" class="muted">点击按钮查看诊断（编排器/能力服务/日志轮转/僵尸占用）。</div>
+    </div>
+  </section>
+
+  <!-- ==================== 规则库 ==================== -->
+  <section id="tab-rules" style="display:none">
+    <div class="panel"><h2>风险规则库 <span class="muted" id="ruleDigest"></span></h2><div id="ruleList"></div></div>
+  </section>
+
+  <!-- ==================== 规则提案 ==================== -->
+  <section id="tab-proposals" style="display:none">
+    <div class="panel"><h2>规则提案（人工驳回后产生，需主管批准才入库）</h2><div id="proposalList"></div></div>
+  </section>
+
+  <!-- ==================== 审计台 ==================== -->
+  <section id="tab-audit" style="display:none">
+    <div class="panel">
+      <h2>审计台</h2>
+      <div class="row" style="margin-bottom:10px">
+        <label class="muted">事件包含</label><input id="auditEvent" placeholder="如 human_decision / auth." style="width:200px">
+        <label class="muted">操作人</label><input id="auditActor" placeholder="如 supervisor-zhang" style="width:170px">
+        <label class="muted">run_id</label><input id="auditRun" placeholder="留空看全部" style="width:220px">
+        <button class="small" onclick="loadAudit()">查询</button>
+        <span class="muted">（需主管或管理员权限）</span>
+      </div>
+      <div id="auditList"></div>
+    </div>
+  </section>
+
+  <!-- ==================== 实时日志 ==================== -->
+  <section id="tab-logs" style="display:none">
+    <div class="panel">
+      <h2>实时日志（含 trace_id）</h2>
+      <div class="row" style="margin-bottom:10px">
+        <button class="small" onclick="startLogStream()">开始订阅</button>
+        <button class="ghost small" onclick="stopLogStream()">停止</button>
+        <button class="ghost small" onclick="loadLogs()">读取最近 200 行</button>
+        <label class="muted"><input type="checkbox" id="logAutoScroll" checked style="width:auto"> 自动滚动</label>
+      </div>
+      <div class="livelog" id="liveLog"><div class="empty">点“开始订阅”或“读取最近 200 行”。</div></div>
+    </div>
+  </section>
+
+  <!-- ==================== 账号管理 ==================== -->
+  <section id="tab-users" style="display:none">
+    <div class="panel">
+      <h2>账号管理（管理员）</h2>
+      <div class="row" style="margin-bottom:10px">
+        <input id="newUser" placeholder="用户名" style="width:130px">
+        <input id="newName" placeholder="显示名" style="width:130px">
+        <input id="newPass" placeholder="初始密码（≥6位）" style="width:170px">
+        <select id="newRole">
+          <option value="specialist">合规专员</option>
+          <option value="supervisor">合规主管</option>
+          <option value="admin">管理员</option>
+        </select>
+        <button class="small" onclick="createUser()">新建账号</button>
+      </div>
+      <div id="userList"></div>
+      <div class="hint">
+        生产形态请：① 在 <span class="mono">.runtime/.lemonclaw/.env</span> 设置
+        <span class="mono">AUTH_MODE=jwt</span> 与 <span class="mono">JWT_SECRET</span>；
+        ② 重启网关；③ 用此处创建的账号登录；④ 立即修改初始管理员密码。
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let JWT = localStorage.getItem('co_jwt') || '';
+let IDENT = null;
+
+function authHeaders(extra) {
+  const h = Object.assign({}, extra || {});
+  if (JWT) { h['Authorization'] = 'Bearer ' + JWT; }
+  else {
+    h['X-Auth-Token'] = $('token').value.trim();
+    h['X-Role'] = $('role').value;
+  }
+  return h;
+}
+
+function toast(msg, ok) {
+  const t = $('toast'); t.textContent = msg;
+  t.style.background = ok === false ? '#b91c1c' : '#111827';
+  t.classList.add('on'); clearTimeout(window._tt);
+  window._tt = setTimeout(() => t.classList.remove('on'), 3000);
+}
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+async function api(path, opts) {
+  const o = Object.assign({headers: authHeaders()}, opts || {});
+  if (o.body && !(o.body instanceof FormData)) o.headers['Content-Type'] = 'application/json';
+  const r = await fetch(path, o);
+  let data; try { data = await r.json(); } catch(e) { data = {detail:'响应不是 JSON'}; }
+  if (!r.ok) {
+    const d = data.detail;
+    throw new Error(Array.isArray(d) ? d.join('；') : (typeof d === 'object' ? JSON.stringify(d) : (d || ('HTTP '+r.status))));
+  }
+  return data;
+}
+
+/* ---------------- 认证 ---------------- */
+function toggleAuthPanel(){ const p=$('authPanel'); p.style.display = p.style.display==='none' ? '' : 'none'; }
+function renderAuthFields(){
+  const mode = $('authMode').value;
+  $('demoFields').style.display = mode === 'demo' ? '' : 'none';
+  $('jwtFields').style.display = mode === 'jwt' ? '' : 'none';
+  $('ssoFields').style.display = mode === 'sso' ? '' : 'none';
+  $('modeHint').textContent = {
+    jwt: '账号登录模式：需要后端 AUTH_MODE=jwt 且已设置 JWT_SECRET。默认管理员 admin / admin12345（请立即改密）。',
+    sso: '企业单点登录：需要后端 AUTH_MODE=sso 并配好 OIDC_*（详见 docs/15-企业SSO对接.md）。',
+    demo: '演示令牌模式：仅用于本机体验，切勿用于生产。',
+  }[mode];
+}
+async function doSsoLogin(){
+  try {
+    const r = await fetch('/api/v1/auth/sso/login' + location.hash.replace(/^#/, '?').replace(/^$/, ''));
+    const d = await r.json();
+    if (!r.ok) throw new Error(Array.isArray(d.detail) ? d.detail.join('；') : d.detail);
+    location.href = d.authorization_url;      // 跳转 IdP；回跳后由 #token 自动登录
+  } catch(e){ toast('SSO 发起失败：' + e.message, false); }
+}
+/* SSO 回跳：#token=...&via=sso（fragment 不进服务端日志）
+   【第二次审查修正·P2】原实现拿到 token 就直接写 localStorage：
+   诱导受害者打开 `http://网关/#token=<攻击者令牌>` 即可把其会话替换成攻击者身份
+   （登录 CSRF/会话固定），而且无效令牌也会提示"已登录成功"。
+   现在：① 必须带 `via=sso`；② 先用该令牌调 /auth/me 校验通过才落盘；③ 失败静默清掉 fragment。 */
+(async function consumeSsoFragment(){
+  const raw = (location.hash || '').replace(/^#/, '');
+  if (!raw) return;
+  const q = new URLSearchParams(raw);
+  const t = q.get('token');
+  if (!t) return;
+  history.replaceState(null, '', location.pathname + location.search);   // 先清 fragment，避免残留
+  if (q.get('via') !== 'sso') { return; }                                 // 非 SSO 回跳一律忽略
+  try {
+    const r = await fetch('/api/v1/auth/me', {headers: {'Authorization': 'Bearer ' + t}});
+    if (!r.ok) { return; }
+    const me = await r.json();
+    if (!me || !me.username) { return; }
+    JWT = t; localStorage.setItem('co_jwt', JWT);
+    toast(`已通过企业账号登录：${me.name || me.username}（${me.role}）`);
+  } catch (e) { /* 校验失败：不落盘 */ }
+})();
+async function doLogin(){
+  try {
+    const r = await fetch('/api/v1/auth/login', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({username:$('username').value.trim(), password:$('password').value})});
+    const d = await r.json();
+    if (!r.ok) throw new Error(Array.isArray(d.detail)?d.detail.join('；'):d.detail);
+    JWT = d.access_token; localStorage.setItem('co_jwt', JWT);
+    toast(`已登录：${d.display_name || d.username}（${d.role}）`);
+    await loadIdentity(); refreshAll();
+  } catch(e){ toast(e.message, false); }
+}
+async function doLogout(){
+  try { await api('/api/v1/auth/logout', {method:'POST', body:'{}'}); } catch(e){}
+  JWT=''; localStorage.removeItem('co_jwt'); IDENT=null;
+  $('whoami').textContent='未登录'; toast('已登出');
+}
+async function loadIdentity(){
+  try {
+    const h = JWT ? {'Authorization':'Bearer '+JWT}
+                  : {'X-Auth-Token':$('token').value.trim(), 'X-Role':$('role').value};
+    const r = await fetch('/api/v1/auth/me', {headers:h});
+    if (!r.ok) { IDENT=null; $('whoami').textContent = '未登录'; return; }
+    IDENT = await r.json();
+    $('whoami').textContent = `${IDENT.name || IDENT.username}（${IDENT.role}）`;
+  } catch(e){ IDENT=null; }
+}
+
+/* ---------------- 标签页 ---------------- */
+document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+  t.classList.add('on');
+  ['agent','review','todos','runs','rules','proposals','audit','logs','users'].forEach(n =>
+    $('tab-'+n).style.display = (n === t.dataset.tab) ? '' : 'none');
+  const n = t.dataset.tab;
+  if (n==='todos') loadTodos();
+  if (n==='runs') loadRuns();
+  if (n==='rules') loadRules();
+  if (n==='proposals') loadProposals();
+  if (n==='audit') loadAudit();
+  if (n==='users') loadUsers();
+  if (n==='review') loadMetrics();
+});
+
+/* ---------------- 数字员工对话 ---------------- */
+function fillTask(text){ $('taskInput').value = text; $('taskInput').focus(); }
+function addMsg(who, text, tools) {
+  const box = $('chatBody');
+  if (box.querySelector('.empty')) box.innerHTML = '';
+  const div = document.createElement('div');
+  div.className = 'msg' + (who === '我' ? ' me' : '');
+  div.innerHTML = `<div class="who">${esc(who)}</div><div class="bubble">${esc(text)}
+    ${tools && tools.length ? `<div class="tools">调用工具：${tools.map(t=>esc(t.name)).join(' → ')}</div>` : ''}</div>`;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+async function sendTask(){
+  const task = $('taskInput').value.trim();
+  if (!task) { toast('请输入任务', false); return; }
+  addMsg('我', task);
+  $('taskInput').value = '';
+  const btn = $('btnTask'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>';
+  try {
+    const res = await api('/api/v1/agent/task', {method:'POST', body: JSON.stringify({task})});
+    addMsg('小合', res.reply || '(无回复)', res.tool_calls);
+    toast(`完成，用时 ${res.elapsed_ms} ms，调用工具 ${res.tool_calls.length} 次`);
+  } catch(e) { addMsg('系统', '执行失败：' + e.message); toast(e.message, false); }
+  finally { btn.disabled = false; btn.textContent = '发送'; }
+}
+async function resetChat(){
+  try { await api('/api/v1/agent/reset', {method:'POST', body:'{}'});
+    $('chatBody').innerHTML = '<div class="empty">会话已清空。</div>'; toast('会话已清空'); }
+  catch(e){ toast(e.message, false); }
+}
+$('taskInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) sendTask();
+});
+
+/* ---------------- 合同审查 ---------------- */
+async function loadSample(kind){ const d = await api('/api/v1/samples');
+  $('contract').value = d.samples[kind].text; toast('已填入示例：'+d.samples[kind].title); }
+function riskTag(l){ const m={low:['t-low','低风险'],mid:['t-mid','中风险'],high:['t-high','高风险']};
+  const [c,t]=m[l]||['t-gray',l||'未判定']; return `<span class="tag ${c}">${t}</span>`; }
+function statusTag(s){ const m={completed:['t-low','已办结'],paused:['t-mid','等待人工'],
+  error:['t-high','异常'],running:['t-blue','执行中'],cancelled:['t-gray','已取消'],
+  claimed:['t-blue','处理中'],open:['t-mid','待处理'],done:['t-low','已办结'],
+  active:['t-low','启用'],disabled:['t-gray','已停用']};
+  const [c,t]=m[s]||['t-gray',s||'-']; return `<span class="tag ${c}">${t}</span>`; }
+
+async function submitContract(){
+  const text = $('contract').value.trim();
+  if (!text) { toast('请先粘贴合同文本或点击示例', false); return; }
+  const btn=$('btnSubmit'); btn.disabled=true; btn.innerHTML='<span class="spinner"></span> 审查中…';
+  try {
+    const res = await api('/api/v1/contracts', {method:'POST',
+      body: JSON.stringify({text, submitted_by: $('actor').value || (IDENT && IDENT.username) || 'workbench'})});
+    renderResult(res); toast(res.status==='completed'?'低风险，已自动办结':'已转人工审批'); refreshBadge();
+  } catch(e){ toast(e.message,false); } finally { btn.disabled=false; btn.textContent='发起审查'; }
+}
+async function uploadFile(){
+  const f=$('file').files[0]; if(!f){ toast('请先选择文件',false); return; }
+  const fd=new FormData(); fd.append('file', f);
+  try { const res=await api('/api/v1/contracts/upload',{method:'POST',body:fd});
+    renderResult(res,res.parsed); toast('文件已解析并发起审查'); refreshBadge(); }
+  catch(e){ toast(e.message,false); }
+}
+function renderResult(res, parsed){
+  const ann = res.annotation || {};
+  const rows = (ann.annotations||[]).filter(a=>(a.risk_hits||[]).length);
+  const clean = (ann.annotations||[]).filter(a=>!(a.risk_hits||[]).length);
+  let html = `<div class="panel"><h2>审查结论 ${riskTag(res.risk_level)}</h2>
+    <div class="row" style="margin-bottom:8px">
+      <span class="muted">run_id：</span><span class="mono">${res.run_id||'-'}</span>
+      <span class="muted">状态：</span>${statusTag(res.status)}
+      ${res.paused?`<span class="muted">等待：</span><span class="tag t-blue">${res.paused.role==='supervisor'?'合规主管':'合规专员'}</span>`:''}
+    </div>`;
+  if(parsed){ html += `<div class="muted">解析：${parsed.source_format||'-'} · 档位 ${ann.ocr_tier||'-'} ·
+    条款 ${parsed.clause_count ?? ann.clause_count ?? '-'} 条 · 表格 ${parsed.tables_found ?? 0} 个 · 置信度 ${parsed.confidence ?? '-'}</div>`;
+    if((parsed.warnings||[]).length) html += `<div class="hint">解析告警：${parsed.warnings.join('；')}</div>`; }
+  html += `<p>${esc(res.decision_summary||ann.decision_summary||'')}</p>`;
+  if(rows.length){
+    html += `<h2 style="margin-top:14px">风险条款（${rows.length}）</h2>`;
+    rows.forEach(a=>{ html += `<div class="risk-item ${a.risk_level}">
+      <div><b>${a.clause_id||''}</b> ${a.heading||''} ${riskTag(a.risk_level)}</div>
+      <div class="muted" style="margin:4px 0">${esc((a.clause_text||'').slice(0,220))}</div>`;
+      (a.risk_hits||[]).forEach(h=>{ html += `<div>· 命中规则 <span class="mono">${h.rule_id}</span>（v${h.rule_version}，${h.severity}）匹配「${esc(h.match||'')}」</div>
+        ${h.regulation_ref?`<div class="muted">依据：${esc(h.regulation_ref)}</div>`:''}
+        ${h.suggestion?`<div class="muted">建议：${esc(h.suggestion)}</div>`:''}`; });
+      html += `</div>`; });
+  } else html += `<div class="hint">未发现达到风险阈值的条款。</div>`;
+  if(clean.length) html += `<details><summary>其余 ${clean.length} 条未触发风险的条款</summary>
+    <table><tbody>${clean.map(a=>`<tr><td style="width:70px">${a.clause_id}</td><td>${esc((a.clause_text||'').slice(0,160))}</td></tr>`).join('')}</tbody></table></details>`;
+  html += `<details><summary>查看完整返回（JSON）</summary><pre>${esc(JSON.stringify(res,null,2))}</pre></details></div>`;
+  $('resultBox').innerHTML = html;
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+
+/* ---------------- 待办 ---------------- */
+async function loadTodos(){
+  const status=$('todoStatus').value;
+  try {
+    const d=await api(`/api/v1/pending?status=${encodeURIComponent(status)}`);
+    if(!d.count){ $('todoList').innerHTML='<div class="empty">暂无待办</div>'; return; }
+    let html=`<table><thead><tr><th>角色</th><th>标题</th><th>状态</th><th>处理人</th><th>操作</th></tr></thead><tbody>`;
+    d.todos.forEach(t=>{ html += `<tr>
+      <td>${t.role_required==='supervisor'?'合规主管':'合规专员'}</td>
+      <td>${esc(t.title||'')}<div class="muted mono">${t.run_id}</div></td>
+      <td>${statusTag(t.status)}</td><td>${esc(t.decided_by||t.claimed_by||'-')}</td>
+      <td>${t.status==='open'?actionButtons(t):'<span class="muted">已处理</span>'}</td></tr>`; });
+    $('todoList').innerHTML = html+'</tbody></table>';
+  } catch(e){ $('todoList').innerHTML=`<div class="empty">${esc(e.message)}</div>`; }
+}
+function actionButtons(t){
+  const isProposal = (t.title||'').includes('规则提案');
+  if(isProposal){ const pid=extractProposalId(t);
+    return `<button class="small" onclick="reviewProposal('${pid}','approve')">批准</button>
+            <button class="small danger" onclick="reviewProposal('${pid}','reject')">驳回</button>`; }
+  const runId=t.run_id;
+  if(IDENT && IDENT.role==='supervisor')
+    return `<button class="small" onclick="decide('${runId}','approve')">通过归档</button>
+            <button class="small danger" onclick="decide('${runId}','reject')">驳回</button>`;
+  return `<button class="small" onclick="decide('${runId}','confirm')">确认</button>
+          <button class="small ghost" onclick="decide('${runId}','modify')">要求重标注</button>
+          <button class="small danger" onclick="decide('${runId}','reject')">驳回</button>`;
+}
+function extractProposalId(t){ const m=(t.title||'').match(/RP-[0-9A-Za-z\-]+/); return m?m[0]:''; }
+async function decide(runId, decision){
+  const note = prompt(`填写审批意见（可留空）—— 决策：${decision}`, '');
+  try { const res=await api(`/api/v1/runs/${runId}/decide`,{method:'POST',
+      body:JSON.stringify({decision, actor:(IDENT&&IDENT.username)||$('actor').value, note:note||''})});
+    toast(`已提交（${decision}）→ 状态：${res.status}`); loadTodos(); refreshBadge(); loadRuns();
+  } catch(e){ toast(e.message,false); }
+}
+async function reviewProposal(pid, decision){
+  const note = prompt('审批意见（可留空）','');
+  try { const res=await api(`/api/v1/proposals/${pid}/review`,{method:'POST',
+      body:JSON.stringify({decision, actor:(IDENT&&IDENT.username)||$('actor').value, note:note||''})});
+    toast(decision==='approve'?`已批准并写入规则表（${res.rule_id} v${res.version}）`:'已驳回提案');
+    loadProposals(); loadTodos(); loadRules(); refreshBadge();
+  } catch(e){ toast(e.message,false); }
+}
+
+/* ---------------- 运行概览 ---------------- */
+async function loadRuns(){
+  const status=$('runStatus').value;
+  try {
+    const d=await api(`/api/v1/runs?status=${encodeURIComponent(status)}&limit=50`);
+    if(!d.count){ $('runList').innerHTML='<div class="empty">暂无记录</div>'; return; }
+    let html=`<table><thead><tr><th>run_id</th><th>状态</th><th>风险</th><th>专员</th><th>主管</th><th>命中规则</th><th>更新时间</th><th></th></tr></thead><tbody>`;
+    d.items.forEach(r=>{ html += `<tr>
+      <td class="mono">${r.run_id}</td><td>${statusTag(r.status)}</td>
+      <td>${r.risk_level?riskTag(r.risk_level):'-'}</td>
+      <td>${esc(r.specialist_note||'-')}</td><td>${esc(r.supervisor_note||'-')}</td>
+      <td class="mono">${(r.hit_rule_ids||[]).join(',')||'-'}</td>
+      <td class="muted">${esc(r.updated_at||'')}</td>
+      <td><button class="small ghost" onclick="showRun('${r.run_id}')">详情</button></td></tr>`; });
+    $('runList').innerHTML = html+'</tbody></table>';
+  } catch(e){ $('runList').innerHTML=`<div class="empty">${esc(e.message)}</div>`; }
+}
+async function showRun(runId){
+  try { const d=await api(`/api/v1/runs/${runId}`);
+    let html=`<h2 style="margin-top:16px">${runId} ${statusTag(d.status)} ${d.risk_level?riskTag(d.risk_level):''}</h2>`;
+    html += `<div class="muted" style="margin:6px 0">${esc(d.decision_summary||'')}</div>`;
+    html += `<h2 style="margin-top:12px">审计链（${(d.audit||[]).length}）</h2>
+      <table><thead><tr><th>时间</th><th>事件</th><th>操作人</th><th>角色</th></tr></thead><tbody>`;
+    (d.audit||[]).forEach(e=>{ html += `<tr><td class="muted">${esc(e.created_at||'')}</td>
+      <td class="mono">${esc(e.event)}</td><td>${esc(e.actor||'-')}</td><td>${esc(e.role||'-')}</td></tr>`; });
+    $('runDetail').innerHTML = html+'</tbody></table>';
+  } catch(e){ toast(e.message,false); }
+}
+function lookupRun(){ const v=$('runIdLookup').value.trim(); if(v) showRun(v); }
+
+/* ---------------- 系统自愈与诊断（管理员） ---------------- */
+async function runMaintenance(){
+  try {
+    const d=await api('/api/v1/maintenance',{method:'POST',body:JSON.stringify(
+      {actions:['stale_claims','revocations','rotate_logs']})});
+    const det=d.detail||{};
+    toast(`维护完成：释放占用 ${(det.released_stale_claims||[]).length} 个，`
+        + `清理撤销记录 ${det.purged_revocations||0} 条`);
+    $('diagBox').innerHTML=`<pre class="mono">${esc(JSON.stringify(det,null,2))}</pre>`;
+    loadRuns();
+  } catch(e){ toast(e.message,false); }
+}
+async function loadDiagnostics(){
+  try {
+    const d=await api('/api/v1/diagnostics');
+    const rows=[
+      ['认证模式',(d.config||{}).auth_mode],
+      ['编排器就绪',(d.orchestrator||{}).ready],
+      ['能力服务',(d.capability_service||{}).status],
+      ['员工运行时就绪',(d.agent_runtime||{}).ready],
+      ['僵尸审批占用',((d.stale_claims||[]).length? (d.stale_claims||[]).join(', ') : '无')],
+      ['日志文件总字节',((d.logs||{}).total_bytes)],
+      ['配置问题',((d.config_problems||[]).join('；')||'无')],
+    ];
+    $('diagBox').innerHTML='<table><tbody>'+rows.map(([k,v])=>
+      `<tr><td class="muted">${esc(k)}</td><td class="mono">${esc(String(v))}</td></tr>`).join('')
+      +'</tbody></table>';
+  } catch(e){ $('diagBox').innerHTML=`<div class="empty">${esc(e.message)}</div>`; }
+}
+
+/* ---------------- 规则库 / 提案 ---------------- */
+async function loadRules(){
+  try { const d=await api('/api/v1/rules');
+    $('ruleDigest').textContent = `｜指纹 ${d.digest}｜启用 ${d.active} / 共 ${d.total} 条`;
+    let html=`<table><thead><tr><th>编号</th><th>版本</th><th>状态</th><th>等级</th><th>匹配模式</th><th>法条依据</th><th>来源</th><th>批准人</th></tr></thead><tbody>`;
+    d.rules.forEach(r=>{ html += `<tr><td class="mono">${r.id}</td><td>v${r.version}</td>
+      <td>${r.status==='active'?statusTag('active'):`<span class="tag t-gray">${esc(r.status)}</span>`}</td>
+      <td>${riskTag(r.severity)}</td><td class="mono">${esc(r.pattern||'')}</td>
+      <td class="muted">${esc(r.regulation_ref||'')}</td><td>${esc(r.source||'')}</td>
+      <td>${esc(r.approved_by||'')}</td></tr>`; });
+    $('ruleList').innerHTML = html+'</tbody></table>';
+  } catch(e){ $('ruleList').innerHTML=`<div class="empty">${esc(e.message)}</div>`; }
+}
+async function loadProposals(){
+  try { const d=await api('/api/v1/proposals');
+    if(!d.count){ $('proposalList').innerHTML='<div class="empty">暂无提案（人工驳回合同后会产生）</div>'; return; }
+    let html=`<table><thead><tr><th>提案号</th><th>类型</th><th>目标规则</th><th>等级</th><th>模式</th><th>状态</th><th>操作</th></tr></thead><tbody>`;
+    d.proposals.forEach(p=>{ const km={new:['t-blue','新增'],revise:['t-mid','修订'],conflict:['t-high','冲突待裁决']};
+      const [c,l]=km[p.kind]||['t-gray',p.kind];
+      html += `<tr><td class="mono">${p.proposal_id}</td><td><span class="tag ${c}">${l}</span></td>
+        <td class="mono">${p.target_rule_id||p.proposed_rule_id||'-'}</td><td>${riskTag(p.severity)}</td>
+        <td class="mono">${esc(p.pattern||'')}</td><td>${esc(p.status||'')}</td>
+        <td>${p.status==='pending_supervisor'
+          ? `<button class="small" onclick="reviewProposal('${p.proposal_id}','approve')">批准</button>
+             <button class="small danger" onclick="reviewProposal('${p.proposal_id}','reject')">驳回</button>`
+          : '<span class="muted">已处理</span>'}</td></tr>`; });
+    $('proposalList').innerHTML = html+'</tbody></table>';
+  } catch(e){ $('proposalList').innerHTML=`<div class="empty">${esc(e.message)}</div>`; }
+}
+
+/* ---------------- 审计台 ---------------- */
+async function loadAudit(){
+  const q = new URLSearchParams();
+  if($('auditEvent').value.trim()) q.set('event', $('auditEvent').value.trim());
+  if($('auditActor').value.trim()) q.set('actor', $('auditActor').value.trim());
+  if($('auditRun').value.trim()) q.set('run_id', $('auditRun').value.trim());
+  q.set('limit','200');
+  try { const d=await api('/api/v1/audit?'+q.toString());
+    if(!d.count){ $('auditList').innerHTML='<div class="empty">没有匹配的审计事件</div>'; return; }
+    let html=`<table><thead><tr><th>时间</th><th>事件</th><th>操作人</th><th>角色</th><th>run_id</th><th>详情</th></tr></thead><tbody>`;
+    d.events.forEach(e=>{ html += `<tr><td class="muted">${esc(e.created_at)}</td>
+      <td class="mono">${esc(e.event)}</td><td>${esc(e.actor||'-')}</td><td>${esc(e.role||'-')}</td>
+      <td class="mono muted">${esc(e.run_id||'')}</td>
+      <td class="mono muted">${esc((e.detail_json||'').slice(0,160))}</td></tr>`; });
+    $('auditList').innerHTML = html+'</tbody></table>';
+  } catch(e){ $('auditList').innerHTML=`<div class="empty">${esc(e.message)}</div>`; }
+}
+
+/* ---------------- 实时日志 ---------------- */
+let logSrc = null;
+function renderLog(lines){
+  const box=$('liveLog');
+  if(box.querySelector('.empty')) box.innerHTML='';
+  lines.forEach(l=>{
+    const lv=(l.level||'info').toLowerCase();
+    const div=document.createElement('div');
+    div.className='lv-'+lv;
+    div.textContent = `[${l.ts||''}] ${(l.level||'').toUpperCase()} ${l.event||''} `
+      + Object.entries(l).filter(([k])=>!['ts','level','event'].includes(k))
+          .map(([k,v])=>`${k}=${typeof v==='object'?JSON.stringify(v):v}`).join(' ');
+    box.appendChild(div);
+  });
+  if($('logAutoScroll').checked) box.scrollTop = box.scrollHeight;
+}
+async function loadLogs(){
+  try { const d=await api('/api/v1/logs?lines=200'); $('liveLog').innerHTML=''; renderLog(d.lines); }
+  catch(e){ toast(e.message,false); }
+}
+function startLogStream(){
+  stopLogStream();
+  if(!JWT){ toast('实时日志需要登录（JWT）或改用“读取最近200行”', false); }
+  logSrc = new EventSource('/api/v1/logs/stream' + (JWT ? '?token='+encodeURIComponent(JWT) : ''));
+  logSrc.addEventListener('log', ev => { try { renderLog([JSON.parse(ev.data)]); } catch(e){} });
+  logSrc.addEventListener('done', () => { stopLogStream(); toast('日志流已结束'); });
+  logSrc.onerror = () => { stopLogStream(); };
+  toast('已开始订阅实时日志');
+}
+function stopLogStream(){ if(logSrc){ logSrc.close(); logSrc = null; } }
+
+/* ---------------- 账号管理 ---------------- */
+async function loadUsers(){
+  try { const d=await api('/api/v1/users');
+    let html=`<table><thead><tr><th>用户名</th><th>显示名</th><th>角色</th><th>状态</th><th>最近登录</th><th>操作</th></tr></thead><tbody>`;
+    d.users.forEach(u=>{ html += `<tr><td class="mono">${esc(u.username)}</td><td>${esc(u.display_name)}</td>
+      <td>${esc(u.role)}</td><td>${statusTag(u.status)}</td><td class="muted">${esc(u.last_login_at||'-')}</td>
+      <td><button class="small ghost" onclick="toggleUser('${u.username}','${u.status==='active'?'disabled':'active'}')">
+        ${u.status==='active'?'停用':'启用'}</button>
+        <button class="small ghost" onclick="resetPass('${u.username}')">重置密码</button></td></tr>`; });
+    $('userList').innerHTML = html+'</tbody></table>';
+  } catch(e){ $('userList').innerHTML=`<div class="empty">${esc(e.message)}（该面板需要管理员权限）</div>`; }
+}
+async function createUser(){
+  try { const res=await api('/api/v1/users',{method:'POST',body:JSON.stringify({
+      username:$('newUser').value.trim(), display_name:$('newName').value.trim(),
+      password:$('newPass').value, role:$('newRole').value})});
+    toast('账号已创建：'+res.username); $('newUser').value=$('newPass').value=''; loadUsers();
+  } catch(e){ toast(e.message,false); }
+}
+async function toggleUser(username, status){
+  try { await api(`/api/v1/users/${username}/status`,{method:'POST',body:JSON.stringify({status})});
+    toast(`已${status==='active'?'启用':'停用'}：${username}`); loadUsers();
+  } catch(e){ toast(e.message,false); }
+}
+async function resetPass(username){
+  const np = prompt(`为 ${username} 设置新密码（≥6位）`,'');
+  if(!np) return;
+  try { await api(`/api/v1/users/${username}/password`,{method:'POST',
+      body:JSON.stringify({new_password:np})}); toast('密码已重置'); }
+  catch(e){ toast(e.message,false); }
+}
+
+/* ---------------- 指标 ---------------- */
+async function loadMetrics(){
+  try { const m=await api('/api/v1/metrics');
+    const cards=[['待办总数',m.todo_total??'-'],['待处理',m.todo_open??'-'],['已办结',m.todo_done??'-'],
+      ['等待人工的 run',m.pending_runs??'-'],
+      ['规则表指纹',`<span class="mono" style="font-size:14px">${m.rule_table_digest||'-'}</span>`],
+      ['法规库条款',m.regulation_count??'-']];
+    $('metricCards').innerHTML = cards.map(([k,v])=>`<div class="card"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+  } catch(e){ $('metricCards').innerHTML=''; }
+}
+async function refreshBadge(){
+  try { const d=await api('/api/v1/pending?status=open');
+    $('todoBadge').textContent=d.count; $('todoBadge').className='tag '+(d.count?'t-mid':'t-gray');
+  } catch(e){}
+}
+function refreshAll(){
+  loadIdentity(); loadMetrics(); refreshBadge();
+  const n=document.querySelector('.tab.on').dataset.tab;
+  if(n==='todos')loadTodos(); if(n==='runs')loadRuns(); if(n==='rules')loadRules();
+  if(n==='proposals')loadProposals(); if(n==='audit')loadAudit(); if(n==='users')loadUsers();
+}
+
+/* SSE 无法带自定义头：允许通过 query 传令牌（仅日志流） */
+(function patchLogStreamToken(){
+  const orig = startLogStream;
+  window.startLogStream = function(){
+    if(JWT){ stopLogStream();
+      logSrc = new EventSource('/api/v1/logs/stream?token='+encodeURIComponent(JWT));
+      logSrc.addEventListener('log', ev=>{ try{ renderLog([JSON.parse(ev.data)]); }catch(e){} });
+      logSrc.addEventListener('done', ()=>{ stopLogStream(); toast('日志流已结束'); });
+      logSrc.onerror = ()=>{ stopLogStream(); };
+      toast('已开始订阅实时日志'); return; }
+    orig();
+  };
+})();
+
+$('role').onchange = () => {
+  const r=$('role').value;
+  $('actor').value = r==='supervisor'?'supervisor-zhang':(r==='admin'?'admin-chen':'specialist-li');
+  loadIdentity(); refreshAll();
+};
+$('authMode').onchange = () => { renderAuthFields(); };
+renderAuthFields();
+loadIdentity().then(refreshAll);
+setInterval(refreshBadge, 15000);
+</script>
+</body>
+</html>

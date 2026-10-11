@@ -1,0 +1,51 @@
+# 合规官「小合」· 项目自有依赖（含交付镜像所需全部运行时依赖）
+#
+# 【审查修正 P0】原文件只列 pyyaml，Dockerfile 又用硬编码清单补装，
+# 两边都没有 python-dotenv / python-multipart / PyJWT，导致交付镜像里：
+#   gateway 启动钩子 settings() -> from dotenv import load_dotenv -> ImportError，容器起不来
+#   /api/v1/contracts/upload（UploadFile）运行时 500
+#   AUTH_MODE=jwt 登录/校验（import jwt）500
+# 现在本文件即"部署真相源"，Dockerfile 只做 pip install -r。
+#
+# 说明：外部运行时框架（LemonClaw）的依赖由 scripts/d0/install-runtime.ps1
+#      从其自身 requirements.txt 安装，不在本文件内（框架以独立目录运行、源码零改动）。
+
+# ---- Web 网关 ----
+fastapi==0.143.0
+uvicorn==0.54.0
+starlette==1.7.0
+python-multipart==0.0.32      # 文件上传（UploadFile）必需
+
+# ---- 认证与配置 ----
+PyJWT==2.15.1                 # AUTH_MODE=jwt 令牌签发/校验
+python-dotenv==1.2.4          # 网关与 prod_config 的 .env 加载（启动顺序依赖它）
+
+# ---- 文档解析（PDF / Word）----
+pdfplumber==0.11.10
+pypdf==6.20.0
+python-docx==1.2.0
+pillow==12.3.0
+
+# ---- 报告渲染（PDF）----
+reportlab==5.0.1
+
+# ---- 规则表与配置 ----
+PyYAML==6.0.2
+
+# ---- 自检与回归 ----
+pytest==9.1.1
+httpx==0.28.1
+
+# ---- 可选：扫描件 OCR（装上即生效，OCR_ENGINE=auto 会自动挑中）----
+# 【已实测】装上 RapidOCR 后，扫描版 PDF（整页位图、无文本层）能被真实识别出中文条款，
+#          并经规则判定命中风险（见 tests/test_ocr.py 的 TestRealEngine 用例）。
+# 说明：模型随包分发，无需额外下载；占用约 200MB（含 onnxruntime 与 opencv）。
+# 不想装也能用：OCR_ENGINE=none（扫描件转人工），或 OCR_ENGINE=http 接企业 OCR 中台。
+# rapidocr-onnxruntime==1.2.3
+# numpy>=2.0
+# onnxruntime==1.31.0
+
+# ---- 可选：PostgreSQL 交付形态（DB_MODE=pg 时启用）----
+# 【已实现】本项目自有表（待办/审计/账号/令牌撤销/登录退避）支持 PG；
+#          工作流运行态仍由框架 DAO 写 SQLite（不改框架源码），见 docs/16-PostgreSQL部署.md。
+# psycopg[binary]==3.2.3

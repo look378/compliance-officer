@@ -1,0 +1,30 @@
+# 岗位能力服务与 Mock 的交付镜像
+#
+# 说明：本镜像只装**本项目**的依赖。运行时框架（LemonClaw）按项目纪律以独立进程/独立目录运行，
+# 本项目从不修改其源码；两者通过 .lemonclaw/mcp.json 与 .env 连接（见 docs/08-架构说明.md）。
+#
+# 本机（Windows、无 Docker）验证方式：python 3.13 + .runtime/venv，见 README 的常用命令。
+FROM python:3.13-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple \
+    TZ=Asia/Shanghai
+
+WORKDIR /app
+
+# 文档解析需要的中文字体（用于生成/渲染中文 PDF）
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        fonts-noto-cjk \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /app/requirements.txt
+# 【审查修正 P0】依赖清单只有 requirements.txt 一个真相源：
+# 原来这里硬编码补装 fastapi/uvicorn/pdfplumber... 与 requirements.txt 各说各话，
+# 结果是 python-dotenv / python-multipart / PyJWT 谁都没装（容器起不来、上传与 jwt 登录 500）。
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+COPY . /app
+
+# 默认不启动任何服务；由 docker-compose 指定 command
+CMD ["python", "-c", "print('compliance-officer image ready')"]

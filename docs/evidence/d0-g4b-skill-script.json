@@ -1,0 +1,53 @@
+{
+  "gate": "G4b",
+  "started_at": "2026-10-11 14:55:19",
+  "skill_meta": {
+    "name": "contract-parse",
+    "dir": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\.lemonclaw\\skills\\contract-parse-1.0",
+    "runtime": {
+      "python": true,
+      "python_req": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\.lemonclaw\\skills\\contract-parse-1.0\\requirements.txt",
+      "node": false,
+      "node_pkg": null
+    },
+    "required_envs": [],
+    "version": "1.0"
+  },
+  "deps_status_before": "安装失败: Command '['D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\venvs\\\\contract-parse\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '-r', 'D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\skills\\\\contract-parse-1.0\\\\requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']' returned non-zero exit status 1.",
+  "load_before_setup": "技能 contract-parse 依赖未就绪（安装失败: Command '['D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\venvs\\\\contract-parse\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '-r', 'D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\skills\\\\contract-parse-1.0\\\\requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']' returned non-zero exit status 1.），请先执行 /skills setup contract-parse",
+  "setup": {
+    "ok": false,
+    "msg": "pip install 失败: Command '['D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\venvs\\\\contract-parse\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '-r', 'D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\skills\\\\contract-parse-1.0\\\\requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']' returned non-zero exit status 1.",
+    "seconds": 0.11
+  },
+  "deps_status_after": "安装失败: Command '['D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\venvs\\\\contract-parse\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '-r', 'D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\skills\\\\contract-parse-1.0\\\\requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']' returned non-zero exit status 1.",
+  "load_after_setup": "技能 contract-parse 依赖未就绪（安装失败: Command '['D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\venvs\\\\contract-parse\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '-r', 'D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\skills\\\\contract-parse-1.0\\\\requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']' returned non-zero exit status 1.），请先执行 /skills setup contract-parse",
+  "script_result_raw": "技能 contract-parse 依赖未就绪（安装失败: Command '['D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\venvs\\\\contract-parse\\\\Scripts\\\\python.exe', '-m', 'pip', 'install', '-r', 'D:\\\\Project_Experience2.0\\\\项目三\\\\compliance_officer\\\\.runtime\\\\workspace\\\\.lemonclaw\\\\skills\\\\contract-parse-1.0\\\\requirements.txt', '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple']' returned non-zero exit status 1.），请先执行 /skills setup contract-parse",
+  "script_parse_error": "Expecting value: line 1 column 1 (char 0)",
+  "script_parsed": null,
+  "injection": {
+    "summary_head": "你拥有以下技能（如需详细指令请调用 load_skill）：\n- 📋 compliance-sop: 合规审查岗位作业规程（SOP）：合同审查的标准步骤、判定口径、输出格式与红线。处理任何合同审查任务前先加载本技能。 (tags: compliance, sop, contract-review, 合规)\n- 📄 contract-parse: 合同文档解析：原生文本 PDF/Word 提取、扫描",
+    "active_len": 1559,
+    "contains_sop_key_constraint": true,
+    "contains_no_silent_override": true,
+    "active_skills": [
+      "compliance-sop"
+    ]
+  },
+  "deps_blocked": true,
+  "blocked_reason": "技能隔离 venv 的 pip 安装失败（本机 pip/网络/ACL 受限）：依赖脚本通道不可达，已跳过依赖它的断言。确定性能力由 G4（MCP 通道）与 P2（工具端到端）覆盖。",
+  "blocked_verdicts": [
+    "setup_ok",
+    "script_json_contract",
+    "expected_rule_hit",
+    "citation_present"
+  ],
+  "verdicts": {
+    "runtime_detected": true,
+    "load_refused_before_setup": true,
+    "script_runs": true,
+    "sop_injected": true
+  },
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:55:19"
+}

@@ -1,0 +1,719 @@
+{
+  "eval": "P7-quality",
+  "started_at": "2026-10-11 14:57:11",
+  "dataset": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\data\\eval\\eval_contracts.json",
+  "dataset_size": 25,
+  "details": [
+    {
+      "contract_id": "EV-001",
+      "doc_type": "金融销售",
+      "doc_type_detected": "金融销售",
+      "doc_type_reason": "专属词得分 7",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-001"
+      ],
+      "hit_rule_ids": [
+        "RR-001"
+      ],
+      "matched": [
+        "RR-001"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 4,
+      "risky_clause_count": 1,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": {
+        "docx": "EV-001.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 4
+      },
+      "decision_summary": "合同 dc5c4c5e74c0｜解析档位 native｜置信度 0.9｜条款 4 条，风险条款 1 条，整体等级 high｜命中规则 RR-001"
+    },
+    {
+      "contract_id": "EV-002",
+      "doc_type": "金融销售",
+      "doc_type_detected": "金融销售",
+      "doc_type_reason": "专属词得分 5",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-002"
+      ],
+      "hit_rule_ids": [
+        "RR-002"
+      ],
+      "matched": [
+        "RR-002"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 1314772b3d08｜解析档位 native｜置信度 0.9｜条款 2 条，风险条款 1 条，整体等级 high｜命中规则 RR-002"
+    },
+    {
+      "contract_id": "EV-003",
+      "doc_type": "合同通则",
+      "doc_type_detected": "合同通则",
+      "doc_type_reason": "通用词得分 4",
+      "overall_risk_level": "mid",
+      "expect_rule_ids": [
+        "RR-003"
+      ],
+      "hit_rule_ids": [
+        "RR-003"
+      ],
+      "matched": [
+        "RR-003"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.75,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 60c9cf1ba3c2｜解析档位 native｜置信度 0.75｜条款 2 条，风险条款 1 条，整体等级 mid｜命中规则 RR-003"
+    },
+    {
+      "contract_id": "EV-004",
+      "doc_type": "劳动用工",
+      "doc_type_detected": "劳动用工",
+      "doc_type_reason": "专属词得分 4",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-005"
+      ],
+      "hit_rule_ids": [
+        "RR-005"
+      ],
+      "matched": [
+        "RR-005"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 42fbf1c896ff｜解析档位 native｜置信度 0.9｜条款 2 条，风险条款 1 条，整体等级 high｜命中规则 RR-005"
+    },
+    {
+      "contract_id": "EV-005",
+      "doc_type": "数据合规",
+      "doc_type_detected": "数据合规",
+      "doc_type_reason": "专属词得分 6",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-008"
+      ],
+      "hit_rule_ids": [
+        "RR-008"
+      ],
+      "matched": [
+        "RR-008"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 6ca3991cdf12｜解析档位 native｜置信度 0.9｜条款 2 条，风险条款 1 条，整体等级 high｜命中规则 RR-008"
+    },
+    {
+      "contract_id": "EV-006",
+      "doc_type": "合同通则",
+      "doc_type_detected": "劳动用工",
+      "doc_type_reason": "专属词得分 2",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-004"
+      ],
+      "hit_rule_ids": [
+        "RR-004"
+      ],
+      "matched": [
+        "RR-004"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.75,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 4f9599740e53｜解析档位 native｜置信度 0.75｜条款 2 条，风险条款 1 条，整体等级 high｜命中规则 RR-004"
+    },
+    {
+      "contract_id": "EV-007",
+      "doc_type": "采购",
+      "doc_type_detected": "采购",
+      "doc_type_reason": "专属词得分 3",
+      "overall_risk_level": "mid",
+      "expect_rule_ids": [
+        "RR-006"
+      ],
+      "hit_rule_ids": [
+        "RR-006"
+      ],
+      "matched": [
+        "RR-006"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 3,
+      "risky_clause_count": 1,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": {
+        "docx": "EV-007.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 3
+      },
+      "decision_summary": "合同 acf46ea05a78｜解析档位 native｜置信度 0.9｜条款 3 条，风险条款 1 条，整体等级 mid｜命中规则 RR-006"
+    },
+    {
+      "contract_id": "EV-008",
+      "doc_type": "租赁",
+      "doc_type_detected": "租赁",
+      "doc_type_reason": "专属词得分 2",
+      "overall_risk_level": "low",
+      "expect_rule_ids": [
+        "RR-007"
+      ],
+      "hit_rule_ids": [
+        "RR-007"
+      ],
+      "matched": [
+        "RR-007"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 0,
+      "confidence": 0.75,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 2b994529accd｜解析档位 native｜置信度 0.75｜条款 2 条，风险条款 0 条，整体等级 low｜命中规则 RR-007"
+    },
+    {
+      "contract_id": "EV-009",
+      "doc_type": "金融销售",
+      "doc_type_detected": "金融销售",
+      "doc_type_reason": "专属词得分 7",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-001",
+        "RR-003"
+      ],
+      "hit_rule_ids": [
+        "RR-001",
+        "RR-003"
+      ],
+      "matched": [
+        "RR-001",
+        "RR-003"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 5,
+      "risky_clause_count": 2,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": {
+        "docx": "EV-009.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 5
+      },
+      "decision_summary": "合同 d57789a05601｜解析档位 native｜置信度 0.9｜条款 5 条，风险条款 2 条，整体等级 high｜命中规则 RR-001,RR-003"
+    },
+    {
+      "contract_id": "EV-010",
+      "doc_type": "劳动用工",
+      "doc_type_detected": "劳动用工",
+      "doc_type_reason": "专属词得分 5",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-004",
+        "RR-005"
+      ],
+      "hit_rule_ids": [
+        "RR-004",
+        "RR-005"
+      ],
+      "matched": [
+        "RR-004",
+        "RR-005"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 5,
+      "risky_clause_count": 2,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": {
+        "docx": "EV-010.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 5
+      },
+      "decision_summary": "合同 be5de2a0cc25｜解析档位 native｜置信度 0.9｜条款 5 条，风险条款 2 条，整体等级 high｜命中规则 RR-004,RR-005"
+    },
+    {
+      "contract_id": "EV-011",
+      "doc_type": "数据合规",
+      "doc_type_detected": "数据合规",
+      "doc_type_reason": "专属词得分 4",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-003",
+        "RR-008"
+      ],
+      "hit_rule_ids": [
+        "RR-003",
+        "RR-008"
+      ],
+      "matched": [
+        "RR-003",
+        "RR-008"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 5,
+      "risky_clause_count": 2,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": {
+        "docx": "EV-011.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 5
+      },
+      "decision_summary": "合同 4eb43607b418｜解析档位 native｜置信度 0.9｜条款 5 条，风险条款 2 条，整体等级 high｜命中规则 RR-003,RR-008"
+    },
+    {
+      "contract_id": "EV-012",
+      "doc_type": "采购",
+      "doc_type_detected": "采购",
+      "doc_type_reason": "专属词得分 6",
+      "overall_risk_level": "mid",
+      "expect_rule_ids": [
+        "RR-006",
+        "RR-007"
+      ],
+      "hit_rule_ids": [
+        "RR-006",
+        "RR-007"
+      ],
+      "matched": [
+        "RR-006",
+        "RR-007"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 5,
+      "risky_clause_count": 1,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": {
+        "docx": "EV-012.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 5
+      },
+      "decision_summary": "合同 786a3cbbfd41｜解析档位 native｜置信度 0.9｜条款 5 条，风险条款 1 条，整体等级 mid｜命中规则 RR-006,RR-007"
+    },
+    {
+      "contract_id": "EV-013",
+      "doc_type": "租赁",
+      "doc_type_detected": "租赁",
+      "doc_type_reason": "专属词得分 3",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-004"
+      ],
+      "hit_rule_ids": [
+        "RR-004"
+      ],
+      "matched": [
+        "RR-004"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 a7e9596b83ed｜解析档位 native｜置信度 0.9｜条款 2 条，风险条款 1 条，整体等级 high｜命中规则 RR-004"
+    },
+    {
+      "contract_id": "EV-014",
+      "doc_type": "金融销售",
+      "doc_type_detected": "金融销售",
+      "doc_type_reason": "专属词得分 7",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-001",
+        "RR-002"
+      ],
+      "hit_rule_ids": [
+        "RR-001",
+        "RR-002"
+      ],
+      "matched": [
+        "RR-001",
+        "RR-002"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 30159b34d0b4｜解析档位 native｜置信度 0.9｜条款 2 条，风险条款 1 条，整体等级 high｜命中规则 RR-001,RR-002"
+    },
+    {
+      "contract_id": "EV-015",
+      "doc_type": "劳动用工",
+      "doc_type_detected": "劳动用工",
+      "doc_type_reason": "专属词得分 5",
+      "overall_risk_level": "mid",
+      "expect_rule_ids": [
+        "RR-003",
+        "RR-006"
+      ],
+      "hit_rule_ids": [
+        "RR-003",
+        "RR-006"
+      ],
+      "matched": [
+        "RR-003",
+        "RR-006"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 5,
+      "risky_clause_count": 2,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": {
+        "docx": "EV-015.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 5
+      },
+      "decision_summary": "合同 5f720a870217｜解析档位 native｜置信度 0.9｜条款 5 条，风险条款 2 条，整体等级 mid｜命中规则 RR-003,RR-006"
+    },
+    {
+      "contract_id": "EV-016",
+      "doc_type": "合同通则",
+      "doc_type_detected": "合同通则",
+      "doc_type_reason": "通用词得分 4",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-004"
+      ],
+      "hit_rule_ids": [
+        "RR-004"
+      ],
+      "matched": [
+        "RR-004"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.75,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 9562c8a3481c｜解析档位 native｜置信度 0.75｜条款 2 条，风险条款 1 条，整体等级 high｜命中规则 RR-004"
+    },
+    {
+      "contract_id": "EV-017",
+      "doc_type": "数据合规",
+      "doc_type_detected": "数据合规",
+      "doc_type_reason": "专属词得分 6",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-008"
+      ],
+      "hit_rule_ids": [
+        "RR-008"
+      ],
+      "matched": [
+        "RR-008"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.75,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 f7a3273d9f86｜解析档位 native｜置信度 0.75｜条款 2 条，风险条款 1 条，整体等级 high｜命中规则 RR-008"
+    },
+    {
+      "contract_id": "EV-018",
+      "doc_type": "采购",
+      "doc_type_detected": "采购",
+      "doc_type_reason": "专属词得分 5",
+      "overall_risk_level": "mid",
+      "expect_rule_ids": [
+        "RR-006"
+      ],
+      "hit_rule_ids": [
+        "RR-006"
+      ],
+      "matched": [
+        "RR-006"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 5,
+      "risky_clause_count": 1,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": {
+        "docx": "EV-018.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 5
+      },
+      "decision_summary": "合同 d016e3e5e8d8｜解析档位 native｜置信度 0.9｜条款 5 条，风险条款 1 条，整体等级 mid｜命中规则 RR-006"
+    },
+    {
+      "contract_id": "EV-019",
+      "doc_type": "劳动用工",
+      "doc_type_detected": "劳动用工",
+      "doc_type_reason": "专属词得分 3",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-005"
+      ],
+      "hit_rule_ids": [
+        "RR-005"
+      ],
+      "matched": [
+        "RR-005"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 2,
+      "risky_clause_count": 1,
+      "confidence": 0.75,
+      "level_ok": true,
+      "table": null,
+      "decision_summary": "合同 c3cd44e4d200｜解析档位 native｜置信度 0.75｜条款 2 条，风险条款 1 条，整体等级 high｜命中规则 RR-005"
+    },
+    {
+      "contract_id": "EV-020",
+      "doc_type": "金融销售",
+      "doc_type_detected": "金融销售",
+      "doc_type_reason": "专属词得分 7",
+      "overall_risk_level": "high",
+      "expect_rule_ids": [
+        "RR-002",
+        "RR-003",
+        "RR-004"
+      ],
+      "hit_rule_ids": [
+        "RR-002",
+        "RR-003",
+        "RR-004"
+      ],
+      "matched": [
+        "RR-002",
+        "RR-003",
+        "RR-004"
+      ],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 5,
+      "risky_clause_count": 3,
+      "confidence": 0.9,
+      "level_ok": true,
+      "table": {
+        "docx": "EV-020.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 5
+      },
+      "decision_summary": "合同 869d5d404993｜解析档位 native｜置信度 0.9｜条款 5 条，风险条款 3 条，整体等级 high｜命中规则 RR-002,RR-003,RR-004"
+    },
+    {
+      "contract_id": "EV-C01",
+      "doc_type": "合同通则",
+      "doc_type_detected": "合同通则",
+      "doc_type_reason": "通用词得分 7",
+      "overall_risk_level": "low",
+      "expect_rule_ids": [],
+      "hit_rule_ids": [],
+      "matched": [],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 3,
+      "risky_clause_count": 0,
+      "confidence": 0.9,
+      "level_ok": null,
+      "table": null,
+      "decision_summary": "合同 b4e376c708d3｜解析档位 native｜置信度 0.9｜条款 3 条，风险条款 0 条，整体等级 low｜命中规则 无"
+    },
+    {
+      "contract_id": "EV-C02",
+      "doc_type": "采购",
+      "doc_type_detected": "采购",
+      "doc_type_reason": "专属词得分 5",
+      "overall_risk_level": "low",
+      "expect_rule_ids": [],
+      "hit_rule_ids": [],
+      "matched": [],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 4,
+      "risky_clause_count": 0,
+      "confidence": 0.9,
+      "level_ok": null,
+      "table": {
+        "docx": "EV-C02.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 4
+      },
+      "decision_summary": "合同 6fea33177465｜解析档位 native｜置信度 0.9｜条款 4 条，风险条款 0 条，整体等级 low｜命中规则 无"
+    },
+    {
+      "contract_id": "EV-C03",
+      "doc_type": "租赁",
+      "doc_type_detected": "租赁",
+      "doc_type_reason": "专属词得分 6",
+      "overall_risk_level": "low",
+      "expect_rule_ids": [],
+      "hit_rule_ids": [],
+      "matched": [],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 3,
+      "risky_clause_count": 0,
+      "confidence": 0.9,
+      "level_ok": null,
+      "table": null,
+      "decision_summary": "合同 b27f382bfdbe｜解析档位 native｜置信度 0.9｜条款 3 条，风险条款 0 条，整体等级 low｜命中规则 无"
+    },
+    {
+      "contract_id": "EV-C04",
+      "doc_type": "劳动用工",
+      "doc_type_detected": "劳动用工",
+      "doc_type_reason": "专属词得分 6",
+      "overall_risk_level": "low",
+      "expect_rule_ids": [],
+      "hit_rule_ids": [],
+      "matched": [],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 3,
+      "risky_clause_count": 0,
+      "confidence": 0.9,
+      "level_ok": null,
+      "table": null,
+      "decision_summary": "合同 27bdce4b48de｜解析档位 native｜置信度 0.9｜条款 3 条，风险条款 0 条，整体等级 low｜命中规则 无"
+    },
+    {
+      "contract_id": "EV-C05",
+      "doc_type": "数据合规",
+      "doc_type_detected": "数据合规",
+      "doc_type_reason": "专属词得分 6",
+      "overall_risk_level": "low",
+      "expect_rule_ids": [],
+      "hit_rule_ids": [],
+      "matched": [],
+      "missed": [],
+      "unexpected_rule_hits": [],
+      "clean_clause_high": 0,
+      "clause_count": 4,
+      "risky_clause_count": 0,
+      "confidence": 0.9,
+      "level_ok": null,
+      "table": {
+        "docx": "EV-C05.docx",
+        "tables": 1,
+        "cells_ok": true,
+        "confidence": 0.95,
+        "clauses": 4
+      },
+      "decision_summary": "合同 8863f2e7a8b4｜解析档位 native｜置信度 0.9｜条款 4 条，风险条款 0 条，整体等级 low｜命中规则 无"
+    }
+  ],
+  "metrics": {
+    "contracts": 25,
+    "risk_clause_recall": 1.0,
+    "risk_clause_missed": 0,
+    "risk_clause_expected": 28,
+    "clean_clauses": 54,
+    "false_positive_count": 0,
+    "false_positive_rate": 0.0,
+    "level_consistency": 1.0,
+    "doc_type_accuracy": 0.96,
+    "table_extract_success": 1.0,
+    "table_cell_accuracy": 1.0,
+    "table_cases": 11,
+    "human_review_required": 19,
+    "human_review_rate": 0.76,
+    "total_clauses": 81
+  },
+  "finished_at": "2026-10-11 14:57:12",
+  "verdicts": {
+    "recall_full": true,
+    "no_false_positive": true,
+    "level_consistent": true,
+    "doc_type_ok": true,
+    "table_ok": true
+  },
+  "verdict": "PASS"
+}

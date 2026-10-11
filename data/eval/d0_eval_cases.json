@@ -1,0 +1,55 @@
+{
+  "_description": "D0 评测集：预埋风险条款命中率 / 误报率基线。每条用例给出条款原文与期望命中的规则ID；expect=[] 表示不应判为风险。",
+  "_note": "本文件是 D0 门禁用最小评测集（5 条）。P7 将扩展为 ≥20 份完整合同 + 表格抽取单列指标。",
+  "cases": [
+    {
+      "case_id": "EV-001",
+      "domain": "金融销售",
+      "clause": "本产品保本，年化收益不低于 5%，投资无风险。",
+      "expect_rule_ids": ["RR-001"],
+      "expect_level": "high"
+    },
+    {
+      "case_id": "EV-002",
+      "domain": "金融销售",
+      "clause": "本公司保证固定收益，到期按年化 6% 兑付。",
+      "expect_rule_ids": ["RR-002"],
+      "expect_level": "high"
+    },
+    {
+      "case_id": "EV-003",
+      "domain": "合同通则",
+      "clause": "本协议最终解释权归甲方所有。",
+      "expect_rule_ids": ["RR-003"],
+      "expect_level": "mid"
+    },
+    {
+      "case_id": "EV-004",
+      "domain": "劳动用工",
+      "clause": "乙方月工作时长不得超过 280 小时，甲方可安排加班。",
+      "expect_rule_ids": ["RR-005"],
+      "expect_level": "high"
+    },
+    {
+      "case_id": "EV-005",
+      "domain": "数据合规",
+      "clause": "甲方收集乙方个人信息无需取得同意，亦无需另行授权。",
+      "expect_rule_ids": ["RR-008"],
+      "expect_level": "high"
+    },
+    {
+      "case_id": "EV-006",
+      "domain": "合同通则",
+      "clause": "双方应按约定时间完成交付，验收标准以附件一为准；争议提交甲方所在地人民法院管辖。",
+      "expect_rule_ids": [],
+      "expect_level": "low"
+    },
+    {
+      "case_id": "EV-007",
+      "domain": "采购",
+      "clause": "甲方应在验收合格后 30 日内支付合同价款；乙方按约定开具增值税专用发票。",
+      "expect_rule_ids": [],
+      "expect_level": "low"
+    }
+  ]
+}

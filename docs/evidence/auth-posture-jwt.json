@@ -1,0 +1,22 @@
+{
+  "check": "auth-posture-jwt",
+  "at": "2026-10-10 17:05:38",
+  "passed": 13,
+  "total": 13,
+  "verdict": "PASS",
+  "results": {
+    "admin_login": "PASS",
+    "demo_token_rejected": "PASS（HTTP 401）",
+    "bearer_access_role_from_token": "PASS（role=admin）",
+    "admin_creates_test_user": "PASS",
+    "test_user_login": "PASS",
+    "self_change_requires_old_password": "PASS（HTTP 400）",
+    "cross_user_change_denied": "PASS（HTTP 403）",
+    "self_change_with_old_password": "PASS",
+    "old_token_revoked_after_change": "PASS（HTTP 401）",
+    "disable_user": "PASS",
+    "diagnostics_requires_admin_works": "PASS",
+    "maintenance_works": "PASS",
+    "diagnostics_anonymous_denied": "PASS（HTTP 401）"
+  }
+}

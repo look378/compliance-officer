@@ -1,0 +1,149 @@
+{
+  "gate": "G7",
+  "started_at": "2026-10-11 14:56:02",
+  "cases_file": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\data\\eval\\d0_eval_cases.json",
+  "rule_table": {
+    "active_rules": 8,
+    "total_rules": 9,
+    "digest": "1d48a8faca9d",
+    "regulation_count": 54
+  },
+  "case_count": 7,
+  "results": [
+    {
+      "case_id": "EV-001",
+      "domain": "金融销售",
+      "expect_rule_ids": [
+        "RR-001"
+      ],
+      "got_rule_ids": [
+        "RR-001"
+      ],
+      "expect_level": "high",
+      "got_level": "high",
+      "rule_table_digest": "1d48a8faca9d",
+      "citations": [
+        "《人身保险销售行为管理办法》第 22 条"
+      ],
+      "matched": true,
+      "citation_ok": true
+    },
+    {
+      "case_id": "EV-002",
+      "domain": "金融销售",
+      "expect_rule_ids": [
+        "RR-002"
+      ],
+      "got_rule_ids": [
+        "RR-002"
+      ],
+      "expect_level": "high",
+      "got_level": "high",
+      "rule_table_digest": "1d48a8faca9d",
+      "citations": [
+        "《人身保险销售行为管理办法》第 22 条"
+      ],
+      "matched": true,
+      "citation_ok": true
+    },
+    {
+      "case_id": "EV-003",
+      "domain": "合同通则",
+      "expect_rule_ids": [
+        "RR-003"
+      ],
+      "got_rule_ids": [
+        "RR-003"
+      ],
+      "expect_level": "mid",
+      "got_level": "mid",
+      "rule_table_digest": "1d48a8faca9d",
+      "citations": [
+        "《民法典》第 498 条"
+      ],
+      "matched": true,
+      "citation_ok": true
+    },
+    {
+      "case_id": "EV-004",
+      "domain": "劳动用工",
+      "expect_rule_ids": [
+        "RR-005"
+      ],
+      "got_rule_ids": [
+        "RR-005"
+      ],
+      "expect_level": "high",
+      "got_level": "high",
+      "rule_table_digest": "1d48a8faca9d",
+      "citations": [
+        "《劳动法》第 41 条"
+      ],
+      "matched": true,
+      "citation_ok": true
+    },
+    {
+      "case_id": "EV-005",
+      "domain": "数据合规",
+      "expect_rule_ids": [
+        "RR-008"
+      ],
+      "got_rule_ids": [
+        "RR-008"
+      ],
+      "expect_level": "high",
+      "got_level": "high",
+      "rule_table_digest": "1d48a8faca9d",
+      "citations": [
+        "《个人信息保护法》第 13 条"
+      ],
+      "matched": true,
+      "citation_ok": true
+    },
+    {
+      "case_id": "EV-006",
+      "domain": "合同通则",
+      "expect_rule_ids": [],
+      "got_rule_ids": [],
+      "expect_level": "low",
+      "got_level": "low",
+      "rule_table_digest": "1d48a8faca9d",
+      "citations": [],
+      "matched": true,
+      "citation_ok": true
+    },
+    {
+      "case_id": "EV-007",
+      "domain": "采购",
+      "expect_rule_ids": [],
+      "got_rule_ids": [],
+      "expect_level": "low",
+      "got_level": "low",
+      "rule_table_digest": "1d48a8faca9d",
+      "citations": [],
+      "matched": true,
+      "citation_ok": true
+    }
+  ],
+  "metrics": {
+    "risky_cases": 5,
+    "clean_cases": 2,
+    "hits": 5,
+    "hit_rate": 1.0,
+    "false_positive_count": 0,
+    "false_positive_rate": 0.0,
+    "citation_ok": true,
+    "level_consistency": 1.0,
+    "level_mismatches": []
+  },
+  "verdicts": {
+    "hit_rate_ok": true,
+    "false_positive_zero": true,
+    "citation_ok": true,
+    "level_consistent": true,
+    "rule_table_stable": true
+  },
+  "verdict": "PASS",
+  "note": "D0 基线只覆盖确定性规则通道；LLM 泛化通道与表格抽取在 P2/P7 另设评测，两类指标必须分开报告，不得混合成一个'准确率'。",
+  "finished_at": "2026-10-11 14:56:02"
+}

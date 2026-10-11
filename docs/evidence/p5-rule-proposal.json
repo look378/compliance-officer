@@ -1,0 +1,487 @@
+{
+  "flow": "P5-rule-proposal",
+  "started_at": "2026-10-11 14:57:09",
+  "cases": {
+    "A_new_rule": {
+      "proposal": {
+        "ok": true,
+        "proposal_id": "RP-20261011145709-4c34",
+        "kind": "new",
+        "target_rule_id": null,
+        "proposed_rule_id": "RR-010",
+        "version": 1,
+        "pattern": "自动续约.{0,6}(无需|不需).{0,4}(通知|告知)",
+        "severity": "mid",
+        "regulation_ref": "《民法典》第 470 条",
+        "suggestion": "明确续约通知期限与拒绝续约方式",
+        "reason": "合同约定自动续约但未约定通知义务，存在续约争议与费用风险",
+        "contract_id": "",
+        "evidence": "",
+        "proposed_by": "specialist-li",
+        "status": "pending_supervisor",
+        "dedup": {
+          "exact_rule": null,
+          "containment_rule": null,
+          "similar_rule": null,
+          "layer": "none",
+          "similarity": 0.48,
+          "threshold": 0.85,
+          "note": "未发现同模式、包含关系或高相似规则，作为新规则提案"
+        },
+        "conflict_with": [],
+        "conflict_requires_manual": false,
+        "created_at": "2026-10-11 14:57:09"
+      },
+      "approve": {
+        "ok": true,
+        "rule_id": "RR-010",
+        "version": 1,
+        "replaced": false,
+        "new_digest": "e088c53d9b6d",
+        "rule": {
+          "id": "RR-010",
+          "version": 1,
+          "status": "active",
+          "pattern": "自动续约.{0,6}(无需|不需).{0,4}(通知|告知)",
+          "severity": "mid",
+          "priority": 6,
+          "regulation_ref": "《民法典》第 470 条",
+          "suggestion": "明确续约通知期限与拒绝续约方式",
+          "source": "proposal",
+          "approved_by": "supervisor-zhang",
+          "approved_at": "2026-10-11",
+          "changelog": "来自提案 RP-20261011145709-4c34（合同 n/a）；驳回原因：合同约定自动续约但未约定通知义务，存在续约争议与费用风险"
+        },
+        "claimed": true,
+        "decision": "approve"
+      },
+      "hits_before": [
+        "RR-007"
+      ],
+      "hits_after": [
+        "RR-007",
+        "RR-010"
+      ],
+      "stored_rule": {
+        "id": "RR-010",
+        "version": 1,
+        "status": "active",
+        "pattern": "自动续约.{0,6}(无需|不需).{0,4}(通知|告知)",
+        "severity": "mid",
+        "priority": 6,
+        "regulation_ref": "《民法典》第 470 条",
+        "suggestion": "明确续约通知期限与拒绝续约方式",
+        "source": "proposal",
+        "approved_by": "supervisor-zhang",
+        "approved_at": "2026-10-11",
+        "changelog": "来自提案 RP-20261011145709-4c34（合同 n/a）；驳回原因：合同约定自动续约但未约定通知义务，存在续约争议与费用风险"
+      },
+      "digest_after": "e088c53d9b6d"
+    },
+    "B_conflict": {
+      "proposal": {
+        "ok": true,
+        "proposal_id": "RP-20261011145710-1bb3",
+        "kind": "conflict",
+        "target_rule_id": "RR-003",
+        "proposed_rule_id": "RR-003",
+        "version": null,
+        "pattern": "最终解释权",
+        "severity": "high",
+        "regulation_ref": "《民法典》第 498 条",
+        "suggestion": "按高风险处理",
+        "reason": "等级判断分歧：认为最终解释权应为高风险",
+        "contract_id": "",
+        "evidence": "",
+        "proposed_by": "specialist-li",
+        "status": "pending_supervisor",
+        "dedup": {
+          "layer": "conflict",
+          "exact_rule": null,
+          "containment_rule": null,
+          "similar_rule": null,
+          "similarity": null,
+          "threshold": 0.85,
+          "note": "同模式但等级不同，需主管人工裁决"
+        },
+        "conflict_with": [
+          {
+            "rule_id": "RR-003",
+            "severity": "mid",
+            "version": 2,
+            "status": "active"
+          }
+        ],
+        "conflict_requires_manual": true,
+        "created_at": "2026-10-11 14:57:10",
+        "note": "存在同模式异等级冲突：禁止静默覆盖，请主管裁决后再生成修订提案"
+      },
+      "approve": {
+        "ok": false,
+        "errors": [
+          "该提案为『同模式异等级冲突』，必须由主管人工裁决后重新生成提案，禁止直接写入"
+        ],
+        "claimed": true,
+        "decision": "approve"
+      },
+      "digest_same": true
+    },
+    "C_dedup_revision": {
+      "proposal": {
+        "ok": true,
+        "proposal_id": "RP-20261011145710-7ef4",
+        "kind": "revise",
+        "target_rule_id": "RR-010",
+        "proposed_rule_id": "RR-010",
+        "version": 2,
+        "pattern": "自动续约.{0,6}(无需|不需).{0,4}(通知|告知)",
+        "severity": "mid",
+        "regulation_ref": "《民法典》第 470 条",
+        "suggestion": "补充通知期限的量化要求",
+        "reason": "同一问题再次出现",
+        "contract_id": "",
+        "evidence": "",
+        "proposed_by": "specialist-li",
+        "status": "pending_supervisor",
+        "dedup": {
+          "exact_rule": "RR-010",
+          "containment_rule": null,
+          "similar_rule": null,
+          "layer": "exact",
+          "similarity": 1.0,
+          "threshold": 0.85,
+          "note": "模式与 RR-010 归一化后完全一致，转为修订提案（version 1 -> 2）"
+        },
+        "conflict_with": [],
+        "conflict_requires_manual": false,
+        "created_at": "2026-10-11 14:57:10"
+      },
+      "approve": {
+        "ok": true,
+        "rule_id": "RR-010",
+        "version": 2,
+        "replaced": true,
+        "new_digest": "057121f33022",
+        "rule": {
+          "id": "RR-010",
+          "version": 2,
+          "status": "active",
+          "pattern": "自动续约.{0,6}(无需|不需).{0,4}(通知|告知)",
+          "severity": "mid",
+          "priority": 6,
+          "regulation_ref": "《民法典》第 470 条",
+          "suggestion": "补充通知期限的量化要求",
+          "source": "proposal",
+          "approved_by": "supervisor-liu",
+          "approved_at": "2026-10-11",
+          "changelog": "来自提案 RP-20261011145710-7ef4（合同 n/a）；驳回原因：同一问题再次出现"
+        },
+        "claimed": true,
+        "decision": "approve"
+      },
+      "hit_version": 2
+    },
+    "D_concurrency": {
+      "proposal_id": "RP-20261011145710-1882",
+      "accepted": 1,
+      "results": [
+        {
+          "i": 3,
+          "ok": false,
+          "claimed": false,
+          "errors": [
+            "提案已被 supervisor-2@2026-10-11 14:57:10 认领处理中，请勿重复提交"
+          ]
+        },
+        {
+          "i": 1,
+          "ok": false,
+          "claimed": false,
+          "errors": [
+            "提案已被 supervisor-2@2026-10-11 14:57:10 认领处理中，请勿重复提交"
+          ]
+        },
+        {
+          "i": 0,
+          "ok": false,
+          "claimed": false,
+          "errors": [
+            "提案已被 supervisor-2@2026-10-11 14:57:10 认领处理中，请勿重复提交"
+          ]
+        },
+        {
+          "i": 2,
+          "ok": true,
+          "claimed": true,
+          "errors": null
+        }
+      ]
+    },
+    "E_reject": {
+      "proposal": {
+        "ok": true,
+        "proposal_id": "RP-20261011145710-80d8",
+        "kind": "new",
+        "target_rule_id": null,
+        "proposed_rule_id": "RR-012",
+        "version": 1,
+        "pattern": "争议解决地.{0,6}(仲裁|法院)",
+        "severity": "low",
+        "regulation_ref": "《民事诉讼法》第 35 条",
+        "suggestion": "提示核对管辖",
+        "reason": "主管认为该模式误报率高",
+        "contract_id": "",
+        "evidence": "",
+        "proposed_by": "specialist-li",
+        "status": "pending_supervisor",
+        "dedup": {
+          "exact_rule": null,
+          "containment_rule": null,
+          "similar_rule": null,
+          "layer": "none",
+          "similarity": 0.7692,
+          "threshold": 0.85,
+          "note": "未发现同模式、包含关系或高相似规则，作为新规则提案"
+        },
+        "conflict_with": [],
+        "conflict_requires_manual": false,
+        "created_at": "2026-10-11 14:57:10"
+      },
+      "reject": {
+        "ok": true,
+        "proposal_id": "RP-20261011145710-80d8",
+        "claimed": true,
+        "decision": "reject"
+      },
+      "reject_again": {
+        "ok": false,
+        "errors": [
+          "提案已处理过（rejected），拒绝重复审批"
+        ]
+      },
+      "digest_same": true
+    }
+  },
+  "capability_service": {
+    "started_by_this_run": false,
+    "health": {
+      "status": "running",
+      "server": "compliance-officer",
+      "version": "0.2.0",
+      "sessions": 4,
+      "stats": {
+        "initialize": 4,
+        "tools_list": 4,
+        "tools_call": 0,
+        "call_names": {},
+        "errors": 0
+      }
+    }
+  },
+  "rule_table_before": {
+    "digest": "1d48a8faca9d",
+    "active": 8,
+    "total": 9
+  },
+  "audit_events": {
+    "has_approved": true,
+    "has_rejected": true
+  },
+  "cleanup": {
+    "rules_digest_before": "1d48a8faca9d",
+    "rules_digest_restored": "1d48a8faca9d",
+    "rules_restored": true,
+    "proposals_removed": [
+      "RP-20261011145709-4c34",
+      "RP-20261011145710-1bb3",
+      "RP-20261011145710-7ef4",
+      "RP-20261011145710-1882",
+      "RP-20261011145710-80d8"
+    ],
+    "todos_closed": 1,
+    "proposals_new_left": []
+  },
+  "checks": {
+    "A1_proposal_created_as_new": {
+      "pass": true,
+      "detail": {
+        "kind": "new",
+        "id": "RP-20261011145709-4c34",
+        "rule_id": "RR-010",
+        "dedup": {
+          "exact_rule": null,
+          "containment_rule": null,
+          "similar_rule": null,
+          "layer": "none",
+          "similarity": 0.48,
+          "threshold": 0.85,
+          "note": "未发现同模式、包含关系或高相似规则，作为新规则提案"
+        }
+      }
+    },
+    "A2_not_effective_before_approval": {
+      "pass": true,
+      "detail": {
+        "hits_before": [
+          "RR-007"
+        ]
+      }
+    },
+    "A3_approved_writes_versioned_rule": {
+      "pass": true,
+      "detail": {
+        "rule_id": "RR-010",
+        "version": 1,
+        "digest_before": "1d48a8faca9d",
+        "digest_after": "e088c53d9b6d"
+      }
+    },
+    "A4_rule_takes_effect_with_audit_fields": {
+      "pass": true,
+      "detail": {
+        "hits": [
+          {
+            "id": "RR-007",
+            "v": 1,
+            "ref": "《民法典》第 470 条（合同内容）"
+          },
+          {
+            "id": "RR-010",
+            "v": 1,
+            "ref": "《民法典》第 470 条"
+          }
+        ]
+      }
+    },
+    "A5_rule_entry_has_audit_fields": {
+      "pass": true,
+      "detail": {
+        "entry": {
+          "id": "RR-010",
+          "version": 1,
+          "status": "active",
+          "source": "proposal",
+          "approved_by": "supervisor-zhang",
+          "approved_at": "2026-10-11",
+          "changelog": "来自提案 RP-20261011145709-4c34（合同 n/a）；驳回原因：合同约定自动续约但未约定通知义务，存在续约争议与费用风险"
+        }
+      }
+    },
+    "B1_conflict_proposal_flagged": {
+      "pass": true,
+      "detail": {
+        "kind": "conflict",
+        "conflicts": [
+          {
+            "rule_id": "RR-003",
+            "severity": "mid",
+            "version": 2,
+            "status": "active"
+          }
+        ]
+      }
+    },
+    "B2_conflict_approval_refused_and_rules_intact": {
+      "pass": true,
+      "detail": {
+        "errors": [
+          "该提案为『同模式异等级冲突』，必须由主管人工裁决后重新生成提案，禁止直接写入"
+        ],
+        "digest_same": true
+      }
+    },
+    "C1_exact_dedup_to_revision": {
+      "pass": true,
+      "detail": {
+        "kind": "revise",
+        "target": "RR-010",
+        "version": 2,
+        "layer": "exact"
+      }
+    },
+    "C2_revision_bumps_version": {
+      "pass": true,
+      "detail": {
+        "approve": {
+          "ok": true,
+          "version": 2,
+          "rules_digest": null
+        },
+        "hit_version": 2
+      }
+    },
+    "D1_concurrent_approve_single": {
+      "pass": true,
+      "detail": {
+        "accepted": 1,
+        "results": [
+          {
+            "i": 3,
+            "ok": false,
+            "claimed": false,
+            "errors": [
+              "提案已被 supervisor-2@2026-10-11 14:57:10 认领处理中，请勿重复提交"
+            ]
+          },
+          {
+            "i": 1,
+            "ok": false,
+            "claimed": false,
+            "errors": [
+              "提案已被 supervisor-2@2026-10-11 14:57:10 认领处理中，请勿重复提交"
+            ]
+          },
+          {
+            "i": 0,
+            "ok": false,
+            "claimed": false,
+            "errors": [
+              "提案已被 supervisor-2@2026-10-11 14:57:10 认领处理中，请勿重复提交"
+            ]
+          },
+          {
+            "i": 2,
+            "ok": true,
+            "claimed": true,
+            "errors": null
+          }
+        ]
+      }
+    },
+    "E1_reject_keeps_rule_table_intact": {
+      "pass": true,
+      "detail": {
+        "status": "rejected",
+        "digest_same": true
+      }
+    },
+    "E2_repeat_review_refused": {
+      "pass": true,
+      "detail": {
+        "errors": [
+          "提案已处理过（rejected），拒绝重复审批"
+        ]
+      }
+    },
+    "F_audit_events_recorded": {
+      "pass": true,
+      "detail": {
+        "has_approved": true,
+        "has_rejected": true
+      }
+    }
+  },
+  "problems": [],
+  "passed": 13,
+  "total": 13,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:57:10",
+  "paths": {
+    "project_root": "D:\\Project_Experience2.0\\项目三\\compliance_officer",
+    "runtime": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime",
+    "workspace": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace",
+    "lemonclaw_dir": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\.lemonclaw",
+    "framework": "D:\\Project_Experience2.0\\项目三\\lemonclaw-main",
+    "db": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\.lemonclaw\\lemonclaw.db"
+  }
+}

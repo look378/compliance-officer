@@ -1,0 +1,158 @@
+{
+  "gate": "G5",
+  "started_at": "2026-10-11 14:55:19",
+  "env": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.9",
+    "executable": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\venv\\Scripts\\python.exe",
+    "cwd": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace"
+  },
+  "deps": {
+    "pdfplumber": {
+      "desc": "原生文本 PDF 解析（首选）",
+      "importable": true,
+      "version": "0.11.10",
+      "error": null
+    },
+    "fitz": {
+      "desc": "PyMuPDF：快速原生文本抽取",
+      "importable": false,
+      "version": null,
+      "error": "ModuleNotFoundError: No module named 'fitz'"
+    },
+    "pypdf": {
+      "desc": "pypdf：纯 Python PDF 解析",
+      "importable": true,
+      "version": "6.20.0",
+      "error": null
+    },
+    "docx": {
+      "desc": "python-docx：Word 解析",
+      "importable": true,
+      "version": "1.2.0",
+      "error": null
+    },
+    "paddleocr": {
+      "desc": "完整 OCR（重）",
+      "importable": false,
+      "version": null,
+      "error": "ModuleNotFoundError: No module named 'paddleocr'"
+    },
+    "rapidocr_onnxruntime": {
+      "desc": "轻量 OCR（onnxruntime）",
+      "importable": true,
+      "version": "",
+      "error": null
+    },
+    "PIL": {
+      "desc": "图像处理（生成扫描件用）",
+      "importable": true,
+      "version": "12.3.0",
+      "error": null
+    }
+  },
+  "fixtures": {
+    "dir": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\d0_fixtures",
+    "cjk_font": "C:\\Windows\\Fonts\\msyh.ttc",
+    "native_pdf": {
+      "ok": true,
+      "path": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\d0_fixtures\\native_text.pdf",
+      "bytes": 40229,
+      "font": "CJK"
+    },
+    "image_pdf": {
+      "ok": true,
+      "path": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\d0_fixtures\\scanned_image_only.pdf",
+      "png": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\workspace\\d0_fixtures\\scanned_page.png",
+      "bytes": 33922
+    }
+  },
+  "text_layer": {
+    "native_pdf": {
+      "pdfplumber": {
+        "chars": 120,
+        "head": "劳动合同（示范）\n第一条 本合同为固定期限劳动合同，期限三年。\n第二条 乙方月工作时长不超过 260 小时，甲方可安排加班。\n第三条 甲方有权无条件解除本合同，"
+      },
+      "pypdf": {
+        "chars": 120,
+        "head": "劳动合同（示范）\n第一条 本合同为固定期限劳动合同，期限三年。\n第二条 乙方月工作时长不超过 260 小时，甲方可安排加班。\n第三条 甲方有权无条件解除本合同，"
+      }
+    },
+    "image_pdf": {
+      "pdfplumber": {
+        "chars": 0,
+        "head": ""
+      },
+      "pypdf": {
+        "chars": 0,
+        "head": ""
+      }
+    }
+  },
+  "ocr": {
+    "describe": {
+      "configured": "auto",
+      "engine": "rapidocr",
+      "tier": "ocr_lite",
+      "available_engines": {
+        "paddle": false,
+        "rapidocr": true,
+        "tesseract": false,
+        "http": false
+      },
+      "dpi": 200,
+      "max_pages": 30,
+      "http_url_configured": false
+    },
+    "render": {
+      "native_pdf": {
+        "pages": 1,
+        "rendered": 1,
+        "png_ok": true,
+        "error": ""
+      },
+      "image_pdf": {
+        "pages": 1,
+        "rendered": 1,
+        "png_ok": true,
+        "error": ""
+      }
+    },
+    "pipeline": {
+      "ocr_tier": "ocr_lite",
+      "engine": "http",
+      "pages_ocr": 1,
+      "clauses": 3,
+      "confidence": 0.7,
+      "warnings": [
+        "文本层缺失，已用 OCR（http）识别 1 页"
+      ]
+    },
+    "native_not_ocr": {
+      "ocr_tier": "native",
+      "ocr_called": false
+    }
+  },
+  "assessment": {
+    "native_text_ok": true,
+    "native_pdf_extracted_chars": 120,
+    "image_only_pdf_extracted_chars": 0,
+    "native_layer_confirmed": true,
+    "image_layer_absent_confirmed": true,
+    "paddleocr_available": false,
+    "rapidocr_available": true,
+    "chosen_tier": "ocr_lite",
+    "tier_meaning": "轻量 OCR：扫描件可识别文本，表格结构还原能力较弱"
+  },
+  "verdicts": {
+    "native_parse_available": true,
+    "native_text_layer_ok": true,
+    "image_needs_ocr_confirmed": true,
+    "tier_decided": true,
+    "pdf_render_works": true,
+    "ocr_pipeline_works": true,
+    "native_pdf_skips_ocr": true
+  },
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:55:21"
+}

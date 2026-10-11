@@ -1,0 +1,23 @@
+# 统一换行与文本处理，避免跨平台协作时"整个文件都变了"
+# 本项目在 Windows 上开发（PowerShell 脚本 + Python），但代码/配置一律按 LF 入库更稳。
+
+* text=auto eol=lf
+
+# PowerShell：Windows PowerShell 5.1 对 LF-only 脚本偶有兼容问题，保持 CRLF
+*.ps1 text eol=crlf
+
+# 明确按二进制处理（禁止换行转换）
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.ttf binary
+*.ttc binary
+*.onnx binary
+
+# 语言统计：把证据 JSON 从"代码"里排除，避免仓库语言占比失真
+docs/evidence/*.json linguist-generated=true
+*.json text eol=lf

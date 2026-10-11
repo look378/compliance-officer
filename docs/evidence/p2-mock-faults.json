@@ -1,0 +1,110 @@
+{
+  "check": "P2-mock-faults",
+  "started_at": "2026-10-11 14:58:15",
+  "health": {
+    "status": "running",
+    "service": "mock-oa+mailbox",
+    "version": "1.0.0",
+    "contracts": 109,
+    "fault_default": null,
+    "timeout_sleep_seconds": 3.0
+  },
+  "checks": {
+    "upload_ok": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "contract_id": "CT-20261009-e1db1c"
+      }
+    },
+    "upload_dedup_by_hash": {
+      "pass": true,
+      "detail": {
+        "resp": {
+          "contract_id": "CT-20261009-e1db1c",
+          "deduplicated": true,
+          "content_hash": "e1db1cf6897b82d6",
+          "size": 141
+        }
+      }
+    },
+    "list_ok": {
+      "pass": true,
+      "detail": {
+        "count": 109
+      }
+    },
+    "download_ok": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "bytes": 141
+      }
+    },
+    "missing_returns_404": {
+      "pass": true,
+      "detail": {
+        "status": 404
+      }
+    },
+    "mail_send_ok": {
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "message_id": "msg_9e6304b0bc",
+        "to": "supervisor@example.com",
+        "sent_at": "2026-10-11 14:58:19"
+      }
+    },
+    "fault_empty_is_structured": {
+      "pass": true,
+      "detail": {
+        "count": 0
+      }
+    },
+    "fault_bad_data_detectable": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "keys": [
+          "endpoint",
+          "unexpected"
+        ]
+      }
+    },
+    "fault_error_is_5xx": {
+      "pass": true,
+      "detail": {
+        "status": 500
+      }
+    },
+    "fault_timeout_detectable": {
+      "pass": true,
+      "detail": {
+        "client_timeout_s": 1.0,
+        "elapsed": 1.05
+      }
+    },
+    "fault_duplicate_visible": {
+      "pass": true,
+      "detail": {
+        "dup_ids": [
+          "CT-20261009-80ac81-DUP",
+          "CT-20261010-b33c7b-DUP"
+        ],
+        "mail_id": "msg_cf52169925"
+      }
+    },
+    "inbound_injection": {
+      "pass": true,
+      "detail": {
+        "inbox_count": 50
+      }
+    }
+  },
+  "problems": [],
+  "passed": 12,
+  "total": 12,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:58:21"
+}

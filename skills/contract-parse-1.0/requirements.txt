@@ -1,0 +1,3 @@
+# D0 阶段：脚本仅依赖标准库 + pyyaml（为后续读取 rules/risk_rules.yaml 预留）
+# 依赖体积刻意保持极小，避免污染 venv 创建耗时
+pyyaml==6.0.2

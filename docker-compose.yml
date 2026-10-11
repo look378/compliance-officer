@@ -1,0 +1,137 @@
+services:
+  # 岗位能力服务（本项目的核心进程：MCP 工具 + 规则库 + 待办队列）
+  # 说明：本项目**不改动运行时框架源码**，框架以独立进程方式运行并通过 mcp.json 连接本服务。
+  capability:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    image: compliance-officer/capability:0.6.0
+    container_name: compliance-capability
+    command: ["python", "mcp_server/compliance_mcp_server.py", "--host", "0.0.0.0", "--port", "8770"]
+    environment:
+      # 数据库：本项目自有表（待办/审计/账号）走 PostgreSQL；工作流运行态仍由框架 DAO 写 SQLite
+      # 【第二次审查修正】URL 方案必须是 `postgresql://`：原来的 `postgresql+psycopg://` 是
+      # SQLAlchemy 语法，直接交给 psycopg/pg8000 会解析失败（驱动只认 postgres/postgresql）。
+      DB_MODE: pg
+      DATABASE_URL: postgresql://compliance:compliance@postgres:5432/compliance
+      PYTHONIOENCODING: utf-8
+      PYTHONPATH: /app
+      TZ: Asia/Shanghai
+    volumes:
+      - ./:/app
+      - compliance-runtime:/app/.runtime
+    ports:
+      - "127.0.0.1:8770:8770"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8770/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Mock 外部系统（OA 文件服务 + 企业邮箱 + 故障注入）
+  mock:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    image: compliance-officer/capability:0.6.0
+    container_name: compliance-mock
+    command: ["python", "mock/mock_office.py", "--host", "0.0.0.0", "--port", "8780"]
+    environment:
+      PYTHONIOENCODING: utf-8
+      PYTHONPATH: /app
+      TZ: Asia/Shanghai
+    volumes:
+      - ./:/app
+      - compliance-runtime:/app/.runtime
+    ports:
+      - "127.0.0.1:8780:8780"
+    # 【第二次审查修正·P2】补健康检查：原来只有 capability/postgres 有，
+    # 而 mock 是"OA 文件服务 + 投递邮箱"的替身，网关的连接器直接依赖它 ——
+    # 没有健康检查就无法在编排层区分"mock 挂了"与"网关挂了"。
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8780/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # 网关：认证/待办/指标（RBAC 与 SSE 在 gateway/ 内实现；当前提供待办与指标接口）
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    image: compliance-officer/capability:0.6.0
+    container_name: compliance-gateway
+    command: ["python", "gateway/app.py", "--host", "0.0.0.0", "--port", "8790"]
+    environment:
+      PYTHONIOENCODING: utf-8
+      PYTHONPATH: /app
+      CAPABILITY_URL: http://capability:8770
+      MOCK_URL: http://mock:8780
+      TZ: Asia/Shanghai
+      # 【第二次审查修正·P1】容器内监听 0.0.0.0，而按设计"演示模式 + 非回环绑定"会被启动自检
+      # 直接拒绝（防止演示令牌 + X-Role 头被同网段任意人当成管理员）。原来的 compose 没设
+      # AUTH_MODE，于是网关容器起不来（重启循环）。这里显式切成生产认证模式。
+      AUTH_MODE: jwt
+      # 必填：从 .env 注入（可在 .env 里写 JWT_SECRET=...，或用 JWT_SECRET_FILE 走密钥文件）
+      # 生成：python -c "import secrets;print(secrets.token_urlsafe(48))"
+      JWT_SECRET: ${JWT_SECRET:?请先在 .env 或环境变量里设置 JWT_SECRET（长度≥16，见 .env.enterprise.example）}
+      # 本项目的自有表进 PG（工作流运行态仍由框架 DAO 写 SQLite，见 docs/16-PostgreSQL部署.md）
+      DB_MODE: pg
+      DATABASE_URL: postgresql://compliance:compliance@postgres:5432/compliance
+      # 外部系统：容器内用服务名；对接真实 OA/邮件时改成贵司地址（docs/13）
+      CONTRACT_SOURCE: mock
+      MAIL_GATEWAY: mock
+    volumes:
+      - ./:/app
+      - compliance-runtime:/app/.runtime
+    ports:
+      - "127.0.0.1:8790:8790"
+    # 【第二次审查修正·P2】依赖声明原来只有 `service_started` 语义的短列表：
+    # 能力服务还没就绪时网关就起来了，首个请求会因"编译期取不到 MCP 工具"而失败
+    # （网关会重试，但表现为启动初期一批 500）。现在按"就绪"依赖：
+    # 能力服务与数据库必须 healthy；mock 只要求已启动（换成真实 OA 时删掉该条即可）。
+    depends_on:
+      capability:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      mock:
+        condition: service_started
+    # 网关是用户直接访问的入口，必须有健康检查（原来只有 capability/postgres 有）
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8790/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+  # PostgreSQL（交付形态数据库；pgvector 用于法规向量检索的后续接入）
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: compliance-pg
+    environment:
+      POSTGRES_USER: compliance
+      POSTGRES_PASSWORD: compliance
+      POSTGRES_DB: compliance
+      TZ: Asia/Shanghai
+    volumes:
+      - compliance-pgdata:/var/lib/postgresql/data
+      - ./deploy/initdb:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U compliance -d compliance"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  compliance-runtime:
+  compliance-pgdata:

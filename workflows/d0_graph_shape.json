@@ -1,0 +1,57 @@
+{
+  "state_schema": [
+    {"name": "clause_text", "type": "str"},
+    {"name": "risk", "type": "str"},
+    {"name": "annotation", "type": "str"},
+    {"name": "reviewer_decision", "type": "str"},
+    {"name": "supervisor_decision", "type": "str"},
+    {"name": "archive_note", "type": "str"}
+  ],
+  "_comment": [
+    "拓扑纪律（D0 实测教训）：",
+    "1) 一个节点要么走静态出边、要么走条件边；同时挂两种会让 LangGraph 为多个目标各建 pending task，",
+    "   导致下游节点与上游重新入队的任务并发，出现『已完成却仍 paused』的假象。",
+    "2) 条件边的 mapping 必须覆盖该节点所有实际可能的取值，否则静默走第一个分支。",
+    "3) 循环边必须能收敛：本例 review_risk --modify--> annotate 由人工显式选择触发。"
+  ],
+  "nodes": [
+    {"name": "annotate",
+     "kind": "llm",
+     "config": {
+       "prompt": "你是合规风险分级器。只输出一个词，不要标点、不要解释、不要换行。\n判定规则：出现『保本』『保证收益』『最终解释权』『无条件解除』等排他或免责表述 -> high；出现『自动续约』『违约金上限过低』『争议解决地异常』等显著性瑕疵 -> mid；其余 -> low。\n待判定条款：{clause_text}",
+       "output_field": "risk"
+     }},
+    {"name": "annotation_note",
+     "kind": "tool",
+     "config": {"tool_name": "get_current_time", "args": {}, "output_field": "annotation"}},
+    {"name": "review_risk",
+     "kind": "human",
+     "config": {
+       "question": "【专员初审】请回复 confirm（确认标注）/ modify（要求重新标注）/ reject（驳回）。",
+       "output_field": "reviewer_decision"
+     }},
+    {"name": "approve_risk",
+     "kind": "human",
+     "config": {
+       "question": "【主管复核】请回复 approve（通过归档）/ reject（驳回并生成规则提案）。",
+       "output_field": "supervisor_decision"
+     }},
+    {"name": "finalize",
+     "kind": "tool",
+     "config": {"tool_name": "sleep", "args": {"interval": 1}, "output_field": "archive_note"}}
+  ],
+  "edges": [
+    {"src": "START", "dst": "annotate"},
+    {"src": "annotate", "dst": "annotation_note"},
+    {"src": "annotation_note", "dst": "review_risk"},
+    {"src": "finalize", "dst": "END"}
+  ],
+  "conditionals": [
+    {"src": "review_risk",
+     "router": {"kind": "state_field", "field": "reviewer_decision"},
+     "mapping": {"modify": "annotate", "confirm": "approve_risk", "reject": "finalize"}},
+    {"src": "approve_risk",
+     "router": {"kind": "state_field", "field": "supervisor_decision"},
+     "mapping": {"approve": "finalize", "reject": "finalize"}}
+  ]
+}

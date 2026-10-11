@@ -1,0 +1,25 @@
+{
+  "state_schema": [
+    {"name": "clause_text", "type": "str"},
+    {"name": "stage", "type": "str"},
+    {"name": "decision", "type": "str"},
+    {"name": "note", "type": "str"}
+  ],
+  "nodes": [
+    {"name": "prep",
+     "kind": "tool",
+     "config": {"tool_name": "get_current_time", "args": {}, "output_field": "stage"}},
+    {"name": "human_gate",
+     "kind": "human",
+     "config": {"question": "请确认是否继续（回复 continue 继续）。", "output_field": "decision"}},
+    {"name": "finish",
+     "kind": "tool",
+     "config": {"tool_name": "sleep", "args": {"interval": 1}, "output_field": "note"}}
+  ],
+  "edges": [
+    {"src": "START", "dst": "prep"},
+    {"src": "prep", "dst": "human_gate"},
+    {"src": "human_gate", "dst": "finish"},
+    {"src": "finish", "dst": "END"}
+  ]
+}

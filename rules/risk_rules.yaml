@@ -1,0 +1,109 @@
+# 合规风险规则表（唯一真相源）—— 由规则提案流程写入，禁止并发手工修改
+- id: RR-001
+  version: 2
+  status: active
+  pattern: 保本.{0,6}(收益|保本)|保本
+  severity: high
+  priority: 10
+  regulation_ref: 《人身保险销售行为管理办法》第 22 条
+  suggestion: 删除『保本』『保证收益』等承诺性表述，改为『预期收益不等于实际收益，投资有风险』，并补充风险提示
+  source: seed+proposal
+  approved_by: seed
+  approved_at: 2026-10-09
+  changelog: v2：扩大匹配范围（含单独出现的『保本』），引用改为可核验的法规库编号
+- id: RR-002
+  version: 2
+  status: active
+  pattern: (保证|承诺)(固定|年化|保底)?.{0,4}收益
+  severity: high
+  priority: 10
+  regulation_ref: 《人身保险销售行为管理办法》第 22 条
+  suggestion: 禁止承诺固定/保证收益；改为收益不确定性提示（『保险产品收益具有不确定性』）
+  source: seed+proposal
+  approved_by: seed
+  approved_at: 2026-10-09
+  changelog: v2：模式改为『保证/承诺』+可选限定词，引用改为可核验编号
+- id: RR-003
+  version: 2
+  status: active
+  pattern: 最终解释权
+  severity: mid
+  priority: 7
+  regulation_ref: 《民法典》第 498 条
+  suggestion: 删除『最终解释权』表述，改为明确的争议解决与解释规则条款
+  source: seed+proposal
+  approved_by: seed
+  approved_at: 2026-10-09
+  changelog: v2：引用改为可核验的法规库编号（等级保持 mid；同模式异等级的提案必须经主管裁决，不得自动覆盖）
+- id: RR-004
+  version: 1
+  status: active
+  pattern: 无条件.{0,4}(解除|终止)
+  severity: high
+  priority: 9
+  regulation_ref: 《民法典》第 496 条（格式条款提示说明义务）
+  suggestion: 解除权应对等约定；单方无条件解除条款应删除或改为附条件
+  source: seed
+  approved_by: seed
+  approved_at: 2026-10-09
+  changelog: 初始种子规则
+- id: RR-005
+  version: 2
+  status: active
+  pattern: 月.{0,4}工作时长.{0,8}(不超过|不得超过|达|达到)?.{0,4}(2[6-9]\d|3\d\d)\s*(小时|h)
+  severity: high
+  priority: 9
+  regulation_ref: 《劳动法》第 41 条
+  suggestion: 月加班时长上限超出法定标准（每月不得超过三十六小时），应调整工时安排或依法履行协商与审批程序
+  source: seed+proposal
+  approved_by: seed
+  approved_at: 2026-10-09
+  changelog: v2：兼容『不得超过/不超过/达到』等表述，引用改为可核验编号
+- id: RR-006
+  version: 1
+  status: active
+  pattern: 违约金.{0,10}(3\d|4\d|5\d)\s*%
+  severity: mid
+  priority: 6
+  regulation_ref: 《民法典》第 585 条（违约金调整）
+  suggestion: 违约金比例偏高，建议下调至合理区间并约定调整机制
+  source: seed
+  approved_by: seed
+  approved_at: 2026-10-09
+  changelog: 初始种子规则
+- id: RR-007
+  version: 1
+  status: active
+  pattern: 自动续约|自动顺延
+  severity: low
+  priority: 4
+  regulation_ref: 《民法典》第 470 条（合同内容）
+  suggestion: 建议明确续约的通知期限与拒绝续约方式，避免默认续约争议
+  source: seed
+  approved_by: seed
+  approved_at: 2026-10-09
+  changelog: 初始种子规则
+- id: RR-008
+  version: 2
+  status: active
+  pattern: (个人信息|用户数据).{0,10}(无需|不需|不必).{0,6}(同意|授权)
+  severity: high
+  priority: 9
+  regulation_ref: 《个人信息保护法》第 13 条
+  suggestion: 收集/使用个人信息须具备合法性基础（同意或法定情形），删除免同意表述并补充告知与同意条款
+  source: seed+proposal
+  approved_by: seed
+  approved_at: 2026-10-09
+  changelog: v2：补充『不必』表述，引用改为可核验编号
+- id: RR-009
+  version: 1
+  status: draft
+  pattern: 争议.{0,6}提交.{0,10}(仲裁|法院)
+  severity: low
+  priority: 2
+  regulation_ref: 《民事诉讼法》第 35 条（协议管辖）
+  suggestion: 建议核对争议解决地与管辖约定是否明确、是否对己方不利
+  source: seed
+  approved_by: seed
+  approved_at: 2026-10-09
+  changelog: 初始种子规则（draft：需评估误报率后再启用）

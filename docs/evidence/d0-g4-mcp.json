@@ -1,0 +1,238 @@
+{
+  "gate": "G4",
+  "started_at": "2026-10-11 14:55:01",
+  "server_started_by_check": true,
+  "health": {
+    "status": "running",
+    "server": "compliance-officer",
+    "version": "0.2.0",
+    "sessions": 0,
+    "stats": {
+      "initialize": 0,
+      "tools_list": 0,
+      "tools_call": 0,
+      "call_names": {},
+      "errors": 0
+    }
+  },
+  "handshake": {
+    "ok": true,
+    "error": ""
+  },
+  "servers": [
+    {
+      "server_id": "compliance",
+      "url": "http://127.0.0.1:8770/mcp",
+      "status": "connected",
+      "protocol_version": "2025-03-26",
+      "tool_count": 15
+    }
+  ],
+  "remote_tools": [
+    {
+      "name": "parse_contract",
+      "desc": "解析合同文档（PDF/Word/纯文本），返回结构化条款列表、Markdown 表格、解析置信度与告警。扫描件在无 OC",
+      "schema_props": [
+        "doc_id",
+        "path",
+        "text"
+      ]
+    },
+    {
+      "name": "extract_tables",
+      "desc": "抽取合同中的表格并转为 Markdown（保留列头与行列结构）。未抽到表格时显式说明原因，不会静默返回空。",
+      "schema_props": [
+        "doc_id",
+        "path",
+        "text"
+      ]
+    },
+    {
+      "name": "search_regulations",
+      "desc": "检索法规与内控条款，返回带条文编号与出处的命中列表；空检索时 empty_result=true，调用方不得据此编造法条",
+      "schema_props": [
+        "domain",
+        "query",
+        "top_k"
+      ]
+    },
+    {
+      "name": "annotate_clause",
+      "desc": "对单条条款做规则风险标注，返回 risk_level、命中规则（含版本）、法条引用与建议。无引用不判风险；high/mi",
+      "schema_props": [
+        "clause_id",
+        "clause_text"
+      ]
+    },
+    {
+      "name": "annotate_document",
+      "desc": "整篇合同标注：解析 + 逐条判定 + 汇总分级（overall_risk_level）。是进入人工审批前的标准入口。",
+      "schema_props": [
+        "doc_id",
+        "max_clauses",
+        "path",
+        "text"
+      ]
+    },
+    {
+      "name": "generate_report",
+      "desc": "生成合规审查报告（Markdown + PDF），含执行摘要、风险条款定位、修改建议、法条依据与审核链。",
+      "schema_props": [
+        "annotation",
+        "audit_trail",
+        "doc_id",
+        "formats",
+        "summary",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "propose_rule",
+      "desc": "由人工驳回原因生成规则提案（不直接改规则库）。内置模式精确匹配 + difflib 相似度去重（>0.85 转修订提案）",
+      "schema_props": [
+        "contract_id",
+        "evidence",
+        "pattern",
+        "proposed_by",
+        "regulation_ref",
+        "reject_reason",
+        "run_id",
+        "severity",
+        "suggestion",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "list_rule_proposals",
+      "desc": "列出规则提案（可按 status 过滤：pending_supervisor/approved/rejected）。",
+      "schema_props": [
+        "status"
+      ]
+    },
+    {
+      "name": "approve_rule_proposal",
+      "desc": "主管批准提案 -> 版本化写入规则表（version+1、写入审计字段）。重复批准会被拒绝。",
+      "schema_props": [
+        "approved_by",
+        "proposal_id",
+        "run_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "reject_rule_proposal",
+      "desc": "主管驳回规则提案（不改动规则表）。",
+      "schema_props": [
+        "proposal_id",
+        "reason",
+        "rejected_by",
+        "run_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "record_decision",
+      "desc": "记录人工决策（append-only 审计），并可选地把对应待办标记为完成。人工节点恢复时应调用本工具留下操作者证据。",
+      "schema_props": [
+        "actor",
+        "decision",
+        "node_name",
+        "note",
+        "role",
+        "run_id",
+        "todo_id",
+        "trace_id"
+      ]
+    },
+    {
+      "name": "list_pending",
+      "desc": "列出待办事项（按角色/状态过滤）。替代框架『靠用户在聊天里带 run_id』的做法。",
+      "schema_props": [
+        "limit",
+        "role",
+        "run_id",
+        "status"
+      ]
+    },
+    {
+      "name": "list_audit",
+      "desc": "查询审计事件（证据链）。可按 run_id 过滤。",
+      "schema_props": [
+        "limit",
+        "run_id"
+      ]
+    },
+    {
+      "name": "metrics",
+      "desc": "指标快照：待办总量/办结/在办、人审率、决策分布、驳回原因样本、规则与法规版本指纹。",
+      "schema_props": []
+    },
+    {
+      "name": "service_info",
+      "desc": "岗位能力服务自描述：工具清单、规则表指纹、法规库规模与领域、OCR 档位。",
+      "schema_props": []
+    }
+  ],
+  "registered_tool_names": [
+    "mcp__compliance__annotate_clause",
+    "mcp__compliance__annotate_document",
+    "mcp__compliance__approve_rule_proposal",
+    "mcp__compliance__extract_tables",
+    "mcp__compliance__generate_report",
+    "mcp__compliance__list_audit",
+    "mcp__compliance__list_pending",
+    "mcp__compliance__list_rule_proposals",
+    "mcp__compliance__metrics",
+    "mcp__compliance__parse_contract",
+    "mcp__compliance__propose_rule",
+    "mcp__compliance__record_decision",
+    "mcp__compliance__reject_rule_proposal",
+    "mcp__compliance__search_regulations",
+    "mcp__compliance__service_info"
+  ],
+  "calls": {
+    "search_regulations": {
+      "raw_head": "{\"query\": \"保本收益 格式条款 提示说明义务\", \"hits\": [{\"regulation_ref\": \"《民法典》第 496 条\", \"source\": \"中华人民共和国民法典·合同编\", \"domain\": \"合同通则\", \"text\": \"采用格式条款订立合同的，提供格式条款的一方应当遵循公平原则确定当事人之间的权利和义务，并采取合理的方式提示对方注意免除或者减轻其责任等与对方有重大利害关系的条款，按照对方的要求，对该条款予以说明。未履行提示或者说明义务，致使对方没有注意或者理解与其有重大利害关系的条款的，对方可以主张该条款不成为合同的内容。\", \"score\": 0.961",
+      "is_error": false,
+      "parsed_ok": true,
+      "hit_count": 5,
+      "refs": [
+        "《民法典》第 496 条",
+        "《保险法》第 17 条",
+        "《民法典》第 497 条",
+        "《民法典》第 498 条",
+        "《广告法》第 25 条"
+      ]
+    }
+  },
+  "agent_tool_total": 51,
+  "agent_mcp_tools": [
+    "mcp__compliance__annotate_clause",
+    "mcp__compliance__annotate_document",
+    "mcp__compliance__approve_rule_proposal",
+    "mcp__compliance__extract_tables",
+    "mcp__compliance__generate_report",
+    "mcp__compliance__list_audit",
+    "mcp__compliance__list_pending",
+    "mcp__compliance__list_rule_proposals",
+    "mcp__compliance__metrics",
+    "mcp__compliance__parse_contract",
+    "mcp__compliance__propose_rule",
+    "mcp__compliance__record_decision",
+    "mcp__compliance__reject_rule_proposal",
+    "mcp__compliance__search_regulations",
+    "mcp__compliance__service_info"
+  ],
+  "verdicts": {
+    "health_ok": true,
+    "handshake_ok": true,
+    "tools_discovered": true,
+    "registered_names_ok": true,
+    "search_call_ok": true,
+    "annotate_call_ok": true,
+    "no_citation_no_risk": true,
+    "agent_exposes_mcp": true
+  },
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:55:17"
+}

@@ -1,0 +1,390 @@
+{
+  "check": "SSO-e2e",
+  "started_at": "2026-10-11 14:59:10",
+  "idp": "http://127.0.0.1:8760",
+  "gateway": "http://127.0.0.1:8790",
+  "client_id": "compliance-officer",
+  "isolated_db": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\sso-e2e\\sso-e2e.db",
+  "idp_start": {
+    "name": "idp",
+    "port": 8760,
+    "script": "mock_idp.py",
+    "ok": true,
+    "pid": 40756,
+    "rc": null,
+    "log": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\logs\\sso-e2e-idp.log",
+    "log_tail": "",
+    "status": "started"
+  },
+  "discovery": {
+    "issuer": "http://127.0.0.1:8760",
+    "authorization_endpoint": "http://127.0.0.1:8760/authorize",
+    "token_endpoint": "http://127.0.0.1:8760/token",
+    "jwks_uri": "http://127.0.0.1:8760/jwks",
+    "response_types_supported": [
+      "code"
+    ],
+    "subject_types_supported": [
+      "public"
+    ],
+    "id_token_signing_alg_values_supported": [
+      "RS256"
+    ],
+    "code_challenge_methods_supported": [
+      "S256"
+    ],
+    "scopes_supported": [
+      "openid",
+      "profile",
+      "email"
+    ]
+  },
+  "jwks_alg": "RS256",
+  "capability_start": {
+    "name": "capability",
+    "port": 8770,
+    "script": "compliance_mcp_server.py",
+    "ok": true,
+    "pid": 32112,
+    "rc": null,
+    "log": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\logs\\sso-e2e-capability.log",
+    "log_tail": "",
+    "status": "started"
+  },
+  "gateway_start": {
+    "name": "gateway",
+    "port": 8790,
+    "script": "app.py",
+    "ok": true,
+    "pid": 62684,
+    "rc": null,
+    "log": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\logs\\sso-e2e-gateway.log",
+    "log_tail": "",
+    "status": "started"
+  },
+  "sso_config": {
+    "enabled": true,
+    "authorize_endpoint": "/api/v1/auth/sso/login",
+    "problems": []
+  },
+  "login_specialist": {
+    "authorize_url_head": "http://127.0.0.1:8760/authorize?response_type=code&client_id=compliance-officer&redirect_uri=http%3A%2F%2F127.0.0.1%3A87",
+    "start_status": 200,
+    "state_present": true,
+    "idp_page_status": 200,
+    "idp_page_has_users": true,
+    "has_pkce": true,
+    "ticket_found": true,
+    "approve_status": 302,
+    "callback_url": "http://127.0.0.1:8790/api/v1/auth/sso/callback?code=code_g-G0ezoKb0uw_JDbYxZu7911&state=_WhEAXybfT2yGwerad1vWzmys06NXmOw",
+    "callback_status": 302,
+    "redirect_to_ui": "/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ6aGFuZ3NhbiIsInJvbGUiOiJzcGVjaWFsaXN0IiwibmFtZSI6Ilx1NWYyMFx1NGUwOVx1ZmYwOFx1NTQwOFx1ODljNFx1NGUxM1x1NTQ",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ6aGFuZ3NhbiIsInJvbGUiOiJzcGVjaWFsaXN0IiwibmFtZSI6Ilx1NWYyMFx1NGUwOVx1ZmYwOFx1NTQwOFx1ODljNFx1NGUxM1x1NTQ1OFx1ZmYwOSIsImlzcyI6ImNvbXBsaWFuY2Utb2ZmaWNlciIsImlhdCI6MTc5MTcwMTk1NCwiZXhwIjoxNzkxNzMwNzU0LCJqdGkiOiI1MGRmZDVjYWM2YjBlZDUzIiwidmlhIjoic3NvIn0.nioBUHM5FeRQ89H--6fegQb11v8AHxIuLKDRYbT58fg",
+    "via": "sso"
+  },
+  "me_specialist": {
+    "username": "zhangsan",
+    "role": "specialist",
+    "via": "jwt",
+    "name": "张三（合规专员）"
+  },
+  "me_supervisor": {
+    "username": "lisi",
+    "role": "supervisor"
+  },
+  "me_admin": {
+    "username": "admin",
+    "role": "admin"
+  },
+  "diagnostics_sso": {
+    "mode_enabled": true,
+    "issuer": "http://127.0.0.1:8760",
+    "client_id": "compliance-officer",
+    "redirect_uri": "http://127.0.0.1:8790/api/v1/auth/sso/callback",
+    "client_secret_set": false,
+    "role_claim": "roles",
+    "role_map": {
+      "compliance-specialist": "specialist",
+      "compliance-supervisor": "supervisor",
+      "compliance-admin": "admin"
+    },
+    "default_role": "specialist",
+    "admin_emails_count": 0,
+    "auto_provision": true,
+    "verify_tls": false,
+    "problems": []
+  },
+  "reuse_callback_url": "http://127.0.0.1:8790/api/v1/auth/sso/callback?code=code_37yACktQ9U55-CKTsFVCVemJ&state=44Hw_5cyE5KNWpX2RKZXI4aLB9S6uysJ",
+  "code_reuse": {
+    "first": 302,
+    "second": 400,
+    "body": "{\"detail\":\"state 无效或已过期（请重新发起登录）\"}"
+  },
+  "forged_state": {
+    "status": 400,
+    "body": "{\"detail\":\"state 无效或已过期（请重新发起登录）\"}"
+  },
+  "disabled_user_login": {
+    "callback_status": 401,
+    "redirect_to_ui": "",
+    "error": null,
+    "token": null
+  },
+  "sso_audit_events": [
+    "auth.sso_login_rejected",
+    "auth.sso_login_ok",
+    "auth.sso_login_ok",
+    "auth.sso_login_ok",
+    "auth.sso_login_ok"
+  ],
+  "teardown": [
+    {
+      "port": 8790,
+      "stopped": true,
+      "pid": 7072,
+      "why": "sso-e2e 收尾",
+      "name": "gateway"
+    },
+    {
+      "port": 8770,
+      "stopped": true,
+      "pid": 57400,
+      "why": "sso-e2e 收尾",
+      "name": "capability"
+    },
+    {
+      "port": 8760,
+      "stopped": true,
+      "pid": 63772,
+      "why": "sso-e2e 收尾",
+      "name": "idp"
+    }
+  ],
+  "checks": {
+    "local_idp_healthy": {
+      "pass": true,
+      "detail": {
+        "name": "idp",
+        "port": 8760,
+        "script": "mock_idp.py",
+        "ok": true,
+        "pid": 40756,
+        "rc": null,
+        "log": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\logs\\sso-e2e-idp.log",
+        "log_tail": "",
+        "status": "started"
+      }
+    },
+    "idp_discovery_ok": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "disc": {
+          "issuer": "http://127.0.0.1:8760",
+          "authorization_endpoint": "http://127.0.0.1:8760/authorize",
+          "token_endpoint": "http://127.0.0.1:8760/token",
+          "jwks_uri": "http://127.0.0.1:8760/jwks",
+          "response_types_supported": [
+            "code"
+          ],
+          "subject_types_supported": [
+            "public"
+          ],
+          "id_token_signing_alg_values_supported": [
+            "RS256"
+          ],
+          "code_challenge_methods_supported": [
+            "S256"
+          ],
+          "scopes_supported": [
+            "openid",
+            "profile",
+            "email"
+          ]
+        }
+      }
+    },
+    "idp_jwks_has_rsa_key": {
+      "pass": true,
+      "detail": {
+        "keys": 1,
+        "alg": "RS256"
+      }
+    },
+    "capability_service_up": {
+      "pass": true,
+      "detail": {
+        "name": "capability",
+        "port": 8770,
+        "script": "compliance_mcp_server.py",
+        "ok": true,
+        "pid": 32112,
+        "rc": null,
+        "log": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\logs\\sso-e2e-capability.log",
+        "log_tail": "",
+        "status": "started"
+      }
+    },
+    "gateway_up_in_sso_mode": {
+      "pass": true,
+      "detail": {
+        "name": "gateway",
+        "port": 8790,
+        "script": "app.py",
+        "ok": true,
+        "pid": 62684,
+        "rc": null,
+        "log": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\.runtime\\logs\\sso-e2e-gateway.log",
+        "log_tail": "",
+        "status": "started"
+      }
+    },
+    "gateway_reports_sso_enabled": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": {
+          "enabled": true,
+          "authorize_endpoint": "/api/v1/auth/sso/login",
+          "problems": []
+        }
+      }
+    },
+    "demo_token_rejected_in_sso_mode": {
+      "pass": true,
+      "detail": {
+        "status": 401
+      }
+    },
+    "sso_login_flow_completes": {
+      "pass": true,
+      "detail": {
+        "idp_page_status": 200,
+        "approve_status": 302,
+        "callback_status": 302,
+        "via": "sso",
+        "error": null
+      }
+    },
+    "authorize_request_carries_pkce": {
+      "pass": true,
+      "detail": {
+        "has_pkce": true,
+        "ticket": true
+      }
+    },
+    "idp_login_page_renders_identity_choices": {
+      "pass": true,
+      "detail": {
+        "idp_page_status": 200,
+        "has_users": true
+      }
+    },
+    "token_in_url_fragment_not_query": {
+      "pass": true,
+      "detail": {
+        "redirect_to_ui": "/#token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ6aGFuZ3NhbiIsInJvbGUiOiJzcGVjaWFsaXN0IiwibmFtZSI6Ilx1NWYyMFx1NGUwOVx1ZmYwOFx1NTQwOFx1ODljNFx1NGUxM1x1NTQ"
+      }
+    },
+    "session_token_works_and_role_mapped": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "me": {
+          "username": "zhangsan",
+          "role": "specialist",
+          "via": "jwt",
+          "name": "张三（合规专员）"
+        }
+      }
+    },
+    "permission_matrix_enforced_for_sso_user": {
+      "pass": true,
+      "detail": {
+        "rules": 200,
+        "users": 403
+      }
+    },
+    "supervisor_group_maps_to_supervisor_role": {
+      "pass": true,
+      "detail": {
+        "me": {
+          "username": "lisi",
+          "role": "supervisor"
+        },
+        "proposals": 200
+      }
+    },
+    "admin_group_maps_to_admin_role": {
+      "pass": true,
+      "detail": {
+        "me": {
+          "username": "admin",
+          "role": "admin"
+        },
+        "diagnostics": 200,
+        "capability": {
+          "status": "running",
+          "server": "compliance-officer",
+          "version": "0.2.0",
+          "sessions": 0,
+          "stats": {
+            "initialize": 0,
+            "tools_list": 0,
+            "tools_call": 0,
+            "call_names": {},
+            "errors": 0
+          }
+        }
+      }
+    },
+    "second_login_can_start": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "body": "{\"ok\":true,\"authorization_url\":\"http://127.0.0.1:8760/authorize?response_type=code&client_id=compliance-officer&redirect_uri=http%3A%2F%2F127.0.0.1%3A8790%2Fapi"
+      }
+    },
+    "authorization_code_single_use": {
+      "pass": true,
+      "detail": {
+        "first": 302,
+        "second": 400,
+        "body": "{\"detail\":\"state 无效或已过期（请重新发起登录）\"}"
+      }
+    },
+    "forged_state_rejected": {
+      "pass": true,
+      "detail": {
+        "status": 400,
+        "body": "{\"detail\":\"state 无效或已过期（请重新发起登录）\"}"
+      }
+    },
+    "disabled_user_cannot_sso_login": {
+      "pass": true,
+      "detail": {
+        "callback_status": 401,
+        "redirect_to_ui": "",
+        "error": null,
+        "token": null
+      }
+    },
+    "sso_login_audited": {
+      "pass": true,
+      "detail": {
+        "events": [
+          "auth.sso_login_rejected",
+          "auth.sso_login_ok",
+          "auth.sso_login_ok",
+          "auth.sso_login_ok",
+          "auth.sso_login_ok"
+        ]
+      }
+    }
+  },
+  "problems": [],
+  "passed": 20,
+  "total": 20,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 14:59:26"
+}

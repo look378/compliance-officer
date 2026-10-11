@@ -1,0 +1,303 @@
+{
+  "check": "P7-webui",
+  "started_at": "2026-10-11 15:35:40",
+  "gateway_boot": "ok",
+  "referenced_paths": [
+    "/api/v1/agent/reset",
+    "/api/v1/agent/task",
+    "/api/v1/audit",
+    "/api/v1/auth/login",
+    "/api/v1/auth/logout",
+    "/api/v1/auth/me",
+    "/api/v1/auth/sso/login",
+    "/api/v1/contracts",
+    "/api/v1/contracts/upload",
+    "/api/v1/diagnostics",
+    "/api/v1/logs",
+    "/api/v1/logs/stream",
+    "/api/v1/maintenance",
+    "/api/v1/metrics",
+    "/api/v1/pending",
+    "/api/v1/proposals",
+    "/api/v1/proposals/${pid}/review",
+    "/api/v1/rules",
+    "/api/v1/runs",
+    "/api/v1/runs/${runId}",
+    "/api/v1/runs/${runId}/decide",
+    "/api/v1/samples",
+    "/api/v1/users",
+    "/api/v1/users/${username}/password",
+    "/api/v1/users/${username}/status"
+  ],
+  "gateway_routes": [
+    "/",
+    "/api/v1/agent/history",
+    "/api/v1/agent/info",
+    "/api/v1/agent/reset",
+    "/api/v1/agent/task",
+    "/api/v1/audit",
+    "/api/v1/auth/events",
+    "/api/v1/auth/login",
+    "/api/v1/auth/logout",
+    "/api/v1/auth/me",
+    "/api/v1/auth/sso/callback",
+    "/api/v1/auth/sso/config",
+    "/api/v1/auth/sso/login",
+    "/api/v1/config",
+    "/api/v1/contracts",
+    "/api/v1/contracts/upload",
+    "/api/v1/diagnostics",
+    "/api/v1/logs",
+    "/api/v1/logs/stream",
+    "/api/v1/maintenance",
+    "/api/v1/metrics",
+    "/api/v1/pending",
+    "/api/v1/proposals",
+    "/api/v1/proposals/{proposal_id}/review",
+    "/api/v1/recover",
+    "/api/v1/rules",
+    "/api/v1/runs",
+    "/api/v1/runs/{run_id}",
+    "/api/v1/runs/{run_id}/decide",
+    "/api/v1/runs/{run_id}/events",
+    "/api/v1/samples",
+    "/api/v1/users",
+    "/api/v1/users/{username}/password",
+    "/api/v1/users/{username}/status",
+    "/health"
+  ],
+  "unresolved_paths": [],
+  "endpoint_results": {
+    "/api/v1/samples": 200,
+    "/api/v1/metrics": 200,
+    "/api/v1/rules": 200,
+    "/api/v1/pending": 200,
+    "/api/v1/runs": 200,
+    "/api/v1/proposals": 200
+  },
+  "checks": {
+    "index_file_exists": {
+      "pass": true,
+      "detail": {
+        "path": "D:\\Project_Experience2.0\\项目三\\compliance_officer\\gateway\\web\\index.html",
+        "bytes": 39987
+      }
+    },
+    "html_has_标题": {
+      "pass": true,
+      "detail": {
+        "marker": "合规官「小合」"
+      }
+    },
+    "html_has_合同审查台": {
+      "pass": true,
+      "detail": {
+        "marker": "id=\"tab-review\""
+      }
+    },
+    "html_has_待办审批": {
+      "pass": true,
+      "detail": {
+        "marker": "id=\"tab-todos\""
+      }
+    },
+    "html_has_运行概览": {
+      "pass": true,
+      "detail": {
+        "marker": "id=\"tab-runs\""
+      }
+    },
+    "html_has_规则库": {
+      "pass": true,
+      "detail": {
+        "marker": "id=\"tab-rules\""
+      }
+    },
+    "html_has_规则提案": {
+      "pass": true,
+      "detail": {
+        "marker": "id=\"tab-proposals\""
+      }
+    },
+    "html_has_认证头注入": {
+      "pass": true,
+      "detail": {
+        "marker": "X-Auth-Token"
+      }
+    },
+    "html_has_输出转义": {
+      "pass": true,
+      "detail": {
+        "marker": "function esc("
+      }
+    },
+    "gateway_serves_index": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "bytes": 39987,
+        "head": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, ini"
+      }
+    },
+    "referenced_paths_all_registered": {
+      "pass": true,
+      "detail": {
+        "referenced": 25,
+        "registered": 35,
+        "unresolved": []
+      }
+    },
+    "endpoint__api_v1_samples": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "role": "specialist"
+      }
+    },
+    "endpoint__api_v1_metrics": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "role": "specialist"
+      }
+    },
+    "endpoint__api_v1_rules": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "role": "specialist"
+      }
+    },
+    "endpoint__api_v1_pending": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "role": "specialist"
+      }
+    },
+    "endpoint__api_v1_runs": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "role": "specialist"
+      }
+    },
+    "endpoint__api_v1_proposals": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "role": "supervisor"
+      }
+    },
+    "proposals_denied_for_specialist": {
+      "pass": true,
+      "detail": {
+        "status": 403
+      }
+    },
+    "samples_complete": {
+      "pass": true,
+      "detail": {
+        "keys": [
+          "high",
+          "low",
+          "mid"
+        ]
+      }
+    },
+    "upload_txt_works": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "run_id": "wf_run_edf3ac4a4663",
+        "risk": "mid",
+        "body_head": "{\"ok\":true,\"run_id\":\"wf_run_edf3ac4a4663\",\"status\":\"paused\",\"risk_level\":\"mid\",\"doc_id\":\"1bae7e14510f\",\"paused\":{\"role\":\"specialist\",\"question\":\"【合规专员初审】整体风险等级 "
+      }
+    },
+    "upload_unsupported_415": {
+      "pass": true,
+      "detail": {
+        "status": 415,
+        "body": "{\"detail\":\"不支持的文件类型：.xlsx（支持 .pdf/.docx/.doc/.txt/.md）\"}"
+      }
+    },
+    "api_requires_token": {
+      "pass": true,
+      "detail": {
+        "status": 401
+      }
+    },
+    "auth_me_returns_identity": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "role": "specialist",
+        "via": "demo",
+        "perms": 6
+      }
+    },
+    "config_view_admin_only": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "auth_mode": "demo",
+        "checklist": 7
+      }
+    },
+    "config_denied_for_specialist": {
+      "pass": true,
+      "detail": {
+        "status": 403
+      }
+    },
+    "users_list_admin": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "count": 4,
+        "first": "admin"
+      }
+    },
+    "audit_console_readable": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "count": 50,
+        "sample": [
+          "review_submitted",
+          "todo_created",
+          "auth.user_created",
+          "auth.password_changed"
+        ]
+      }
+    },
+    "audit_denied_for_specialist": {
+      "pass": true,
+      "detail": {
+        "status": 403
+      }
+    },
+    "logs_readable_with_trace": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "lines": 20,
+        "has_trace": true
+      }
+    },
+    "agent_runtime_ready": {
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "tools": 51,
+        "mcp_tools": 15,
+        "error": null
+      }
+    }
+  },
+  "problems": [],
+  "passed": 30,
+  "total": 30,
+  "verdict": "PASS",
+  "finished_at": "2026-10-11 15:35:42"
+}
